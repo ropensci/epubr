@@ -1,0 +1,26 @@
+Package: epubr
+Version: 0.1.0
+Title: Read EPUB File Metadata and Text
+Description: Provides functions supporting the reading and parsing of internal ebook content from EPUB files. 
+    Book metadata and textual contents are parse separately. E-book formatting is non-standard enough across all 
+    literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, 
+    in completely general form, resulting in a singular, consistently formatted output. 
+    Functions in this package that are intended for relatively general application to arbitrary e-books with a priori 
+    unknown formatting and metadata structure, do minimal to no processing of the output. 
+    They essentially only read the content "as is" and attempt to curate them in a data frame. 
+    Some poorly formatted e-books may not be readable by these functions at all.
+Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@alaska.edu", role = c("aut", "cre"))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+URL: https://github.com/leonawicz/epubr
+BugReports: https://github.com/leonawicz/epubr/issues
+Depends: R (>= 3.5.0)
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown,
+    lintr,
+    covr
+VignetteBuilder: knitr
