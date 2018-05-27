@@ -1,7 +1,7 @@
 Package: epubr
 Version: 0.1.0
 Title: Read EPUB File Metadata and Text
-Description: Provides functions supporting the reading and parsing of internal ebook content from EPUB files. 
+Description: Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
     Book metadata and textual contents are parse separately. E-book formatting is non-standard enough across all 
     literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, 
     in completely general form, resulting in a singular, consistently formatted output. 
@@ -22,5 +22,18 @@ Suggests:
     knitr,
     rmarkdown,
     lintr,
-    covr
+    covr,
+    readr,
+    hgr
 VignetteBuilder: knitr
+Imports: 
+    xml2,
+    magrittr,
+    dplyr,
+    purrr,
+    stringr,
+    tm,
+    qdap,
+    tidyr,
+    tools
+RoxygenNote: 6.0.1
