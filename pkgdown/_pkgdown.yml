@@ -2,12 +2,28 @@ url: http://leonawicz.github.io/
 
 template:
   params:
-    bootswatch: sandstone
     ganalytics: UA-46129458-3
 
 authors:
   Matthew Leonawicz:
     href: http://leonawicz.github.io/
+
+reference:
+- title: Package
+  contents:
+  - epubr
+- title: Parse EPUB files
+  contents:
+  - epub_combine
+  - epub_read
+  - epub_meta
+  - epub_unzip
+- title: Example support functions
+  contents:
+  - pat_startrek
+  - sec_drop_startrek
+  - st_epub_test
+  - st_fix_date
 
 navbar:
   type: inverse
