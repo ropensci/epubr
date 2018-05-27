@@ -29,8 +29,8 @@ NULL
 #' Be careful if \code{file} is a long vector of many EPUB files.
 #' This could take a long time to process as well as could potentially use up all of your system RAM if you have far too many large books in one call to \code{epub}.
 #'
-#' The \code{fields} argument can be used to limit the columns returned. E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher")}. Some fields will be returned even if not in \code{fields}.
-#' You should already know what metadata fields are in the EPUB file.
+#' The \code{fields} argument can be used to limit the columns returned. E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}.
+#' You should already know what metadata fields are in the EPUB file. \code{file} in \code{fields} will include the original file name, in case this is different from the content of a \code{source} field that may be present in the metadata.
 #'
 #' The \code{chapter_pattern} argument may be helpful for bulk processing of similarly formatted EPUB files. This should be ignored for poorly formatted EPUB files or where there is inconsistent naming across an e-book collection.
 #' Like with \code{fields}, you should explore file metadata in advance or this argument will not be useful. If provided, a column \code{nchap} is added to the output data frame giving the guessed number of chapters.
@@ -72,9 +72,10 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
   d <- purrr::map(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
                                     chapter_pattern = chapter_pattern, add_pattern = add_pattern)) %>%
     dplyr::bind_rows()
-  if(!"source" %in% names(d) & "source" %in% fields) d <- dplyr::mutate(d, source = basename(file))
-  if(series) d <- dplyr::mutate(d, series = .get_series(file, FALSE, parent_dir),
-                                subseries = .get_series(file, TRUE, parent_dir))
+  path <- file
+  if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
+  if(series) d <- dplyr::mutate(d, series = .get_series(path, FALSE, parent_dir),
+                                subseries = .get_series(path, TRUE, parent_dir))
   d <- tidyr::unnest(d)
   if("nchap" %in% names(d)) d <- dplyr::mutate(d, is_chapter = grepl("^ch\\d\\d$", .data[["section"]]))
   d <- dplyr::mutate(d, nchar = nchar(.data[["text"]]),

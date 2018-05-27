@@ -38,8 +38,8 @@ Both the primary and nested data frames are tibbles and safe to print to the con
 Be careful if \code{file} is a long vector of many EPUB files.
 This could take a long time to process as well as could potentially use up all of your system RAM if you have far too many large books in one call to \code{epub}.
 
-The \code{fields} argument can be used to limit the columns returned. E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher")}. Some fields will be returned even if not in \code{fields}.
-You should already know what metadata fields are in the EPUB file.
+The \code{fields} argument can be used to limit the columns returned. E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}.
+You should already know what metadata fields are in the EPUB file. \code{file} in \code{fields} will include the original file name, in case this is different from the content of a \code{source} field that may be present in the metadata.
 
 The \code{chapter_pattern} argument may be helpful for bulk processing of similarly formatted EPUB files. This should be ignored for poorly formatted EPUB files or where there is inconsistent naming across an e-book collection.
 Like with \code{fields}, you should explore file metadata in advance or this argument will not be useful. If provided, a column \code{nchap} is added to the output data frame giving the guessed number of chapters.
