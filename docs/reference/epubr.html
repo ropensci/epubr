@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -177,7 +177,10 @@
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output. Functions in this package that are intended for relatively general application to arbitrary e-books with *a priori* unknown formatting and metadata structure, do minimal to no processing of the output. They essentially only read the content "as is" and attempt to curate them in a data frame. Some poorly formatted e-books may not be readable by these functions at all.</p>
+    <p>E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.</p>
+<p>EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package.
+Text is largely read 'as is', along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text.
+Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like <code>tm</code> or <code>qdap</code>.</p>
     
 
   </div>

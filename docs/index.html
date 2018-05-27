@@ -12,12 +12,12 @@
 <script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Read EPUB File Metadata and Text">
 <meta property="og:description" content="Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
-    Book metadata and textual contents are parse separately. E-book formatting is non-standard enough across all 
-    literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, 
-    in completely general form, resulting in a singular, consistently formatted output. 
-    Functions in this package that are intended for relatively general application to arbitrary e-books with a priori 
-    unknown formatting and metadata structure, do minimal to no processing of the output. 
-    They essentially only read the content " as is and attempt to curate them in a data frame. some poorly formatted e-books may not be readable by these functions at all.>
+    E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, 
+    in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
+    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. 
+    However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package. 
+    Text is largely read 'as is', along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text. 
+    Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like 'tm' or 'qdap'.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
       </span>
     </div>
 
@@ -142,9 +142,12 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#epubr" class="anchor"></a>epubr</h1></div>
 
-<p>Read metadata and textual content of epub files. <em>Under development.</em></p>
-<p><code>epubr</code> provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and textual contents are parse separately.</p>
-<p>E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output. Functions in this package that are intended for relatively general application to arbitrary e-books with <em>a priori</em> unknown formatting and metadata structure, do minimal to no processing of the output. They essentially only read the content “as is” and attempt to curate them in a data frame. Some poorly formatted e-books may not be readable by these functions at all.</p>
+<p>Read metadata and textual content of epub files.</p>
+<p><em>Package under development.</em></p>
+<p><code>epubr</code> provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame.</p>
+<p>E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.</p>
+<p>EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package. Text is largely read ‘as is’, along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text.</p>
+<p>Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like  or .</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
