@@ -36,4 +36,6 @@ Imports:
     qdap,
     tidyr,
     tools
+Remotes:
+    hrbrmstr/hgr
 RoxygenNote: 6.0.1
