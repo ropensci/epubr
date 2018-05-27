@@ -14,16 +14,8 @@ reference:
   - epubr
 - title: Parse EPUB files
   contents:
-  - epub_combine
-  - epub_read
-  - epub_meta
+  - epub
   - epub_unzip
-- title: Example support functions
-  contents:
-  - pat_startrek
-  - sec_drop_startrek
-  - st_epub_test
-  - st_fix_date
 
 navbar:
   type: inverse

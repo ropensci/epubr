@@ -1,48 +1,11 @@
-.st_epub_metakeep <- function(id, href){
-  pat <- paste0("signup|isbn|font|css|^cop$|copy|style|image|logo|contents")
-  !is.na(id) & grepl("html$|htm$", href) & !grepl(pat, id)
-}
-
-.st_chappat_overrides <- c("INVINCIBLE", "Have Tech, Will Travel", "SPARTACUS", "WAR DRUMS", "THE ROMULAN STRATAGEM",
-                           "ROGUE SAUCER", "I,Q", "GEMWORLD: BOOK ONE OF TWO", "The Genesis Wave Book Three",
-                           "Star Trek: The Next Generation: The Stuff of Dreams", "Memory Prime")
-
-.st_chapcheck_overrides <- c("MARTYR", "No Limits", "Spectre", "SPARTACUS", "WAR DRUMS", "THE ROMULAN STRATAGEM",
-                             "ROGUE SAUCER", "I,Q", "GEMWORLD: BOOK ONE OF TWO",
-                             "Star Trek: The Next Generation: The Stuff of Dreams", "Memory Prime")
-
-#' Star Trek novel overrides
-#'
-#' Pattern helper function specific to Star Trek novels. A function that takes no arguments and returns a named list of three elements: \code{pattern} is a regular expression pattern string,
-#' \code{chapter_check} is a character vector giving exact (in-metadata) book titles as a filter to only apply the supplemental \code{pattern} to specific books,
-#' and \code{chapter_doublecheck} is a vector of titles that applies additional checks that may only be necessary and helpful (and non-harmful) for specific titles.
-#'
-#' @return a named list.
-#' @export
-#'
-#' @examples
-#' pat_startrek()
-pat_startrek <- function(){
-  list(pattern = "toc_ref\\d|^con$|^i2000\\d|^ref(\\d$|\\d\\d$)|^dreams-\\d",
-       chapter_check = .st_chappat_overrides,
-       chapter_doublecheck = .st_chapcheck_overrides)
-}
-
-#' Star Trek novel section filter
-#'
-#' Regular expression pattern for dropping commonly named non-chapter sections that typically apply to popular Star Trek novels.
-#'
-#' @return a character string.
-#' @export
-#'
-#' @examples
-#' sec_drop_startrek()
-sec_drop_startrek <- function(){
-  "^(C|c)o(v|n|p)|^(T|t)it|^(A|a)ck|^htl|reg(front|back)"
+.epub_metakeep <- function(id, href, pattern = NULL){
+  x <- !is.na(id) & grepl("html$|htm$", href)
+  if(inherits(pattern, "character")) x <- x & !grepl(pattern, id)
+  x
 }
 
 .chapter_recovery <- function(d, x, override = FALSE){
-  if(d$nchap != 0 & !override) return(list(d, x))
+  if(!"nchap" %in% names(d) || (d$nchap != 0 && !override)) return(list(d, x))
   nc <- nchar(x$text)
   opening <- substr(x$text, 1, 30)
   r <- utils::as.roman(1:30)
@@ -83,35 +46,17 @@ sec_drop_startrek <- function(){
   list(d, x)
 }
 
-#' Star Trek EPUB tester
-#'
-#' Example testing function for parsing Star Trek novels.
-#'
-#' @param file character, input EPUB file.
-#' @param details logical, print more details to console.
-#' @param add_tail logical, also print tail of data frame.
-#'
-#' @return nothing is returned but information is logged at the console.
-#' @export
-#'
-#' @examples
-#' # not run
-st_epub_test <- function(file, details = FALSE, add_tail = FALSE){
-  x <- epub_read(file, add_pattern = pat_startrek(), hgr_clean = TRUE)
-  if(!all(c("title", "creator") %in% names(x))) warning("`title` and/or `author` missing.")
-  if(x$nchap == 0) warning("`nchap` is zero.")
-  if(nrow(x$data[[1]]) < 5) warning("Content data frame has fewer than five rows.")
-  if(details){
-    print(x)
-    print(x$data[[1]])
-    if(add_tail) print(utils::tail(x$data[[1]]))
+.clean <- function(x) {
+  if (!inherits(x, "html_document")) x <- xml2::read_html(x)
+  cleaner <- xml2::read_xml(system.file("text.xslt", package = "epubr"))
+  x2 <- xslt::xml_xslt(x, cleaner)
+  x2 <- rvest::html_text(x2)
+  x2 <- trimws(x2)
+  if (nchar(x2) == 0) {
+    x2 <- rvest::html_text(x)
+    x2 <- trimws(x2)
   }
-  cat("Checks completed. ---- ", x$title, "\n")
-  invisible()
-}
-
-.clean_text <- function(x){
-  tm::stripWhitespace(x) %>% qdap::replace_ordinal() %>% qdap::replace_symbol()
+  x2
 }
 
 .get_series <- function(x, subseries = FALSE, parent_dir = "novels"){
@@ -119,20 +64,4 @@ st_epub_test <- function(file, details = FALSE, add_tail = FALSE){
   idx <- purrr::map_dbl(x, ~(which(.x == parent_dir) + 1))
   if(subseries) idx <- idx + 1
   x <- purrr::map_chr(seq_along(x), ~x[[.x]][idx[.x]])
-}
-
-#' Fix Star Trek date column
-#'
-#' Improve \code{date} column in EPUB data frame output for Star Trek novels by replacing their year dates with \code{yyyy-mm-dd} format date strings taken from any available (most) \code{source} column input filenames.
-#'
-#' @param x a data frame returned by a function such as \code{epub_read} or \code{epub_combine}.
-#'
-#' @return a data frame
-#' @export
-#'
-#' @examples
-#' # not run
-st_fix_date <- function(x){
-  y <- stringr::str_extract(basename(x$source), "\\d{8}")
-  dplyr::mutate(x, date = ifelse(is.na(y), x, paste(substr(y, 1, 4), substr(y, 5, 6), substr(y, 7, 8), sep = "-")))
 }

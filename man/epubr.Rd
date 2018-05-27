@@ -9,5 +9,9 @@
 epubr provides functions supporting the reading and parsing of internal e-book content from EPUB files. Book metadata and textual contents are parse separately.
 }
 \details{
-E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content for an across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output. Functions in this package that are intended for relatively general application to arbitrary e-books with *a priori* unknown formatting and metadata structure, do minimal to no processing of the output. They essentially only read the content "as is" and attempt to curate them in a data frame. Some poorly formatted e-books may not be readable by these functions at all.
+E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
+
+EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package.
+Text is largely read 'as is', along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text.
+Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like \code{tm} or \code{qdap}.
 }
