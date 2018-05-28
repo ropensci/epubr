@@ -1,4 +1,4 @@
-# epubr 0.2.5
+# epubr 0.3.0
 
 * Refactor functions.
 * Further reduce package dependencies.
