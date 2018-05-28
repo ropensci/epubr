@@ -32,7 +32,7 @@ Read EPUB format e-books into a data frame using \code{epub} or extract epub arc
 \details{
 The primary function here is \code{epub}. It parses EPUB file metadata and textual content into a data frame.
 The output data frame has one row for each file in \code{file}.
-It has metadata in all columns except the \code{data} column, which is a nested column containing a data frame of the e-book text.
+It has metadata in all columns except the \code{data} column, which is a column of nested data frames containing e-book text by book section (e.g., chapters).
 Both the primary and nested data frames are tibbles and safe to print to the console "as is".
 
 Be careful if \code{file} is a long vector of many EPUB files.
