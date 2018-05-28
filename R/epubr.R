@@ -91,7 +91,7 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
   if(hist_note) nested <- c(nested, "hist_note")
   nested <- c(nested, "nchar", "nword")
   d <- tidyr::nest(d, !! nested)
-  cols <- unique(c(names(d), fields))
+  cols <- unique(c(fields, names(d)))
   cols <- cols[cols != "data"]
   if(series) cols <- c(cols, c("series", "subseries"))
   if("nchap" %in% names(d)) cols <- c(cols, "nchap")
