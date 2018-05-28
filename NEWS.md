@@ -1,3 +1,9 @@
+# epubr 0.2.5
+
+* Refactor functions.
+* Further reduce package dependencies.
+* Update unit tests and documentation.
+
 # epubr 0.2.0
 
 * Refactor functions.

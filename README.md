@@ -13,9 +13,7 @@ Read metadata and textual content of epub files.
 
 E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
 
-EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package. Text is largely read 'as is', along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text.
-
-Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like `tm` or `qdap`.
+EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package. Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like `tm` or `qdap`.
 
 Installation
 ------------
