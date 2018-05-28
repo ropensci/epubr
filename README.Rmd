@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 library(epubr)
 ```
 
-# epubr <img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/images/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
+# epubr <img src="https://github.com/leonawicz/rtrek/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
 [![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
