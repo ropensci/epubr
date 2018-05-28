@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.2.5</span>
       </span>
     </div>
 
@@ -216,7 +216,7 @@
 
     <p>The primary function here is <code>epub</code>. It parses EPUB file metadata and textual content into a data frame.
 The output data frame has one row for each file in <code>file</code>.
-It has metadata in all columns except the <code>data</code> column, which is a nested column containing a data frame of the e-book text.
+It has metadata in all columns except the <code>data</code> column, which is a column of nested data frames containing e-book text by book section (e.g., chapters).
 Both the primary and nested data frames are tibbles and safe to print to the console "as is".</p>
 <p>Be careful if <code>file</code> is a long vector of many EPUB files.
 This could take a long time to process as well as could potentially use up all of your system RAM if you have far too many large books in one call to <code>epub</code>.</p>
@@ -261,7 +261,7 @@ The <code>section</code> column will also be updated to reflect guessed chapters
 #&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://w~ &lt;tibb~</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; # A tibble: 15 x 4
 #&gt;    section           text                                           nchar nword
 #&gt;    &lt;chr&gt;             &lt;chr&gt;                                          &lt;int&gt; &lt;int&gt;
-#&gt;  1 item6             "Every attempt has been made to replicate the~ 59953 11134
+#&gt;  1 item6             "The Project Gutenberg EBook of Dracula, by B~ 60972 11252
 #&gt;  2 item7             "But I am not in heart to describe beauty, fo~ 71798 13740
 #&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl, I k~ 65522 12356
 #&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day,~ 62724 12042
@@ -274,16 +274,16 @@ The <code>section</code> column will also be updated to reflect guessed chapters
 #&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—~ 61550 11818
 #&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, E~ 68564 12989
 #&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned. He h~ 43464  8356
-#&gt; 14 item19            "The Project Gutenberg eBook of Dracula, by B~ 18596  2677
-#&gt; 15 coverpage-wrapper "Cover\n       div { text-align: center }\n  ~    71    23</div><div class='input'>
+#&gt; 14 item19            "End of the Project Gutenberg EBook of Dracul~ 18541  2669
+#&gt; 15 coverpage-wrapper ""                                                 0     0</div><div class='input'>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"title"</span>, <span class='st'>"creator"</span>), <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='st'>"^cov"</span>)
 <span class='no'>x</span></div><div class='output co'>#&gt; # A tibble: 1 x 3
-#&gt;   creator     title   data             
-#&gt;   &lt;chr&gt;       &lt;chr&gt;   &lt;list&gt;           
-#&gt; 1 Bram Stoker Dracula &lt;tibble [14 x 4]&gt;</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; # A tibble: 14 x 4
+#&gt;   title   creator     data             
+#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;list&gt;           
+#&gt; 1 Dracula Bram Stoker &lt;tibble [14 x 4]&gt;</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; # A tibble: 14 x 4
 #&gt;    section text                                                     nchar nword
 #&gt;    &lt;chr&gt;   &lt;chr&gt;                                                    &lt;int&gt; &lt;int&gt;
-#&gt;  1 item6   "Every attempt has been made to replicate the original ~ 59953 11134
+#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by Bram Stoker~ 60972 11252
 #&gt;  2 item7   "But I am not in heart to describe beauty, for when I h~ 71798 13740
 #&gt;  3 item8   "“ ‘Lucy, you are an honest-hearted girl, I know. I sho~ 65522 12356
 #&gt;  4 item9   "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day, 11 o’cloc~ 62724 12042
@@ -296,7 +296,7 @@ The <code>section</code> column will also be updated to reflect guessed chapters
 #&gt; 11 item16  "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—The time s~ 61550 11818
 #&gt; 12 item17  "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, Evening.—Jo~ 68564 12989
 #&gt; 13 item18  " \nLater.—Dr. Van Helsing has returned. He has got the~ 43464  8356
-#&gt; 14 item19  "The Project Gutenberg eBook of Dracula, by Bram Stoker~ 18596  2677</div></pre>
+#&gt; 14 item19  "End of the Project Gutenberg EBook of Dracula, by Bram~ 18541  2669</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
