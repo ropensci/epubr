@@ -46,17 +46,13 @@
   list(d, x)
 }
 
-.clean <- function(x) {
+.clean <- function(x, template = NULL) {
   if (!inherits(x, "html_document")) x <- xml2::read_html(x)
-  cleaner <- xml2::read_xml(system.file("text.xslt", package = "epubr"))
-  x2 <- xslt::xml_xslt(x, cleaner)
-  x2 <- rvest::html_text(x2)
-  x2 <- trimws(x2)
-  if (nchar(x2) == 0) {
-    x2 <- rvest::html_text(x)
-    x2 <- trimws(x2)
-  }
-  x2
+  if(is.null(template)) template <- system.file("text.xml", package = "epubr")
+  if(!inherits(template, "character") || !file.exists(template)) stop("`clean` template not found.")
+  template <- xml2::read_xml(template)
+  x2 <- xslt::xml_xslt(x, template) %>% xml2::xml_text()
+  if(nchar(x2) == 0) trimws(xml2::xml_text(x)) else trimws(x2)
 }
 
 .get_series <- function(x, subseries = FALSE, parent_dir = "novels"){

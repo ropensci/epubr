@@ -7,8 +7,7 @@ globalVariables(c(".data"))
 #' E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
 #'
 #' EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work at all with this package.
-#' Text is largely read 'as is', along with some nominal cleaning performed during the parsing process primarily to strip xml content, leaving only the original text.
-#' Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like \code{tm} or \code{qdap}.
+#' Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like \code{tm} or \code{qdap}.
 #'
 #' @docType package
 #' @name epubr
@@ -23,7 +22,7 @@ NULL
 #'
 #' The primary function here is \code{epub}. It parses EPUB file metadata and textual content into a data frame.
 #' The output data frame has one row for each file in \code{file}.
-#' It has metadata in all columns except the \code{data} column, which is a nested column containing a data frame of the e-book text.
+#' It has metadata in all columns except the \code{data} column, which is a column of nested data frames containing e-book text by book section (e.g., chapters).
 #' Both the primary and nested data frames are tibbles and safe to print to the console "as is".
 #'
 #' Be careful if \code{file} is a long vector of many EPUB files.
@@ -70,8 +69,8 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
   parent_dir <- if(is.null(dots$parent_dir)) "novels" else dots$parent_dir
   hist_note <- if(is.logical(dots$hist_note)) dots$hist_note else FALSE
   d <- purrr::map(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
-                                    chapter_pattern = chapter_pattern, add_pattern = add_pattern)) %>%
-    dplyr::bind_rows()
+                                    chapter_pattern = chapter_pattern, add_pattern = add_pattern,
+                                    clean = dots$clean)) %>% dplyr::bind_rows()
   path <- file
   if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
   if(series) d <- dplyr::mutate(d, series = .get_series(path, FALSE, parent_dir),
@@ -149,9 +148,10 @@ epub_unzip <- function(file, exdir = tempdir()){
                   chapter_pattern = chapter_pattern, ...)
   files <- files[grep("html$|htm$", files)]
   files <- files[match(attr(d, "section href"), basename(files))]
+  clean <- list(...)$clean # nolint
   x <- dplyr::data_frame(
     title = d$title, section = attr(d, "section order"), text = purrr::map_chr(files, ~{
-      read(.x) %>% paste0(collapse = "\n") %>% .clean()
+      read(.x) %>% paste0(collapse = "\n") %>% .clean(clean)
     }))
   unlink(file.path(tempdir(), basename(file)), recursive = TRUE, force = TRUE)
   attr(d, "section order") <- NULL
