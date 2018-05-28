@@ -22,11 +22,12 @@ test_that("epub read as expected", {
   expect_true("file" %in% names(x))
   expect_equal(dim(x$data[[1]]), c(14, 4))
 
-  f <- function() list(pattern = "xyz", chapter_check = "xyz", chapter_doublecheck = "xyz")
-  x <- epub(file, fields = c("title", "creator", "file"), drop_sections = "^cov", add_pattern = f)
-  expect_equal(dim(x), c(1, 4))
+  f <- function() list(pattern = "Dracula", chapter_check = "Dracula", chapter_doublecheck = "Dracula")
+  x <- epub(file, fields = c("title", "creator", "file"), drop_sections = "^cov", add_pattern = f,
+            chapter_pattern = "item\\d\\d")
+  expect_equal(dim(x), c(1, 5))
   expect_true("file" %in% names(x))
-  expect_equal(dim(x$data[[1]]), c(14, 4))
+  expect_equal(dim(x$data[[1]]), c(14, 5))
 
   x <- epub(file, fields = c("title", "creator", "file"), series = TRUE, parent_dir = strsplit(file, "/")[[1]][1])
   expect_equal(dim(x), c(1, 6))
