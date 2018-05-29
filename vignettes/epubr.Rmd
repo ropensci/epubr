@@ -12,3 +12,105 @@ knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
 )
 ```
+
+The `epubr` package provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. 
+
+E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
+
+EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package.
+There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with `epubr`.
+
+Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like `tm` or `qdap`.
+
+## Read EPUB files
+
+Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting.
+The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters.
+The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
+
+These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters.
+
+Here a single file is read with `epub`. The output of the returned primary data frame and the book text data frame that is nested within its `data` column are shown.
+
+```{r ex1}
+library(epubr)
+file <- system.file("dracula.epub", package = "epubr")
+(x <- epub(file))
+
+x$data[[1]]
+```
+
+The `file` argument may be a vector of EPUB files. There is one row for each book.
+
+## EPUB metadata
+
+The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. `epub_meta` strictly parses file metadata and does not read the e-book text.
+
+```{r ex2}
+epub_meta(file)
+```
+
+This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first `epub` example.
+
+`file` can also be a vector for `epub_meta`. Whenever `file` is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return `NA` for that row and column.
+
+## Additonal arguments
+
+There are three optional arguments that can be provided to `epub` to:
+
+*    select fields, or columns of the primary data frame.
+*    filter sections, or rows of the nested data frame.
+*    attempt to detect which rows or sections in the nested data frame identify book chapters.
+
+Unless you have a collection of well-formatted and similarly formatted EPUB files, these arguments may not be helpful and can be ignored, especially chapter detection.
+
+### Select fields
+
+Selecting fields is straightforward. All fields found are returned unless a vector of fields is provided.
+
+```{r ex3}
+epub(file, fields = c("title", "creator", "file"))
+```
+
+Note that `file` was not a field identified in the metadata. This is a special case. Including `file` will include the `basename` of the input file. This is helpful when you want to retain file names and `source` is included in the metadata but may represent something else. Some fields like `data` are always returned and do not need to be specified in `fields`.
+
+### Drop sections
+
+Filtering out unwanted sections, or rows of the nested data frame, uses a regular expression pattern. Matched rows are dropped. This is where knowing the naming conventions used in the e-books in `file`, or at least knowing they are satisfactorily consistent and predictable for a collection, helps with removing extraneous clutter.
+
+One section that can be discarded is the cover. For many books it can be helpful to use a pattern like `"^(C|c)ov"` to drop any sections whose IDs begin with `Cov`, `cov`, and may be that abbreviation or the full word. For this book, `cov` suffices. The nested data frame has one less row than before.
+
+```{r ex4}
+epub(file, drop_sections = "cov")$data[[1]]
+```
+
+### Guess chapters
+
+This e-book unfortunately does not have great formatting. For the sake of example, pretend that chapters are known to be sections beginning with `item` and followed by *two* digits, using the pattern `^item\\d\\d`. This does two things. It adds a new metadata column to the primary data frame called `nchap` giving the estimated number of chapters in the book. In the nested data frame containing the parsed e-book text, the `section` column is conditionally mutated to reflect a new, consistent chapter naming convention for the identified chapters and a logical `is_chapter` column is added.
+
+```{r ex5}
+x <- epub(file, drop_sections = "cov", chapter_pattern = "^item\\d\\d")
+x
+
+x$data[[1]]
+```
+
+Also note that not all books have chapters. Make sure an optional argument makes sense to use with a given e-book.
+
+Some e-books have formatting that puts chapter sections completely out of order even when they may be easily separable from other book sections and this can be another roadblock, as you may correctly identify and distinguish chapters from other book sections like cover, title, copyright and acknowledgements pages, but you will number the chapters incorrectly.
+
+There are some developmental options that can get around issues like this in certain edge cases and where certain reasonable conditions can be met. For example, a second pass can be attempted internally in a call to `epub` to cross reference guessed chapter sections with the presence of something like `CHAPTER` (or some other secondary regular expression pattern) appearing at the beginning of the actual section text. All is not necessarily lost when file metadata formatting is not useful for a given e-book.
+
+These developmental arguments are currently undocumented, though they can be explored if you are inclined to read the package source code and pass additional arguments to `...`. They have been tested successfully on many e-books, but certainly not a representative sample of all e-books. The approaches these arguments use may also change before they are formally supported and explicitly added to a future version of the package.
+
+Ultimately though, everything depends on the quality of the EPUB file. Some publishers are better than others. Formatting standards may also change over time.
+
+## Unzip EPUB file
+
+Separate from using `epub_meta` and `epub`, you can call `epub_unzip` directly if all you want to do is extract the files from the `.epub` file archive. By default the archive files are extracted to `tempdir()` so you may to change this with the `exdir` argument.
+
+```{r ex6}
+bookdir <- file.path(tempdir(), "dracula")
+epub_unzip(file, exdir = bookdir)
+list.files(bookdir, recursive = TRUE)
+```
