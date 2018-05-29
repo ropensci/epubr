@@ -133,7 +133,7 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
 #' @rdname epub
 epub_meta <- function(file){
   purrr::map_dfr(file, ~{
-    exdir <- file.path(tempdir(), gsub("\\.epub", "", basename(.x)))
+    exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(.x))))
     x <- .epub_meta(epub_unzip(.x, exdir))
     unlink(exdir, recursive = TRUE, force = TRUE)
     x
@@ -183,7 +183,7 @@ epub_unzip <- function(file, exdir = tempdir()){
 
 .epub_read <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NULL, ...){
   read <- if(requireNamespace("readr", quietly = TRUE)) readr::read_lines else readLines # nolint
-  exdir <- file.path(tempdir(), gsub("\\.epub", "", basename(file)))
+  exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(file))))
   files <- epub_unzip(file, exdir)
   d <- .epub_meta(files, fields = fields, drop_sections = drop_sections,
                   chapter_pattern = chapter_pattern, ...)
