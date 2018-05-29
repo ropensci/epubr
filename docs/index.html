@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -161,6 +161,8 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
+<p>Bram Stoker’s Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting. The first thing that stands out is the naming convention using <code>item</code> followed by some ordered digits does not differentiate sections like the book preamble from the chapters. The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!</p>
+<p>These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">"dracula.epub"</span>, <span class="dt">package =</span> <span class="st">"epubr"</span>)
 (x &lt;-<span class="st"> </span><span class="kw"><a href="reference/epub.html">epub</a></span>(file))
 <span class="co">#&gt; # A tibble: 1 x 9</span>
@@ -170,22 +172,22 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 
 x<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt; # A tibble: 15 x 4</span>
-<span class="co">#&gt;    section           text                                      nchar nword</span>
+<span class="co">#&gt;    section           text                                      nword nchar</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 item6             "The Project Gutenberg EBook of Dracula,~ 60972 11252</span>
-<span class="co">#&gt;  2 item7             "But I am not in heart to describe beaut~ 71798 13740</span>
-<span class="co">#&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 65522 12356</span>
-<span class="co">#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 62724 12042</span>
-<span class="co">#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 66678 12599</span>
-<span class="co">#&gt;  6 item11            "Once again we went through that ghastly~ 62949 11919</span>
-<span class="co">#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 62234 12003</span>
-<span class="co">#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 72903 13812</span>
-<span class="co">#&gt;  9 item14            "“Thus when we find the habitation of th~ 69779 13201</span>
-<span class="co">#&gt; 10 item15            "“I see,” I said. “You want big things t~ 66921 12706</span>
-<span class="co">#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 61550 11818</span>
-<span class="co">#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 68564 12989</span>
-<span class="co">#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned.~ 43464  8356</span>
-<span class="co">#&gt; 14 item19            "End of the Project Gutenberg EBook of D~ 18541  2669</span>
+<span class="co">#&gt;  1 item6             "The Project Gutenberg EBook of Dracula,~ 11252 60972</span>
+<span class="co">#&gt;  2 item7             "But I am not in heart to describe beaut~ 13740 71798</span>
+<span class="co">#&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 12356 65522</span>
+<span class="co">#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 12042 62724</span>
+<span class="co">#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 12599 66678</span>
+<span class="co">#&gt;  6 item11            "Once again we went through that ghastly~ 11919 62949</span>
+<span class="co">#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 12003 62234</span>
+<span class="co">#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 13812 72903</span>
+<span class="co">#&gt;  9 item14            "“Thus when we find the habitation of th~ 13201 69779</span>
+<span class="co">#&gt; 10 item15            "“I see,” I said. “You want big things t~ 12706 66921</span>
+<span class="co">#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 11818 61550</span>
+<span class="co">#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 12989 68564</span>
+<span class="co">#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned.~  8356 43464</span>
+<span class="co">#&gt; 14 item19            "End of the Project Gutenberg EBook of D~  2669 18541</span>
 <span class="co">#&gt; 15 coverpage-wrapper ""                                            0     0</span></code></pre></div>
 </div>
 </div>

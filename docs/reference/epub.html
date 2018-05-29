@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.3.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0</span>
       </span>
     </div>
 
@@ -177,6 +177,8 @@
     <pre class="usage"><span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='no'>...</span>)
 
+<span class='fu'>epub_meta</span>(<span class='no'>file</span>)
+
 <span class='fu'>epub_unzip</span>(<span class='no'>file</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='fu'>tempdir</span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -184,7 +186,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>file</th>
-      <td><p>character, input EPUB filename. May be a vector for <code>epub</code>. Always a single file for <code>epub_unzip</code>.</p></td>
+      <td><p>character, input EPUB filename. May be a vector for <code>epub</code> and <code>epub_meta</code>. Always a single file for <code>epub_unzip</code>.</p></td>
     </tr>
     <tr>
       <th>fields</th>
@@ -220,83 +222,97 @@ It has metadata in all columns except the <code>data</code> column, which is a c
 Both the primary and nested data frames are tibbles and safe to print to the console "as is".</p>
 <p>Be careful if <code>file</code> is a long vector of many EPUB files.
 This could take a long time to process as well as could potentially use up all of your system RAM if you have far too many large books in one call to <code>epub</code>.</p>
-<p>The <code>fields</code> argument can be used to limit the columns returned. E.g., <code>fields = c("title", "creator", "date", "identifier", "publisher", "file")</code>. Some fields will be returned even if not in <code>fields</code>.
-You should already know what metadata fields are in the EPUB file. <code>file</code> in <code>fields</code> will include the original file name, in case this is different from the content of a <code>source</code> field that may be present in the metadata.</p>
-<p>The <code>chapter_pattern</code> argument may be helpful for bulk processing of similarly formatted EPUB files. This should be ignored for poorly formatted EPUB files or where there is inconsistent naming across an e-book collection.
+<p>On a case by case basis, you can always select columns and filter rows of a resulting data frame for a single e-book subsequent to visual inspection.
+However, the optional arguments <code>fields</code>, <code>drop_sections</code> and <code>chapter_pattern</code> allow you to do some of this as part of the EPUB file reading process.
+You can ignore these arguments and do all your own post-processing of the resulting data frame, but if using these arguments,
+they are most likely to be useful for bulk e-book processing where <code>file</code> is a vector of like-formatted files.</p>
+<h3>Main columns</h3>
+    The <code>fields</code> argument can be used to limit the columns returned in the primary data frame.
+E.g., <code>fields = c("title", "creator", "date", "identifier", "publisher", "file")</code>. Some fields will be returned even if not in <code>fields</code>, such as <code>data</code>.
+<br /><br />
+Ideally, you should already know what metadata fields are in the EPUB file. This is not possible for large collections with possibly different formatting.
+Note that when <code>"file"</code> is included in <code>fields</code>, the output will include a column of the original file names, in case this is different from the content of a <code>source</code> field that may be present in the metadata.
+So this field is always available even if not part of the file metadata.
+<br /><br />
+Columns of the nested data frames in <code>data</code> are fixed. Select from these in subsequent data frame manipulations.
+    <h3>Nested rows</h3>
+    The <code>chapter_pattern</code> argument may be helpful for bulk processing of similarly formatted EPUB files. This should be ignored for poorly formatted EPUB files or where there is inconsistent naming across an e-book collection.
 Like with <code>fields</code>, you should explore file metadata in advance or this argument will not be useful. If provided, a column <code>nchap</code> is added to the output data frame giving the guessed number of chapters.
-The <code>section</code> column will also be updated to reflect guessed chapters with new, consistent chapter IDs.</p>
-<p>If using <code>epub_unzip</code> directly on individual EPUB files, this gives you control over where to extract archive files to and what to do with them subsequently.
-<code>epub</code> uses <code>epub_unzip</code> internally to extract EPUB archive files to the R session temp directory (with <code>tempdir()</code>).</p>
+In the <code>data</code> column, the <code>section</code> column of the nested data frames will also be updated to reflect guessed chapters with new, consistent chapter IDs, always beginning with <code>ch</code> and ending with digits.
+<br /><br />
+The <code>drop_sections</code> argument also uses regular expression pattern matching like <code>chapter_pattern</code> and operates on the same <code>section</code> column. It simply filters out any matched rows.
+This is useful for dropping rows that may pertain to book cover, copyright and acknowledgements pages, and other similar, clearly non-chapter text, e-book sections.
+An example that might work for many books could be <code>drop_sections = "^co(v|p)|^ack"</code>
+<br /><br />
+Rows of the primary data frame are fixed. Filter or otherwise manipulate these in subsequent data frame manipulations. There is one row per file so filtering does not make sense to do as part of the initial file reading.
+    <h3>EPUB metadata</h3>
+    Use <code>epub_meta</code> to return a data frame of only the metadata for each file in <code>file</code>. This skips the reading of each file's text contents, strictly parsing the metadata.
+It returns a data frame with one row for each file and <code>n</code> columns where <code>n</code> is equal to the union of all fields identified across all files in <code>file</code>.
+Fields available for at least one e-book in <code>file</code> will return <code>NA</code> in that column for any row pertaining to an e-book that does not have that field in its metadata.
+    <h3>Unzipping EPUB files</h3>
+    If using <code>epub_unzip</code> directly on individual EPUB files, this gives you control over where to extract archive files to and what to do with them subsequently.
+<code>epub</code> and <code>epub_meta</code> use <code>epub_unzip</code> internally to extract EPUB archive files to the R session temp directory (with <code>tempdir()</code>).
+You do not need to use <code>epub_unzip</code> directly prior to using these other functions. It is only needed if you want the internal files for some other purpose in or out of R.
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
-<span class='fu'>epub_unzip</span>(<span class='no'>file</span>) <span class='co'># unzip to directly inspect archive files</span>
-<span class='fu'>list.files</span>(<span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"OEBPS"</span>))</div><div class='output co'>#&gt;  [1] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-0.htm.html"   
-#&gt;  [2] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-1.htm.html"   
-#&gt;  [3] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-10.htm.html"  
-#&gt;  [4] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-11.htm.html"  
-#&gt;  [5] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-12.htm.html"  
-#&gt;  [6] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-13.htm.html"  
-#&gt;  [7] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-2.htm.html"   
-#&gt;  [8] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-3.htm.html"   
-#&gt;  [9] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-4.htm.html"   
-#&gt; [10] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-5.htm.html"   
-#&gt; [11] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-6.htm.html"   
-#&gt; [12] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-7.htm.html"   
-#&gt; [13] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-8.htm.html"   
-#&gt; [14] "@public@vhost@g@gutenberg@html@files@345@345-h@345-h-9.htm.html"   
-#&gt; [15] "@public@vhost@g@gutenberg@html@files@345@345-h@images@colophon.png"
-#&gt; [16] "@public@vhost@g@gutenberg@html@files@345@345-h@images@cover.jpg"   
-#&gt; [17] "0.css"                                                             
-#&gt; [18] "1.css"                                                             
-#&gt; [19] "content.opf"                                                       
-#&gt; [20] "pgepub.css"                                                        
-#&gt; [21] "toc.ncx"                                                           
-#&gt; [22] "wrap0000.html"                                                     </div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>epub</span>(<span class='no'>file</span>)
+<span class='no'>bookdir</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"dracula"</span>)
+<span class='fu'>epub_unzip</span>(<span class='no'>file</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>bookdir</span>) <span class='co'># unzip to directly inspect archive files</span>
+<span class='fu'>list.files</span>(<span class='no'>bookdir</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "META-INF/container.xml"                                                  
+#&gt;  [2] "mimetype"                                                                
+#&gt;  [3] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-0.htm.html"   
+#&gt;  [4] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-1.htm.html"   
+#&gt;  [5] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-10.htm.html"  
+#&gt;  [6] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-11.htm.html"  
+#&gt;  [7] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-12.htm.html"  
+#&gt;  [8] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-13.htm.html"  
+#&gt;  [9] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-2.htm.html"   
+#&gt; [10] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-3.htm.html"   
+#&gt; [11] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-4.htm.html"   
+#&gt; [12] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-5.htm.html"   
+#&gt; [13] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-6.htm.html"   
+#&gt; [14] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-7.htm.html"   
+#&gt; [15] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-8.htm.html"   
+#&gt; [16] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-9.htm.html"   
+#&gt; [17] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@colophon.png"
+#&gt; [18] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@cover.jpg"   
+#&gt; [19] "OEBPS/0.css"                                                             
+#&gt; [20] "OEBPS/1.css"                                                             
+#&gt; [21] "OEBPS/content.opf"                                                       
+#&gt; [22] "OEBPS/pgepub.css"                                                        
+#&gt; [23] "OEBPS/toc.ncx"                                                           
+#&gt; [24] "OEBPS/wrap0000.html"                                                     </div><div class='input'>
+<span class='fu'>epub_meta</span>(<span class='no'>file</span>) <span class='co'># parse EPUB file metadata only</span></div><div class='output co'>#&gt; # A tibble: 1 x 8
+#&gt;   rights    identifier     creator  title  language subject  date  source      
+#&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       
+#&gt; 1 Public d~ http://www.gu~ Bram St~ Dracu~ en       Horror ~ 1995~ http://www.~</div><div class='input'>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>epub</span>(<span class='no'>file</span>) <span class='co'># parse entire e-book</span>
 <span class='no'>x</span></div><div class='output co'>#&gt; # A tibble: 1 x 9
 #&gt;   rights   identifier    creator  title language subject date  source    data  
 #&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;list&gt;
 #&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://w~ &lt;tibb~</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; # A tibble: 15 x 4
-#&gt;    section           text                                           nchar nword
+#&gt;    section           text                                           nword nchar
 #&gt;    &lt;chr&gt;             &lt;chr&gt;                                          &lt;int&gt; &lt;int&gt;
-#&gt;  1 item6             "The Project Gutenberg EBook of Dracula, by B~ 60972 11252
-#&gt;  2 item7             "But I am not in heart to describe beauty, fo~ 71798 13740
-#&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl, I k~ 65522 12356
-#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day,~ 62724 12042
-#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur~ 66678 12599
-#&gt;  6 item11            "Once again we went through that ghastly oper~ 62949 11919
-#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Septemb~ 62234 12003
-#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT ~ 72903 13812
-#&gt;  9 item14            "“Thus when we find the habitation of this ma~ 69779 13201
-#&gt; 10 item15            "“I see,” I said. “You want big things that y~ 66921 12706
-#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—~ 61550 11818
-#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, E~ 68564 12989
-#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned. He h~ 43464  8356
-#&gt; 14 item19            "End of the Project Gutenberg EBook of Dracul~ 18541  2669
+#&gt;  1 item6             "The Project Gutenberg EBook of Dracula, by B~ 11252 60972
+#&gt;  2 item7             "But I am not in heart to describe beauty, fo~ 13740 71798
+#&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl, I k~ 12356 65522
+#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day,~ 12042 62724
+#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur~ 12599 66678
+#&gt;  6 item11            "Once again we went through that ghastly oper~ 11919 62949
+#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Septemb~ 12003 62234
+#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT ~ 13812 72903
+#&gt;  9 item14            "“Thus when we find the habitation of this ma~ 13201 69779
+#&gt; 10 item15            "“I see,” I said. “You want big things that y~ 12706 66921
+#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—~ 11818 61550
+#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, E~ 12989 68564
+#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned. He h~  8356 43464
+#&gt; 14 item19            "End of the Project Gutenberg EBook of Dracul~  2669 18541
 #&gt; 15 coverpage-wrapper ""                                                 0     0</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"title"</span>, <span class='st'>"creator"</span>), <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='st'>"^cov"</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt; # A tibble: 1 x 3
+<span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"title"</span>, <span class='st'>"creator"</span>), <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='st'>"^cov"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 3
 #&gt;   title   creator     data             
 #&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;list&gt;           
-#&gt; 1 Dracula Bram Stoker &lt;tibble [14 x 4]&gt;</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; # A tibble: 14 x 4
-#&gt;    section text                                                     nchar nword
-#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                    &lt;int&gt; &lt;int&gt;
-#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by Bram Stoker~ 60972 11252
-#&gt;  2 item7   "But I am not in heart to describe beauty, for when I h~ 71798 13740
-#&gt;  3 item8   "“ ‘Lucy, you are an honest-hearted girl, I know. I sho~ 65522 12356
-#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day, 11 o’cloc~ 62724 12042
-#&gt;  5 item10  "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.~ 66678 12599
-#&gt;  6 item11  "Once again we went through that ghastly operation. I h~ 62949 11919
-#&gt;  7 item12  "CHAPTER XIVMINA HARKER’S JOURNAL\n23 September.—Jonath~ 62234 12003
-#&gt;  8 item13  "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT was just a~ 72903 13812
-#&gt;  9 item14  "“Thus when we find the habitation of this man-that-was~ 69779 13201
-#&gt; 10 item15  "“I see,” I said. “You want big things that you can mak~ 66921 12706
-#&gt; 11 item16  "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—The time s~ 61550 11818
-#&gt; 12 item17  "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, Evening.—Jo~ 68564 12989
-#&gt; 13 item18  " \nLater.—Dr. Van Helsing has returned. He has got the~ 43464  8356
-#&gt; 14 item19  "End of the Project Gutenberg EBook of Dracula, by Bram~ 18541  2669</div></pre>
+#&gt; 1 Dracula Bram Stoker &lt;tibble [14 x 4]&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
