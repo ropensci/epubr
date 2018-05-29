@@ -46,6 +46,12 @@ devtools::install_github("leonawicz/epubr")
 
 ## Example
 
+Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting.
+The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters.
+The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
+
+These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters.
+
 ```{r ex}
 file <- system.file("dracula.epub", package = "epubr")
 (x <- epub(file))

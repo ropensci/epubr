@@ -31,6 +31,10 @@ devtools::install_github("leonawicz/epubr")
 Example
 -------
 
+Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting. The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters. The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
+
+These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters.
+
 ``` r
 file <- system.file("dracula.epub", package = "epubr")
 (x <- epub(file))
@@ -41,22 +45,22 @@ file <- system.file("dracula.epub", package = "epubr")
 
 x$data[[1]]
 #> # A tibble: 15 x 4
-#>    section           text                                      nchar nword
+#>    section           text                                      nword nchar
 #>    <chr>             <chr>                                     <int> <int>
-#>  1 item6             "The Project Gutenberg EBook of Dracula,~ 60972 11252
-#>  2 item7             "But I am not in heart to describe beaut~ 71798 13740
-#>  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 65522 12356
-#>  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 62724 12042
-#>  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 66678 12599
-#>  6 item11            "Once again we went through that ghastly~ 62949 11919
-#>  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 62234 12003
-#>  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 72903 13812
-#>  9 item14            "“Thus when we find the habitation of th~ 69779 13201
-#> 10 item15            "“I see,” I said. “You want big things t~ 66921 12706
-#> 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 61550 11818
-#> 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 68564 12989
-#> 13 item18            " \nLater.—Dr. Van Helsing has returned.~ 43464  8356
-#> 14 item19            "End of the Project Gutenberg EBook of D~ 18541  2669
+#>  1 item6             "The Project Gutenberg EBook of Dracula,~ 11252 60972
+#>  2 item7             "But I am not in heart to describe beaut~ 13740 71798
+#>  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 12356 65522
+#>  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 12042 62724
+#>  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 12599 66678
+#>  6 item11            "Once again we went through that ghastly~ 11919 62949
+#>  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 12003 62234
+#>  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 13812 72903
+#>  9 item14            "“Thus when we find the habitation of th~ 13201 69779
+#> 10 item15            "“I see,” I said. “You want big things t~ 12706 66921
+#> 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 11818 61550
+#> 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 12989 68564
+#> 13 item18            " \nLater.—Dr. Van Helsing has returned.~  8356 43464
+#> 14 item19            "End of the Project Gutenberg EBook of D~  2669 18541
 #> 15 coverpage-wrapper ""                                            0     0
 ```
 
