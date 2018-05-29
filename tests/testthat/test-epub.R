@@ -8,7 +8,11 @@ test_that("epub unzipped as expected", {
   expect_equal(length(list.files(file.path(tempdir(), "OEBPS"))), 22)
 })
 
-test_that("epub read as expected", {
+test_that("epub and epub_meta read as expected", {
+  x <- epub_meta(file)
+  expect_identical(names(x), c("rights", "identifier", "creator", "title", "language", "subject", "date", "source"))
+  expect_equal(dim(x), c(1, 8))
+
   x <- epub(file)
   expect_equal(dim(x), c(1, 9))
   expect_equal(dim(x$data[[1]]), c(15, 4))

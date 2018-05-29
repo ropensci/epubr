@@ -15,7 +15,6 @@ reference:
 - title: Parse EPUB files
   contents:
   - epub
-  - epub_unzip
 
 navbar:
   type: inverse
