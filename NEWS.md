@@ -1,3 +1,13 @@
+# epubr 0.4.0
+
+* Enhanced function documentation details.
+* Added `epub_meta` for strictly parsing EPUB metadata without reading the full file contents.
+* When working with a vector of EPUB files, functions now cleanup each unzipped archive temp directory with `unlink` immediately after use, rather than after all files are read into memory or by overwriting files in a single temp directory.
+* Added initial introduction vignette content.
+* Minor function refactors.
+* Minor bug fixes.
+* Added unit tests.
+
 # epubr 0.3.0
 
 * Refactor functions.
