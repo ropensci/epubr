@@ -7,7 +7,11 @@
 
 0 errors | 0 warnings | 1 note
 
-* This is a new release.
+* This is a new release resubmission.
+
+This resubmission fixes a broken url in the documentation.
+
+This resubmission also incorporates additional functionality and documentation. All package builds, tests, and checks have been redone.
 
 ## Downstream dependencies
 
