@@ -1,8 +1,12 @@
-# epubr 0.4.0
+# epubr 0.4.0.9000
+
+* Remove R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
+
+# epubr 0.4.0 (Release date: 2018-05-30)
 
 * Enhanced function documentation details.
 * Added `epub_meta` for strictly parsing EPUB metadata without reading the full file contents.
-* When working with a vector of EPUB files, functions now cleanup each unzipped archive temp directory with `unlink` immediately after use, rather than after all files are read into memory or by overwriting files in a single temp directory.
+* When working with a vector of EPUB files, functions now clean up each unzipped archive temp directory with `unlink` immediately after use, rather than after all files are read into memory or by overwriting files in a single temp directory.
 * Added initial introduction vignette content.
 * Minor function refactors.
 * Minor bug fixes.

@@ -37,12 +37,20 @@ This package provides sufficient core functionality at this time. Subsequent ver
 
 ## Installation
 
+Install `epubr` from CRAN with:
+
+``` r
+install.packages("epubr")
+```
+
 Install the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("leonawicz/epubr")
 ```
+
+*Note: Prior versions required R >= 3.5.0 due to package dependencies. This is no longer the case, but if using R < 3.5.0, install from GitHub until the next CRAN release.*
 
 ## Example
 
