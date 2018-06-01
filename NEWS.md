@@ -1,6 +1,7 @@
 # epubr 0.4.0.9000
 
 * Remove R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
+* Minor fixes and documentation updates.
 
 # epubr 0.4.0 (Release date: 2018-05-30)
 

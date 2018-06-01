@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • epubr</title>
+<title>Contributor Code of Conduct • epubr</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,15 +22,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
-<script src="../pkgdown.js"></script>
+<link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script>
+<script src="pkgdown.js"></script>
 
 
 
-  <link href="../extra.css" rel="stylesheet">
+  <link href="extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Contributor Code of Conduct" />
 
 
 <!-- mathjax -->
@@ -55,7 +55,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -66,7 +66,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">epubr</a>
+        <a class="navbar-link" href="index.html">epubr</a>
         <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.0.9000</span>
       </span>
     </div>
@@ -74,19 +74,19 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../articles/epubr.html">Get started</a>
+  <a href="articles/epubr.html">Get started</a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -158,83 +158,25 @@
       </header>
 
 <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/leonawicz/epubr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+      <h1>Contributor Code of Conduct</h1>
     </div>
 
-    <div id="epubr-0-4-0-9000" class="section level1">
-<h1 class="page-header">
-<a href="#epubr-0-4-0-9000" class="anchor"></a>epubr 0.4.0.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Remove R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.</li>
-<li>Minor fixes and documentation updates.</li>
-</ul>
-</div>
-    <div id="epubr-0-4-0-release-date-2018-05-30" class="section level1">
-<h1 class="page-header">
-<a href="#epubr-0-4-0-release-date-2018-05-30" class="anchor"></a>epubr 0.4.0 (Release date: 2018-05-30)<small> 2018-05-30 </small>
-</h1>
-<ul>
-<li>Enhanced function documentation details.</li>
-<li>Added <code>epub_meta</code> for strictly parsing EPUB metadata without reading the full file contents.</li>
-<li>When working with a vector of EPUB files, functions now clean up each unzipped archive temp directory with <code>unlink</code> immediately after use, rather than after all files are read into memory or by overwriting files in a single temp directory.</li>
-<li>Added initial introduction vignette content.</li>
-<li>Minor function refactors.</li>
-<li>Minor bug fixes.</li>
-<li>Added unit tests.</li>
-</ul>
-</div>
-    <div id="epubr-0-3-0" class="section level1">
-<h1 class="page-header">
-<a href="#epubr-0-3-0" class="anchor"></a>epubr 0.3.0<small> Unreleased </small>
-</h1>
-<ul>
-<li>Refactor functions.</li>
-<li>Further reduce package dependencies.</li>
-<li>Update unit tests and documentation.</li>
-</ul>
-</div>
-    <div id="epubr-0-2-0" class="section level1">
-<h1 class="page-header">
-<a href="#epubr-0-2-0" class="anchor"></a>epubr 0.2.0<small> Unreleased </small>
-</h1>
-<ul>
-<li>Refactor functions.</li>
-<li>Move contextual and e-book collection-specific functionality to other packages.</li>
-<li>Make any other remaining edge-case related options hidden arguments so that general usage of <code>epubr</code> functions is not too inflexible.</li>
-<li>Reduce package dependencies.</li>
-<li>Add basic unit tests.</li>
-<li>Add example public domain EPUB book for examples and testing.</li>
-<li>Update readme and documentation.</li>
-</ul>
-</div>
-    <div id="epubr-0-1-0" class="section level1">
-<h1 class="page-header">
-<a href="#epubr-0-1-0" class="anchor"></a>epubr 0.1.0<small> Unreleased </small>
-</h1>
-<ul>
-<li>Added initial package scaffolding and function.</li>
-</ul>
-</div>
-  </div>
+<div id="contributor-code-of-conduct" class="section level1">
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#epubr-0-4-0-9000">0.4.0.9000</a></li>
-        <li><a href="#epubr-0-4-0-release-date-2018-05-30">0.4.0</a></li>
-        <li><a href="#epubr-0-3-0">0.3.0</a></li>
-        <li><a href="#epubr-0-2-0">0.2.0</a></li>
-        <li><a href="#epubr-0-1-0">0.1.0</a></li>
-      </ul>
-    </div>
+<p>As contributors and maintainers of this project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests or patches, and other activities.</p>
+<p>We are committed to making participation in this project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, or religion.</p>
+<p>Examples of unacceptable behavior by participants include the use of sexual language or imagery, derogatory comments or personal attacks, trolling, public or private harassment, insults, or other unprofessional conduct.</p>
+<p>Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.</p>
+<p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.</p>
+<p>This Code of Conduct is adapted from the Contributor Covenant (<a href="http://contributor-covenant.org" class="uri">http://contributor-covenant.org</a>), version 1.0.0, available at <a href="http://contributor-covenant.org/version/1/0/0/" class="uri">http://contributor-covenant.org/version/1/0/0/</a></p>
+</div>
+
   </div>
 
 </div>
+
 
       <footer>
       <div class="copyright">

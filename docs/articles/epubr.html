@@ -274,7 +274,7 @@ x<span class="op">$</span>data[[<span class="dv">1</span>]]
 <div id="unzip-epub-file" class="section level2">
 <h2 class="hasAnchor">
 <a href="#unzip-epub-file" class="anchor"></a>Unzip EPUB file</h2>
-<p>Separate from using <code>epub_meta</code> and <code>epub</code>, you can call <code>epub_unzip</code> directly if all you want to do is extract the files from the <code>.epub</code> file archive. By default the archive files are extracted to <code>tempdir()</code> so you may to change this with the <code>exdir</code> argument.</p>
+<p>Separate from using <code>epub_meta</code> and <code>epub</code>, you can call <code>epub_unzip</code> directly if all you want to do is extract the files from the <code>.epub</code> file archive. By default the archive files are extracted to <code>tempdir()</code> so you may want to change this with the <code>exdir</code> argument.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">bookdir &lt;-<span class="st"> </span><span class="kw">file.path</span>(<span class="kw">tempdir</span>(), <span class="st">"dracula"</span>)
 <span class="kw"><a href="../reference/epub.html">epub_unzip</a></span>(file, <span class="dt">exdir =</span> bookdir)
 <span class="kw">list.files</span>(bookdir, <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
