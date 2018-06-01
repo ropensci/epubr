@@ -107,7 +107,7 @@ Ultimately though, everything depends on the quality of the EPUB file. Some publ
 
 ## Unzip EPUB file
 
-Separate from using `epub_meta` and `epub`, you can call `epub_unzip` directly if all you want to do is extract the files from the `.epub` file archive. By default the archive files are extracted to `tempdir()` so you may to change this with the `exdir` argument.
+Separate from using `epub_meta` and `epub`, you can call `epub_unzip` directly if all you want to do is extract the files from the `.epub` file archive. By default the archive files are extracted to `tempdir()` so you may want to change this with the `exdir` argument.
 
 ```{r ex6}
 bookdir <- file.path(tempdir(), "dracula")
