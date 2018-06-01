@@ -95,7 +95,6 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
   dedication <- if(is.logical(dots$dedication)) dots$dedication else FALSE
   hist_note <- if(is.logical(dots$hist_note)) dots$hist_note else FALSE
   parent_dir <- if(is.null(dots$parent_dir)) "novels" else dots$parent_dir
-  hist_note <- if(is.logical(dots$hist_note)) dots$hist_note else FALSE
   d <- purrr::map_dfr(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
                                     chapter_pattern = chapter_pattern, add_pattern = add_pattern,
                                     clean = dots$clean))
