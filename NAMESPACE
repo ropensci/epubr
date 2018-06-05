@@ -3,4 +3,5 @@
 export(epub)
 export(epub_meta)
 export(epub_unzip)
+export(first_nchar)
 importFrom(magrittr,"%>%")

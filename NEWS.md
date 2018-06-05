@@ -1,7 +1,9 @@
 # epubr 0.4.0.9000
 
-* Remove R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
+* Added `first_nchar` function for preivewing the opening text of each e-book section.
+* Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
 * Minor fixes and documentation updates.
+* Updated unit tests.
 
 # epubr 0.4.0 (Release date: 2018-05-30)
 

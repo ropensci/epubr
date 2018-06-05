@@ -1,3 +1,26 @@
+#' Preview the first n characters
+#'
+#' Preview the first n characters of each EPUB e-book section.
+#'
+#' This function is a wrapper around \code{epub} that returns a simplified data frame of only the \code{section} and \code{text} columns, with the text included only up to the first \code{n} character.
+#' This is useful for previewing the opening text of each e-book section to inspect for possible useful regular expression patterns to use for text-based section identification.
+#' For example, an e-book may not have meaningful section IDs that distinguish one type of book section from another, such as chapters from non-chapter sections,
+#' but the text itself may contain this information at or near the start of a section.
+#'
+#' @param file character, input EPUB filename. May be a vector.
+#' @param n integer, first n characters to retain from each e-book section.
+#'
+#' @return a data frame.
+#' @export
+#'
+#' @examples
+#' file <- system.file("dracula.epub", package = "epubr")
+#' first_nchar(file)
+first_nchar <- function(file, n = 50){
+  epub(file) %>% tidyr::unnest() %>% dplyr::select(!! c("section", "text")) %>%
+    dplyr::mutate(text = substr(.data[["text"]], 1, n))
+}
+
 .epub_metakeep <- function(id, href, pattern = NULL){
   x <- !is.na(id) & grepl("html$|htm$", href)
   if(inherits(pattern, "character")) x <- x & !grepl(pattern, id)
@@ -16,7 +39,7 @@
                  paste0("Twenty", one_to_nine), "Thirty", paste0("Thirty", one_to_nine),
                  paste0("Twenty-", tolower(one_to_nine)), paste0("Thirty-", tolower(one_to_nine)))
   numnames1 <- toupper(numnames0)
-  numnames2 <- numnames0#[1:20]
+  numnames2 <- numnames0#[1:39]
   pat <- paste0(rom, paste0("|^(", paste0(numnames1, collapse = "|"), ")"),
                 "|^\\d+\\s+\\n|chapter|CHAPTER|Chapter|^SECTION|^\\d+[a-zA-Z]")
   idx <- grepl(pat, opening)

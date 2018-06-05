@@ -47,8 +47,14 @@ test_that("epub and epub_meta read as expected", {
   expect_identical(x$data[[1]]$is_chapter, rep(c(FALSE, TRUE), times = c(4, 10)))
   expect_equal(dim(x$data[[1]]), c(14, 5))
 
-  x <- epub(file, fields = c("title", "creator", "file"), dedication = TRUE, hist_note = TRUE)
+  x <- epub(file, fields = c("title", "creator", "file"), dedication = TRUE)
   expect_equal(dim(x), c(1, 4))
-  expect_equal(dim(x$data[[1]]), c(15, 6))
-  expect_true(all(c("dedication", "hist_note") %in% names(x$data[[1]])))
+  expect_equal(dim(x$data[[1]]), c(15, 5))
+  expect_true("dedication" %in% names(x$data[[1]]))
+})
+
+test_that("first_nchar returns as expected", {
+  x <- first_nchar(file)
+  expect_equal(names(x), c("section", "text"))
+  expect_equal(dim(x), c(15, 2))
 })
