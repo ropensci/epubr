@@ -14,6 +14,10 @@ library(epubr)
 
 # epubr <img src="https://github.com/leonawicz/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
+<br/>
+**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/>
+**License:** [MIT](https://opensource.org/licenses/MIT)<br/>
+
 [![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
 [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr)
@@ -72,7 +76,7 @@ is_md <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "markdown_github-ascii_i
 ```
 
 ```{r md_pkg_ref, echo = FALSE, results = "asis", eval = is_md}
-cat('## Reference\n\n[Complete package reference and function documentation](https://leonawicz.github.io/epubr/)')
+cat('## Reference\n####Documentation\n[Complete package reference and function documentation](https://leonawicz.github.io/epubr/)\n\n####Related packages\nUsers may also be interested in the related package, [gutenbergr](https://github.com/ropenscilabs/gutenbergr), for searching and downloading public domain texts from Project Gutenberg.')
 ```
 
 ---

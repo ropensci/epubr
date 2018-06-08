@@ -15,6 +15,7 @@ reference:
 - title: Parse EPUB files
   contents:
   - epub
+  - first_nchar
 
 navbar:
   type: inverse

@@ -3,6 +3,8 @@
 epubr <img src="https://github.com/leonawicz/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 ==================================================================================================================================================================
 
+<br/> **Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
+
 [![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) [![Travis-CI Build Status](https://travis-ci.org/leonawicz/epubr.svg?branch=master)](https://travis-ci.org/leonawicz/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/epubr/master.svg)](https://codecov.io/github/leonawicz/epubr?branch=master) [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
 
 Read EPUB files in R
@@ -75,7 +77,13 @@ x$data[[1]]
 Reference
 ---------
 
+#### Documentation
+
 [Complete package reference and function documentation](https://leonawicz.github.io/epubr/)
+
+#### Related packages
+
+Users may also be interested in the related package, [gutenbergr](https://github.com/ropenscilabs/gutenbergr), for searching and downloading public domain texts from Project Gutenberg.
 
 ------------------------------------------------------------------------
 
