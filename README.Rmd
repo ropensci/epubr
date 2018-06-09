@@ -37,8 +37,6 @@ E-book formatting is non-standard enough across all literature that no function 
 EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package.
 Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like `tm` or `qdap`.
 
-This package provides sufficient core functionality at this time. Subsequent versions will include a more robust set of features.
-
 ## Installation
 
 Install `epubr` from CRAN with:
