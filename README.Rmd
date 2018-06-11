@@ -25,6 +25,8 @@ library(epubr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
 [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/epubr/master.svg)](https://codecov.io/github/leonawicz/epubr?branch=master)
 [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
+<p></p>
+[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
 
 ## Read EPUB files in R
 
