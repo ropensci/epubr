@@ -48,11 +48,17 @@ they are most likely to be useful for bulk e-book processing where \code{file} i
 
 \subsection{Main columns}{
 The \code{fields} argument can be used to limit the columns returned in the primary data frame.
-E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}, such as \code{data}.
+E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}, such as \code{data} and \code{title}.
 \cr\cr
 Ideally, you should already know what metadata fields are in the EPUB file. This is not possible for large collections with possibly different formatting.
 Note that when \code{"file"} is included in \code{fields}, the output will include a column of the original file names, in case this is different from the content of a \code{source} field that may be present in the metadata.
 So this field is always available even if not part of the file metadata.
+\cr\cr
+Additionally, if there is no \code{title} field in the metadata, the output data frame will include a \code{title} column filled in with the same file names,
+unless you pass the additional optional title argument, e.g. \code{title = "TitleFieldID"} so that another field can me mapped to \code{title}.
+If supplying a \code{title} argument that also does not match an existing field in the e-book, the output \code{title} column will again default to file names.
+File names are the fallback option because unlike e-book metadata fields, file names always exist and should also always be unique when performing vectorized reads over multiple books,
+ensuring that \code{title} can be a column in the output data frame that uniquely identifies different e-books even if the books did not have a \code{title} field in their metadata.
 \cr\cr
 Columns of the nested data frames in \code{data} are fixed. Select from these in subsequent data frame manipulations.
 }
@@ -79,6 +85,7 @@ You do not need to use \code{epub_unzip} directly prior to using these other fun
 }
 }
 \examples{
+# Use a local example epub file included in the package
 file <- system.file("dracula.epub", package = "epubr")
 bookdir <- file.path(tempdir(), "dracula")
 epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files

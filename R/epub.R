@@ -18,11 +18,17 @@
 #'
 #' \subsection{Main columns}{
 #' The \code{fields} argument can be used to limit the columns returned in the primary data frame.
-#' E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}, such as \code{data}.
+#' E.g., \code{fields = c("title", "creator", "date", "identifier", "publisher", "file")}. Some fields will be returned even if not in \code{fields}, such as \code{data} and \code{title}.
 #' \cr\cr
 #' Ideally, you should already know what metadata fields are in the EPUB file. This is not possible for large collections with possibly different formatting.
 #' Note that when \code{"file"} is included in \code{fields}, the output will include a column of the original file names, in case this is different from the content of a \code{source} field that may be present in the metadata.
 #' So this field is always available even if not part of the file metadata.
+#' \cr\cr
+#' Additionally, if there is no \code{title} field in the metadata, the output data frame will include a \code{title} column filled in with the same file names,
+#' unless you pass the additional optional title argument, e.g. \code{title = "TitleFieldID"} so that another field can me mapped to \code{title}.
+#' If supplying a \code{title} argument that also does not match an existing field in the e-book, the output \code{title} column will again default to file names.
+#' File names are the fallback option because unlike e-book metadata fields, file names always exist and should also always be unique when performing vectorized reads over multiple books,
+#' ensuring that \code{title} can be a column in the output data frame that uniquely identifies different e-books even if the books did not have a \code{title} field in their metadata.
 #' \cr\cr
 #' Columns of the nested data frames in \code{data} are fixed. Select from these in subsequent data frame manipulations.
 #' }
@@ -58,6 +64,7 @@
 #' @export
 #'
 #' @examples
+#' # Use a local example epub file included in the package
 #' file <- system.file("dracula.epub", package = "epubr")
 #' bookdir <- file.path(tempdir(), "dracula")
 #' epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files
@@ -71,14 +78,21 @@
 #'
 #' epub(file, fields = c("title", "creator"), drop_sections = "^cov")
 epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NULL, ...){
+  .check_file(file)
   dots <- list(...)
+  if(is.null(dots$title)){
+    title <- "title"
+  } else {
+    title <- dots$title
+    fields <- fields[fields != title]
+  }
   add_pattern <- dots$add_pattern # nolint
   series <- if(is.logical(dots$series)) dots$series else FALSE
   dedication <- if(is.logical(dots$dedication)) dots$dedication else FALSE
   parent_dir <- if(is.null(dots$parent_dir)) "novels" else dots$parent_dir
   d <- purrr::map_dfr(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
                                         chapter_pattern = chapter_pattern, add_pattern = add_pattern,
-                                        clean = dots$clean))
+                                        clean = dots$clean, title = title))
   path <- file
   if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
   if(series) d <- dplyr::mutate(d, series = .get_series(path, FALSE, parent_dir),
@@ -109,9 +123,10 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
 #' @export
 #' @rdname epub
 epub_meta <- function(file){
+  .check_file(file)
   purrr::map_dfr(file, ~{
     exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(.x))))
-    x <- .epub_meta(epub_unzip(.x, exdir))
+    x <- .epub_meta(epub_unzip(.x, exdir), file)
     unlink(exdir, recursive = TRUE, force = TRUE)
     x
   }
@@ -121,17 +136,30 @@ epub_meta <- function(file){
 #' @export
 #' @rdname epub
 epub_unzip <- function(file, exdir = tempdir()){
+  .check_file(file)
   utils::unzip(file, exdir = exdir)
 }
 
-.epub_meta <- function(files, fields = NULL, drop_sections = NULL, chapter_pattern = NULL, ...){
+.epub_meta <- function(files, epubfile, fields = NULL, drop_sections = NULL,
+                       chapter_pattern = NULL, ...){
+  dots <- list(...)
   suppressWarnings(opf <- files[grep("opf$", files)] %>% xml2::read_xml())
   meta <- xml2::xml_find_all(opf, ".//dc:*")
   x <- as.list(gsub("\"", "", xml2::xml_text(meta)))
   names(x) <- xml2::xml_name(meta)
   x <- x[!duplicated(names(x))]
-  if(!is.null(fields)) x <- x[names(x) %in% fields]
+  epubtitle <- if(is.null(dots$title)) "title" else dots$title
   d <- dplyr::as_data_frame(x)
+  if(!epubtitle %in% names(d)){
+    d <- dplyr::mutate(d, title = epubfile)
+  } else if(epubtitle != "title"){
+    if("title" %in% names(d)) d <- dplyr::mutate(d, title = NULL)
+    d <- dplyr::rename(d, title = .data[[epubtitle]])
+  }
+  if(!is.null(fields)){
+    idx <- which(!names(d) %in% unique(c(fields, "title")))
+    d <- dplyr::select(d, -idx)
+  }
   meta2 <- xml2::xml_children(opf) %>% xml2::xml_children()
   meta2_id <- xml2::xml_attr(meta2, "id")
   meta2_href <- basename(xml2::xml_attr(meta2, "href"))
@@ -140,7 +168,6 @@ epub_unzip <- function(file, exdir = tempdir()){
   meta2_href <- meta2_href[idx]
   if(inherits(chapter_pattern, "character")){
     pat <- chapter_pattern
-    dots <- list(...)
     add_pattern <- dots$add_pattern
     if(inherits(add_pattern, "character")){
       pat <- paste0(pat, "|", add_pattern)
@@ -158,11 +185,12 @@ epub_unzip <- function(file, exdir = tempdir()){
   d
 }
 
-.epub_read <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NULL, ...){
+.epub_read <- function(file, epubfile = basename(file), fields = NULL, drop_sections = NULL,
+                       chapter_pattern = NULL, ...){
   read <- if(requireNamespace("readr", quietly = TRUE)) readr::read_lines else readLines # nolint
   exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(file))))
   files <- epub_unzip(file, exdir)
-  d <- .epub_meta(files, fields = fields, drop_sections = drop_sections,
+  d <- .epub_meta(files, epubfile, fields = fields, drop_sections = drop_sections,
                   chapter_pattern = chapter_pattern, ...)
   files <- files[grep("html$|htm$", files)]
   files <- files[match(attr(d, "section href"), basename(files))]
@@ -184,4 +212,10 @@ epub_unzip <- function(file, exdir = tempdir()){
   out <- .chapter_recovery(d, x, override = override)
   dplyr::left_join(out[[1]], out[[2]], by = "title") %>%
     tidyr::nest(.data[["section"]], .data[["text"]])
+}
+
+.check_file <- function(file){
+  if(!all(file.exists(file))) stop("File not found.")
+  if(any(sapply(strsplit(file, "\\."), utils::tail, 1) != "epub"))
+    stop("All files must end in `.epub`.")
 }

@@ -9,6 +9,12 @@ test_that("epub unzipped as expected", {
 })
 
 test_that("epub and epub_meta read as expected", {
+  err1 <- "File not found."
+  err2 <- "All files must end in `.epub`."
+  f <- c(epub, epub_meta, epub_unzip)
+  purrr::walk(f, ~expect_error(.x("X"), err1))
+  purrr::walk(f, ~expect_error(.x(system.file("text.xml", package = "epubr")), err2))
+
   x <- epub_meta(file)
   expect_identical(names(x), c("rights", "identifier", "creator", "title", "language", "subject", "date", "source"))
   expect_equal(dim(x), c(1, 8))
@@ -51,6 +57,15 @@ test_that("epub and epub_meta read as expected", {
   expect_equal(dim(x), c(1, 4))
   expect_equal(dim(x$data[[1]]), c(15, 5))
   expect_true("dedication" %in% names(x$data[[1]]))
+
+  x <- epub(file, fields = c("file", "creator", "title"), title = "creator")
+  y <- c("file", "title", "data")
+  expect_identical(names(x), y)
+  expect_equal(x$title, "Bram Stoker")
+  x <- epub(file, fields = "file", title = "X")
+  expect_identical(names(x), y)
+  expect_equal(x$title, x$file)
+  expect_equal(x$title, "dracula.epub")
 })
 
 test_that("first_nchar returns as expected", {
