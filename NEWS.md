@@ -1,5 +1,9 @@
 # epubr 0.4.0.9000
 
+* Improved handling of errors and better messages.
+* More robust handling of `title` field when missing, redundant or requiring remapping/renaming. All outputs of `epub` now include a `title` as well as `data` field, even if the e-book does not have a metadata field named `title`.
+* Updated documentation, vignette, unit tests.
+
 * Added `first_nchar` function for preivewing the opening text of each e-book section.
 * Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
 * Minor fixes and documentation updates.
