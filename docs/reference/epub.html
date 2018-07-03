@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -34,6 +36,7 @@
 
 <meta property="og:description" content="Read EPUB format e-books into a data frame using epub or extract epub archive files for direct use with epub_unzip." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -228,11 +231,17 @@ You can ignore these arguments and do all your own post-processing of the result
 they are most likely to be useful for bulk e-book processing where <code>file</code> is a vector of like-formatted files.</p>
 <h3>Main columns</h3>
     The <code>fields</code> argument can be used to limit the columns returned in the primary data frame.
-E.g., <code>fields = c("title", "creator", "date", "identifier", "publisher", "file")</code>. Some fields will be returned even if not in <code>fields</code>, such as <code>data</code>.
+E.g., <code>fields = c("title", "creator", "date", "identifier", "publisher", "file")</code>. Some fields will be returned even if not in <code>fields</code>, such as <code>data</code> and <code>title</code>.
 <br /><br />
 Ideally, you should already know what metadata fields are in the EPUB file. This is not possible for large collections with possibly different formatting.
 Note that when <code>"file"</code> is included in <code>fields</code>, the output will include a column of the original file names, in case this is different from the content of a <code>source</code> field that may be present in the metadata.
 So this field is always available even if not part of the file metadata.
+<br /><br />
+Additionally, if there is no <code>title</code> field in the metadata, the output data frame will include a <code>title</code> column filled in with the same file names,
+unless you pass the additional optional title argument, e.g. <code>title = "TitleFieldID"</code> so that another field can me mapped to <code>title</code>.
+If supplying a <code>title</code> argument that also does not match an existing field in the e-book, the output <code>title</code> column will again default to file names.
+File names are the fallback option because unlike e-book metadata fields, file names always exist and should also always be unique when performing vectorized reads over multiple books,
+ensuring that <code>title</code> can be a column in the output data frame that uniquely identifies different e-books even if the books did not have a <code>title</code> field in their metadata.
 <br /><br />
 Columns of the nested data frames in <code>data</code> are fixed. Select from these in subsequent data frame manipulations.
     <h3>Nested rows</h3>
@@ -256,7 +265,8 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Use a local example epub file included in the package</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='no'>bookdir</span> <span class='kw'>&lt;-</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>"dracula"</span>)
 <span class='fu'>epub_unzip</span>(<span class='no'>file</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>bookdir</span>) <span class='co'># unzip to directly inspect archive files</span>
 <span class='fu'>list.files</span>(<span class='no'>bookdir</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "META-INF/container.xml"                                                  

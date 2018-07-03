@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -31,6 +33,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 <meta property="og:title" content="Changelog" />
+
 
 
 <!-- mathjax -->
@@ -169,10 +172,13 @@
 <a href="#epubr-0-4-0-9000" class="anchor"></a>epubr 0.4.0.9000<small> Unreleased </small>
 </h1>
 <ul>
+<li>Improved handling of errors and better messages.</li>
+<li>More robust handling of <code>title</code> field when missing, redundant or requiring remapping/renaming. All outputs of <code>epub</code> now include a <code>title</code> as well as <code>data</code> field, even if the e-book does not have a metadata field named <code>title</code>.</li>
+<li><p>Updated documentation, vignette, unit tests.</p></li>
 <li>Added <code>first_nchar</code> function for preivewing the opening text of each e-book section.</li>
 <li>Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.</li>
 <li>Minor fixes and documentation updates.</li>
-<li>Updated unit tests.</li>
+<li><p>Updated unit tests.</p></li>
 </ul>
 </div>
     <div id="epubr-0-4-0-release-date-2018-05-30" class="section level1">
