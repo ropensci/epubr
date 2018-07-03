@@ -72,7 +72,9 @@ Selecting fields is straightforward. All fields found are returned unless a vect
 epub(file, fields = c("title", "creator", "file"))
 ```
 
-Note that `file` was not a field identified in the metadata. This is a special case. Including `file` will include the `basename` of the input file. This is helpful when you want to retain file names and `source` is included in the metadata but may represent something else. Some fields like `data` are always returned and do not need to be specified in `fields`.
+Note that `file` was not a field identified in the metadata. This is a special case. Including `file` will include the `basename` of the input file. This is helpful when you want to retain file names and `source` is included in the metadata but may represent something else. Some fields like `data` and `title` are always returned and do not need to be specified in `fields`.
+
+Also, if your e-book does not have a metadata field named `title`, you can pass an additional argument to `...` to map a different, known metadata field to `title`. E.g., `title = "BookTitle"`. The resulting table always has a `title` field, but in this case `title` would be populated with information from the `BookTitle` metadata field. If the default `title` field or any other field name passed to the additional `title` argument does not exist in the file metadata, the output `title` column falls back on filling in with the same unique file names obtained when requesting the `file` field.
 
 ### Drop sections
 
@@ -97,13 +99,9 @@ x$data[[1]]
 
 Also note that not all books have chapters. Make sure an optional argument makes sense to use with a given e-book.
 
-Some e-books have formatting that puts chapter sections completely out of order even when they may be easily separable from other book sections and this can be another roadblock, as you may correctly identify and distinguish chapters from other book sections like cover, title, copyright and acknowledgements pages, but you will number the chapters incorrectly.
+Some e-books have formatting that puts chapter sections completely out of order even when they may be easily separable from other book sections and this can be another roadblock, as you may correctly identify and distinguish chapters from other book sections like cover, title, copyright and acknowledgements pages, but you will number the chapters incorrectly. Other e-books do not even split the text into sections based on natural breaks in the original text like chapters, but rather are split into sections at arbitrary break points in the complete text.
 
-There are some developmental options that can get around issues like this in certain edge cases and where certain reasonable conditions can be met. For example, a second pass can be attempted internally in a call to `epub` to cross reference guessed chapter sections with the presence of something like `CHAPTER` (or some other secondary regular expression pattern) appearing at the beginning of the actual section text. All is not necessarily lost when file metadata formatting is not useful for a given e-book.
-
-These developmental arguments are currently undocumented, though they can be explored if you are inclined to read the package source code and pass additional arguments to `...`. They have been tested successfully on many e-books, but certainly not a representative sample of all e-books. The approaches these arguments use may also change before they are formally supported and explicitly added to a future version of the package.
-
-Ultimately though, everything depends on the quality of the EPUB file. Some publishers are better than others. Formatting standards may also change over time.
+Ultimately, everything depends on the quality of the EPUB file. Some publishers are better than others. Formatting standards may also change over time.
 
 ## Unzip EPUB file
 
