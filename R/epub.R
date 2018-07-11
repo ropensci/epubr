@@ -58,7 +58,7 @@
 #' @param drop_sections character, a regular expression pattern string to identify text sections (rows of nested text data frame) to drop.
 #' @param chapter_pattern character, a regular expression pattern string to attempt distinguishing nested data frame rows of chapter text entries from other types of entries.
 #' @param exdir character, extraction directory to place archive contents (files).
-#' @param ... additional arguments. Currently unsupported.
+#' @param ... additional arguments. With the exception of passing \code{title} (see details), currently developmental/unsupported.
 #'
 #' @return \code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an epub file archive.
 #' @export

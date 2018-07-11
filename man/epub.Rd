@@ -22,7 +22,7 @@ epub_unzip(file, exdir = tempdir())
 
 \item{chapter_pattern}{character, a regular expression pattern string to attempt distinguishing nested data frame rows of chapter text entries from other types of entries.}
 
-\item{...}{additional arguments. Currently unsupported.}
+\item{...}{additional arguments. With the exception of passing \code{title} (see details), currently developmental/unsupported.}
 
 \item{exdir}{character, extraction directory to place archive contents (files).}
 }
