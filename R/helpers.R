@@ -12,11 +12,12 @@
 #'
 #' @return a data frame.
 #' @export
+#' @name epub_head
 #'
 #' @examples
 #' file <- system.file("dracula.epub", package = "epubr")
-#' first_nchar(file)
-first_nchar <- function(file, n = 50){
+#' epub_head(file)
+epub_head <- function(file, n = 50){
   epub(file) %>% tidyr::unnest() %>% dplyr::select(!! c("section", "text")) %>%
     dplyr::mutate(text = substr(.data[["text"]], 1, n))
 }
@@ -34,14 +35,15 @@ first_nchar <- function(file, n = 50){
   r <- utils::as.roman(1:30)
   rom <- paste0("^(", paste0(r, collapse = "|"), ")(\\s\\.\\s|\\.\\s|\\n\\n|\\.|[A-Z])")
   one_to_nine <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")
+  f <- function(x) c(x, paste0(x, one_to_nine), paste0(paste0(x, "-"), tolower(one_to_nine)))
   numnames0 <- c(one_to_nine, "Ten", "Eleven", "Twelve",
-                 "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty",
-                 paste0("Twenty", one_to_nine), "Thirty", paste0("Thirty", one_to_nine),
-                 paste0("Twenty-", tolower(one_to_nine)), paste0("Thirty-", tolower(one_to_nine)))
+                 "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
+                 as.character(sapply(
+                   c("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"),
+                   f)))
   numnames1 <- toupper(numnames0)
-  numnames2 <- numnames0#[1:39]
   pat <- paste0(rom, paste0("|^(", paste0(numnames1, collapse = "|"), ")"),
-                "|^\\d+\\s+\\n|chapter|CHAPTER|Chapter|^SECTION|^\\d+[a-zA-Z]")
+                "|^\\d+\\s+\\n|(C|c)(HAPTER|hapter)|^SECTION|^\\d+[a-zA-Z]")
   idx <- grepl(pat, opening)
   if(!any(idx) & override){
     idx <- nc > 5000
@@ -54,7 +56,7 @@ first_nchar <- function(file, n = 50){
       fix_idx <- rev(nrow(x) - which(duplicated(rev(x$section))) + 1)
       x$section[fix_idx] <- paste0("x", seq_along(fix_idx))
     }
-    double_check <- unlist(purrr::map(paste0("Chapter ", numnames2, "(\\.|\\s|\\n|)"), ~{
+    double_check <- unlist(purrr::map(paste0("Chapter ", numnames0, "(\\.|\\s|\\n|)"), ~{
       a <- grep(.x, opening)
       if(!length(a)) return()
       if(length(a) == 1) a else a[which.min(nchar(a))]

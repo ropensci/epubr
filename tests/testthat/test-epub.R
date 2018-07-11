@@ -68,8 +68,8 @@ test_that("epub and epub_meta read as expected", {
   expect_equal(x$title, "dracula.epub")
 })
 
-test_that("first_nchar returns as expected", {
-  x <- first_nchar(file)
+test_that("epub_head returns as expected", {
+  x <- epub_head(file)
   expect_equal(names(x), c("section", "text"))
   expect_equal(dim(x), c(15, 2))
 })
