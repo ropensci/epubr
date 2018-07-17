@@ -81,9 +81,18 @@ Reference
 
 [Complete package reference and function documentation](https://leonawicz.github.io/epubr/)
 
-#### Related packages
+Related packages
+----------------
 
-Users may also be interested in the related package, [gutenbergr](https://github.com/ropenscilabs/gutenbergr), for searching and downloading public domain texts from Project Gutenberg.
+[tesseract](https://github.com/ropensci/tesseract) by @jeroen for more direct control of the OCR process.
+
+[pdftools](https://github.com/ropensci/pdftools) for extracting metadata and text from PDF files (therefore more specific to PDF, and without a Java dependency)
+
+[tabulizer](https://github.com/ropensci/tabulizer) by @leeper and @tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract tables, therefore not text, from PDF files.
+
+[rtika](https://github.com/ropensci/rtika) by @goodmansasha for more general text parsing.
+
+[gutenbergr](https://github.com/ropenscilabs/gutenbergr) by @dgrtwo for searching and downloading public domain texts from Project Gutenberg.
 
 ------------------------------------------------------------------------
 
