@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://leonawicz.github.io//index.html</loc>
+    <loc>http://ropensci.github.io//index.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/epub.html</loc>
+    <loc>http://ropensci.github.io//reference/epub.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/epubr.html</loc>
+    <loc>http://ropensci.github.io//reference/epubr.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//reference/epub_head.html</loc>
+    <loc>http://ropensci.github.io//reference/epub_head.html</loc>
   </url>
   <url>
-    <loc>http://leonawicz.github.io//articles/epubr.html</loc>
+    <loc>http://ropensci.github.io//articles/epubr.html</loc>
   </url>
 </urlset>
