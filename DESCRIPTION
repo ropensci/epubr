@@ -12,8 +12,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-URL: https://github.com/leonawicz/epubr
-BugReports: https://github.com/leonawicz/epubr/issues
+URL: https://github.com/ropensci/epubr
+BugReports: https://github.com/ropensci/epubr/issues
 Suggests:
     testthat,
     knitr,

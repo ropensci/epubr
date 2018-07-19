@@ -1,4 +1,4 @@
-url: http://leonawicz.github.io/
+url: http://ropensci.github.io/
 
 template:
   params:
@@ -41,4 +41,4 @@ navbar:
           icon: fa-pencil-square-o fa-lg
           href: https://leonawicz.github.io/blog/
     - icon: fa-github fa-lg
-      href: https://github.com/leonawicz/epubr
+      href: https://github.com/ropensci/epubr

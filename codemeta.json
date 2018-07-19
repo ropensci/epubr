@@ -4,8 +4,8 @@
   "identifier": "epubr",
   "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, \n    in completely general form, resulting in a singular, consistently formatted output containing all the same variables.\n    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. \n    However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. \n    Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like 'tm' or 'qdap'.",
   "name": "epubr: Read EPUB File Metadata and Text",
-  "codeRepository": "https://github.com/leonawicz/epubr",
-  "issueTracker": "https://github.com/leonawicz/epubr/issues",
+  "codeRepository": "https://github.com/ropensci/epubr",
+  "issueTracker": "https://github.com/ropensci/epubr/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.4.1",
   "programmingLanguage": {
@@ -185,9 +185,9 @@
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
     }
   ],
-  "releaseNotes": "https://github.com/leonawicz/epubr/blob/master/NEWS.md",
-  "readme": "https://github.com/leonawicz/epubr/blob/master/README.md",
+  "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
   "fileSize": "412.319KB",
-  "contIntegration": ["https://travis-ci.org/leonawicz/epubr", "https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/leonawicz/epubr"],
+  "contIntegration": ["https://travis-ci.org/ropensci/epubr", "https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/ropensci/epubr"],
   "relatedLink": "https://CRAN.R-project.org/package=epubr"
 }

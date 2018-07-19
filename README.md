@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-epubr <img src="https://github.com/leonawicz/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
-==================================================================================================================================================================
+epubr <img src="https://github.com/ropensci/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
+=================================================================================================================================================================
 
 <br/> **Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) [![Travis-CI Build Status](https://travis-ci.org/leonawicz/epubr.svg?branch=master)](https://travis-ci.org/leonawicz/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![codecov](https://codecov.io/gh/leonawicz/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/leonawicz/epubr)
+[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
 
-[![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
+[![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/ropensci/epubr)
 
 Read EPUB files in R
 --------------------
@@ -33,7 +33,7 @@ Install the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("leonawicz/epubr")
+devtools::install_github("ropensci/epubr")
 ```
 
 *Note: Prior versions required R &gt;= 3.5.0 due to package dependencies. This is no longer the case, but if using R &lt; 3.5.0, install from GitHub until the next CRAN release.*
@@ -79,7 +79,7 @@ Reference
 
 #### Documentation
 
-[Complete package reference and function documentation](https://leonawicz.github.io/epubr/)
+[Complete package reference and function documentation](https://ropensci.github.io/epubr/)
 
 Related packages
 ----------------
