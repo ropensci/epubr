@@ -142,7 +142,7 @@
 <a href="#epubr" class="anchor"></a>epubr <img src="https://github.com/ropensci/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 </h1></div>
 <p><br><strong>Author:</strong> <a href="https://leonawicz.github.io/blog/">Matthew Leonawicz</a><br><strong>License:</strong> <a href="https://opensource.org/licenses/MIT">MIT</a><br></p>
-<p><a href="https://cran.r-project.org/package=epubr"><img src="http://www.r-pkg.org/badges/version/epubr" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=epubr"><img src="http://cranlogs.r-pkg.org/badges/grand-total/epubr" alt="CRAN downloads"></a> <a href="https://github.com/ropensci/onboarding/issues/222"><img src="https://badges.ropensci.org/222_status.svg"></a> <a href="http://www.rdocumentation.org/packages/epubr"><img src="http://www.rdocumentation.org/badges/version/epubr" alt="Rdoc"></a> <a href="https://travis-ci.org/ropensci/epubr"><img src="https://travis-ci.org/ropensci/epubr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/leonawicz/epubr"><img src="https://ci.appveyor.com/api/projects/status/github/ropensci/epubr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/gh/ropensci/epubr"><img src="https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<p><a href="https://cran.r-project.org/package=epubr"><img src="http://www.r-pkg.org/badges/version/epubr" alt="CRAN status"></a> <a href="https://cran.r-project.org/package=epubr"><img src="http://cranlogs.r-pkg.org/badges/grand-total/epubr" alt="CRAN downloads"></a> <a href="https://github.com/ropensci/onboarding/issues/222"><img src="https://badges.ropensci.org/222_status.svg"></a> <a href="http://www.rdocumentation.org/packages/epubr"><img src="http://www.rdocumentation.org/badges/version/epubr" alt="Rdoc"></a> <a href="https://travis-ci.org/ropensci/epubr"><img src="https://travis-ci.org/ropensci/epubr.svg?branch=master" alt="Travis-CI Build Status"></a> <a href="https://ci.appveyor.com/project/leonawicz/epubr"><img src="https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://codecov.io/gh/ropensci/epubr"><img src="https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg" alt="codecov"></a></p>
 <p><a href="https://gitter.im/leonawicz/epubr"><img src="https://img.shields.io/badge/GITTER-join%20chat-green.svg" alt="gitter"></a></p>
 <div id="read-epub-files-in-r" class="section level2">
 <h2 class="hasAnchor">
@@ -176,23 +176,23 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 
 x<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt; # A tibble: 15 x 4</span>
-<span class="co">#&gt;    section           text                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 item6             "The Project Gutenberg EBook of Dracula,~ 11252 60972</span>
-<span class="co">#&gt;  2 item7             "But I am not in heart to describe beaut~ 13740 71798</span>
-<span class="co">#&gt;  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 12356 65522</span>
-<span class="co">#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 12042 62724</span>
-<span class="co">#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 12599 66678</span>
-<span class="co">#&gt;  6 item11            "Once again we went through that ghastly~ 11919 62949</span>
-<span class="co">#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 12003 62234</span>
-<span class="co">#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 13812 72903</span>
-<span class="co">#&gt;  9 item14            "“Thus when we find the habitation of th~ 13201 69779</span>
-<span class="co">#&gt; 10 item15            "“I see,” I said. “You want big things t~ 12706 66921</span>
-<span class="co">#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 11818 61550</span>
-<span class="co">#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 12989 68564</span>
-<span class="co">#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned.~  8356 43464</span>
-<span class="co">#&gt; 14 item19            "End of the Project Gutenberg EBook of D~  2669 18541</span>
-<span class="co">#&gt; 15 coverpage-wrapper ""                                            0     0</span></code></pre></div>
+<span class="co">#&gt;    section       text                                          nword nchar</span>
+<span class="co">#&gt;    &lt;chr&gt;         &lt;chr&gt;                                         &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1 item6         "The Project Gutenberg EBook of Dracula, by ~ 11252 60972</span>
+<span class="co">#&gt;  2 item7         "But I am not in heart to describe beauty, f~ 13740 71798</span>
+<span class="co">#&gt;  3 item8         "“ ‘Lucy, you are an honest-hearted girl, I ~ 12356 65522</span>
+<span class="co">#&gt;  4 item9         "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day~ 12042 62724</span>
+<span class="co">#&gt;  5 item10        "CHAPTER X\nLetter, Dr. Seward to Hon. Arthu~ 12599 66678</span>
+<span class="co">#&gt;  6 item11        "Once again we went through that ghastly ope~ 11919 62949</span>
+<span class="co">#&gt;  7 item12        "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Septem~ 12003 62234</span>
+<span class="co">#&gt;  8 item13        "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT~ 13812 72903</span>
+<span class="co">#&gt;  9 item14        "“Thus when we find the habitation of this m~ 13201 69779</span>
+<span class="co">#&gt; 10 item15        "“I see,” I said. “You want big things that ~ 12706 66921</span>
+<span class="co">#&gt; 11 item16        "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.~ 11818 61550</span>
+<span class="co">#&gt; 12 item17        "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, ~ 12989 68564</span>
+<span class="co">#&gt; 13 item18        " \nLater.—Dr. Van Helsing has returned. He ~  8356 43464</span>
+<span class="co">#&gt; 14 item19        "End of the Project Gutenberg EBook of Dracu~  2669 18541</span>
+<span class="co">#&gt; 15 coverpage-wr~ ""                                                0     0</span></code></pre></div>
 </div>
 <div id="related-packages" class="section level2">
 <h2 class="hasAnchor">

@@ -5,7 +5,7 @@ epubr <img src="https://github.com/ropensci/epubr/blob/master/data-raw/epubr.png
 
 <br/> **Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
+[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
 
 [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
 
@@ -55,23 +55,23 @@ file <- system.file("dracula.epub", package = "epubr")
 
 x$data[[1]]
 #> # A tibble: 15 x 4
-#>    section           text                                      nword nchar
-#>    <chr>             <chr>                                     <int> <int>
-#>  1 item6             "The Project Gutenberg EBook of Dracula,~ 11252 60972
-#>  2 item7             "But I am not in heart to describe beaut~ 13740 71798
-#>  3 item8             "“ ‘Lucy, you are an honest-hearted girl~ 12356 65522
-#>  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame~ 12042 62724
-#>  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. A~ 12599 66678
-#>  6 item11            "Once again we went through that ghastly~ 11919 62949
-#>  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Se~ 12003 62234
-#>  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued~ 13812 72903
-#>  9 item14            "“Thus when we find the habitation of th~ 13201 69779
-#> 10 item15            "“I see,” I said. “You want big things t~ 12706 66921
-#> 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 Octo~ 11818 61550
-#> 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 Octob~ 12989 68564
-#> 13 item18            " \nLater.—Dr. Van Helsing has returned.~  8356 43464
-#> 14 item19            "End of the Project Gutenberg EBook of D~  2669 18541
-#> 15 coverpage-wrapper ""                                            0     0
+#>    section       text                                          nword nchar
+#>    <chr>         <chr>                                         <int> <int>
+#>  1 item6         "The Project Gutenberg EBook of Dracula, by ~ 11252 60972
+#>  2 item7         "But I am not in heart to describe beauty, f~ 13740 71798
+#>  3 item8         "“ ‘Lucy, you are an honest-hearted girl, I ~ 12356 65522
+#>  4 item9         "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day~ 12042 62724
+#>  5 item10        "CHAPTER X\nLetter, Dr. Seward to Hon. Arthu~ 12599 66678
+#>  6 item11        "Once again we went through that ghastly ope~ 11919 62949
+#>  7 item12        "CHAPTER XIVMINA HARKER’S JOURNAL\n23 Septem~ 12003 62234
+#>  8 item13        "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT~ 13812 72903
+#>  9 item14        "“Thus when we find the habitation of this m~ 13201 69779
+#> 10 item15        "“I see,” I said. “You want big things that ~ 12706 66921
+#> 11 item16        "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.~ 11818 61550
+#> 12 item17        "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, ~ 12989 68564
+#> 13 item18        " \nLater.—Dr. Van Helsing has returned. He ~  8356 43464
+#> 14 item19        "End of the Project Gutenberg EBook of Dracu~  2669 18541
+#> 15 coverpage-wr~ ""                                                0     0
 ```
 
 Reference

@@ -6,8 +6,8 @@
 \alias{epub_unzip}
 \title{Extract and read EPUB e-books}
 \usage{
-epub(file, fields = NULL, drop_sections = NULL, chapter_pattern = NULL,
-  ...)
+epub(file, fields = NULL, drop_sections = NULL,
+  chapter_pattern = NULL, ...)
 
 epub_meta(file)
 

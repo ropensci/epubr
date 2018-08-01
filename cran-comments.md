@@ -1,3 +1,10 @@
+## Update release
+
+This is an update release submission. In this version I have:
+
+* Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
+* Updated functions and other minor fixes and documentation updates.
+
 ## Test environments
 * local Windows 10 install, R 3.5.0
 * ubuntu 14.04 (on travis-ci), R 3.5.0
@@ -5,13 +12,7 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release resubmission.
-
-This resubmission fixes a broken url in the documentation.
-
-This resubmission also incorporates additional functionality and documentation. All package builds, tests, and checks have been redone.
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 

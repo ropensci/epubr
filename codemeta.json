@@ -1,5 +1,8 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "epubr",
   "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, \n    in completely general form, resulting in a singular, consistently formatted output containing all the same variables.\n    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. \n    However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. \n    Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like 'tm' or 'qdap'.",
@@ -11,10 +14,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.0 (2018-04-23)",
+  "runtimePlatform": "R version 3.5.1 (2018-07-02)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -187,7 +190,24 @@
   ],
   "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "412.319KB",
-  "contIntegration": ["https://travis-ci.org/ropensci/epubr", "https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/ropensci/epubr"],
-  "relatedLink": "https://CRAN.R-project.org/package=epubr"
+  "fileSize": "412.367KB",
+  "contIntegration": [
+    "https://travis-ci.org/ropensci/epubr",
+    "https://ci.appveyor.com/project/leonawicz/epubr",
+    "https://codecov.io/gh/ropensci/epubr"
+  ],
+  "relatedLink": "https://CRAN.R-project.org/package=epubr",
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/onboarding/issues/222",
+    "provider": "http://ropensci.org"
+  },
+  "keywords": [
+    "epub-files",
+    "r",
+    "rstats",
+    "r-package",
+    "epub",
+    "epub-format"
+  ]
 }
