@@ -36,8 +36,6 @@ Install the development version from GitHub with:
 devtools::install_github("ropensci/epubr")
 ```
 
-*Note: Prior versions required R &gt;= 3.5.0 due to package dependencies. This is no longer the case, but if using R &lt; 3.5.0, install from GitHub until the next CRAN release.*
-
 Example
 -------
 
