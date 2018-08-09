@@ -1,4 +1,4 @@
-# epubr 0.4.1
+# epubr 0.4.1 (Release date: 2018-08-01)
 
 * Improved handling of errors and better messages.
 * More robust handling of `title` field when missing, redundant or requiring remapping/renaming. All outputs of `epub` now include a `title` as well as `data` field, even if the e-book does not have a metadata field named `title`.
