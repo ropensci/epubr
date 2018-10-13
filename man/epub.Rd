@@ -7,7 +7,7 @@
 \title{Extract and read EPUB e-books}
 \usage{
 epub(file, fields = NULL, drop_sections = NULL,
-  chapter_pattern = NULL, ...)
+  chapter_pattern = NULL, encoding = "UTF-8", ...)
 
 epub_meta(file)
 
@@ -22,9 +22,11 @@ epub_unzip(file, exdir = tempdir())
 
 \item{chapter_pattern}{character, a regular expression pattern string to attempt distinguishing nested data frame rows of chapter text entries from other types of entries.}
 
+\item{encoding}{character, defaults to \code{"UTF-8"}.}
+
 \item{...}{additional arguments. With the exception of passing \code{title} (see details), currently developmental/unsupported.}
 
-\item{exdir}{character, extraction directory to place archive contents (files).}
+\item{exdir}{for \code{epub_unzip}, extraction directory to place archive contents (files). It will be created if necessary.}
 }
 \value{
 \code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an epub file archive.
