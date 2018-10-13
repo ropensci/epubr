@@ -89,31 +89,22 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
     fields <- fields[fields != title]
   }
   add_pattern <- dots$add_pattern # nolint
-  series <- if(is.logical(dots$series)) dots$series else FALSE
-  dedication <- if(is.logical(dots$dedication)) dots$dedication else FALSE
-  parent_dir <- if(is.null(dots$parent_dir)) "novels" else dots$parent_dir
   d <- purrr::map_dfr(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
                                         chapter_pattern = chapter_pattern, add_pattern = add_pattern,
                                         clean = dots$clean, title = title, encoding = encoding))
   path <- file
   if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
-  if(series) d <- dplyr::mutate(d, series = .get_series(path, FALSE, parent_dir),
-                                subseries = .get_series(path, TRUE, parent_dir))
   d <- tidyr::unnest(d)
   if("nchap" %in% names(d)) d <- dplyr::mutate(d, is_chapter = grepl("^ch\\d\\d$", .data[["section"]]))
   d <- dplyr::mutate(d, nchar = nchar(.data[["text"]]),
                      nword = purrr::map_int(strsplit(.data[["text"]], " "), length))
-  if(dedication) d <- dplyr::mutate(
-    d, dedication = ifelse(grepl("^ded", tolower(substr(.data[["section"]], 1, 3))), .data[["text"]], NA))
   if(inherits(drop_sections, "character")) d <- dplyr::filter(d, !grepl(drop_sections, .data[["section"]]))
   nested <- c("section", "text")
   if("is_chapter" %in% names(d)) nested <- c(nested, "is_chapter")
-  if(dedication) nested <- c(nested, "dedication")
   nested <- c(nested, "nword", "nchar")
   d <- tidyr::nest(d, !! nested)
   cols <- unique(c(fields, names(d)))
   cols <- cols[cols != "data"]
-  if(series) cols <- c(cols, c("series", "subseries"))
   if("nchap" %in% names(d)) cols <- c(cols, "nchap")
   cols <- unique(c(cols, "data"))
   if(!"date" %in% names(d)) d <- dplyr::mutate(d, date = NA)

@@ -164,10 +164,3 @@ epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, pa
   x <- gsub("\u2026", "...", x)
   x
 }
-
-.get_series <- function(x, subseries = FALSE, parent_dir = "novels"){
-  x <- strsplit(dirname(x), "/")
-  idx <- purrr::map_dbl(x, ~(which(.x == parent_dir) + 1))
-  if(subseries) idx <- idx + 1
-  x <- purrr::map_chr(seq_along(x), ~x[[.x]][idx[.x]])
-}
