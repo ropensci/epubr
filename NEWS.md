@@ -9,7 +9,7 @@
     * It appears that the EPUB format *requires* UTF encoding. Currently the only permissible option other than UTF-8 is UTF-16. This keeps things very simple and straightforward. Users should not encounter EPUB files in other encodings.
 * Added unit tests and updated documentation.
 
-# epubr 0.4.1 (Release date: 2018-08-01)
+# epubr 0.4.1
 
 * Improved handling of errors and better messages.
 * More robust handling of `title` field when missing, redundant or requiring remapping/renaming. All outputs of `epub` now include a `title` as well as `data` field, even if the e-book does not have a metadata field named `title`.
@@ -19,7 +19,7 @@
 * Minor fixes.
 * Updated documentation, vignette, unit tests.
 
-# epubr 0.4.0 (Release date: 2018-05-30)
+# epubr 0.4.0
 
 * Enhanced function documentation details.
 * Added `epub_meta` for strictly parsing EPUB metadata without reading the full file contents.
