@@ -70,6 +70,19 @@ test_that("epub and epub_meta read as expected", {
 
 test_that("epub_head returns as expected", {
   x <- epub_head(file)
+  y <- epub_head(epub(file))
+  expect_identical(x, y)
   expect_equal(names(x), c("section", "text"))
   expect_equal(dim(x), c(15, 2))
+})
+
+test_that("epub_head returns as expected", {
+  x <- epub(file)
+  x1 <- capture.output(epub_cat(file))
+  x2 <- capture.output(y <- epub_cat(x))
+  expect_identical(x1, x2)
+  expect_is(y, "NULL")
+
+  y <- length(capture.output(epub_cat(x, max_paragraphs = NULL)))
+  expect_equal(y, 4627)
 })
