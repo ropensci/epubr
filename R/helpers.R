@@ -70,7 +70,12 @@ epub_cat <- function(x, max_paragraphs = 10, paragraph_spacing = 1, paragraph_in
   }
   x <- paste0(unlist(x), collapse = "")
   x <- strsplit(x, "\n") %>% unlist()
-  max_lines <- if(is.null(max_paragraphs)) length(x) else min(max_paragraphs * (1 + paragraph_spacing), length(x))
+  idx <- which(!grepl("^$|^\\s+$", x))
+  if(is.null(max_paragraphs) || max_paragraphs > length(idx)){
+    max_lines <- length(x)
+  } else {
+    max_lines <- if(length(idx)) min(idx[max_paragraphs], length(x)) else max_paragraphs
+  }
   cat(paste0(paste0(x[1:max_lines], collapse = "\n"), "\n"))
   invisible()
 }
