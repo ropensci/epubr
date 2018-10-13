@@ -1,4 +1,4 @@
-globalVariables(c(".data"))
+globalVariables(c(".", ".data"))
 
 #' epubr: Read EPUB file metadata and text.
 #'
