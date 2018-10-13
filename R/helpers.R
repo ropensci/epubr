@@ -35,6 +35,7 @@ epub_head <- function(x, n = 50){
 #'
 #' @param x a data frame returned by \code{\link{epub}} or a character string giving the EPUB filename(s).
 #' @param max_paragraphs integer, maximum number of paragraphs (non-empty lines) to \code{cat} to console.
+#' @param skip integer, number of paragraphs to skip.
 #' @param paragraph_spacing integer, number of empty lines between paragraphs.
 #' @param paragraph_indent integer, number of spaces to indent paragraphs.
 #' @param section_sep character, a string to indicate section breaks.
@@ -48,7 +49,7 @@ epub_head <- function(x, n = 50){
 #' file <- system.file("dracula.epub", package = "epubr")
 #' d <- epub(file)
 #' epub_cat(d, max_paragraphs = 3)
-epub_cat <- function(x, max_paragraphs = 10, paragraph_spacing = 1, paragraph_indent = 2,
+epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, paragraph_indent = 2,
                      section_sep = "====", book_sep = "====\n===="){
   if(inherits(x, "character")) x <- epub(x)
   paragraph_spacing <- max(0, round(paragraph_spacing))
@@ -70,13 +71,22 @@ epub_cat <- function(x, max_paragraphs = 10, paragraph_spacing = 1, paragraph_in
   }
   x <- paste0(unlist(x), collapse = "")
   x <- strsplit(x, "\n") %>% unlist()
+  first_line <- skip + 1
   idx <- which(!grepl("^$|^\\s+$", x))
+  if(length(idx)){
+    if(length(idx) < skip + 1){
+      message("`skip` is too large. All text skipped.")
+      return(invisible())
+    }
+    first_line <- idx[skip + 1]
+  }
+  if(first_line > 1 & length(idx)) idx <- idx[(skip + 1):length(idx)]
   if(is.null(max_paragraphs) || max_paragraphs > length(idx)){
     max_lines <- length(x)
   } else {
     max_lines <- if(length(idx)) min(idx[max_paragraphs], length(x)) else max_paragraphs
   }
-  cat(paste0(paste0(x[1:max_lines], collapse = "\n"), "\n"))
+  cat(paste0(paste0(x[first_line:max_lines], collapse = "\n"), "\n"))
   invisible()
 }
 

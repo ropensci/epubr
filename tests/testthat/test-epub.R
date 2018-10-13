@@ -83,6 +83,8 @@ test_that("epub_head returns as expected", {
   expect_identical(x1, x2)
   expect_is(y, "NULL")
 
-  y <- length(capture.output(epub_cat(x, max_paragraphs = NULL)))
-  expect_equal(y, 4627)
+  y <- length(capture.output(epub_cat(x, max_paragraphs = NULL, skip = 1)))
+  expect_equal(y, 4623)
+
+  expect_message(epub_cat(x, skip = 1e5), "`skip` is too large. All text skipped.")
 })

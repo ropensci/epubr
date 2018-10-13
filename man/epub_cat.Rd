@@ -4,7 +4,7 @@
 \alias{epub_cat}
 \title{Pretty printing of EPUB text}
 \usage{
-epub_cat(x, max_paragraphs = 10, paragraph_spacing = 1,
+epub_cat(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1,
   paragraph_indent = 2, section_sep = "====",
   book_sep = "====\\n====")
 }
@@ -12,6 +12,8 @@ epub_cat(x, max_paragraphs = 10, paragraph_spacing = 1,
 \item{x}{a data frame returned by \code{\link{epub}} or a character string giving the EPUB filename(s).}
 
 \item{max_paragraphs}{integer, maximum number of paragraphs (non-empty lines) to \code{cat} to console.}
+
+\item{skip}{integer, number of paragraphs to skip.}
 
 \item{paragraph_spacing}{integer, number of empty lines between paragraphs.}
 
