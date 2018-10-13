@@ -4,10 +4,10 @@
 \alias{epub_head}
 \title{Preview the first n characters}
 \usage{
-epub_head(file, n = 50)
+epub_head(x, n = 50)
 }
 \arguments{
-\item{file}{character, input EPUB filename. May be a vector.}
+\item{x}{a data frame returned by \code{\link{epub}} or a character string giving the EPUB filename(s).}
 
 \item{n}{integer, first n characters to retain from each e-book section.}
 }
@@ -18,7 +18,7 @@ a data frame.
 Preview the first n characters of each EPUB e-book section.
 }
 \details{
-This function is a wrapper around \code{epub} that returns a simplified data frame of only the \code{section} and \code{text} columns, with the text included only up to the first \code{n} character.
+This function returns a simplified data frame of only the unnested \code{section} and \code{text} columns of a data frame returned by \code{\link{epub}}, with the text included only up to the first \code{n} characters.
 This is useful for previewing the opening text of each e-book section to inspect for possible useful regular expression patterns to use for text-based section identification.
 For example, an e-book may not have meaningful section IDs that distinguish one type of book section from another, such as chapters from non-chapter sections,
 but the text itself may contain this information at or near the start of a section.
@@ -26,4 +26,7 @@ but the text itself may contain this information at or near the start of a secti
 \examples{
 file <- system.file("dracula.epub", package = "epubr")
 epub_head(file)
+}
+\seealso{
+\code{\link{epub_cat}}
 }

@@ -2,24 +2,84 @@
 #'
 #' Preview the first n characters of each EPUB e-book section.
 #'
-#' This function is a wrapper around \code{epub} that returns a simplified data frame of only the \code{section} and \code{text} columns, with the text included only up to the first \code{n} character.
+#' This function returns a simplified data frame of only the unnested \code{section} and \code{text} columns of a data frame returned by \code{\link{epub}}, with the text included only up to the first \code{n} characters.
 #' This is useful for previewing the opening text of each e-book section to inspect for possible useful regular expression patterns to use for text-based section identification.
 #' For example, an e-book may not have meaningful section IDs that distinguish one type of book section from another, such as chapters from non-chapter sections,
 #' but the text itself may contain this information at or near the start of a section.
 #'
-#' @param file character, input EPUB filename. May be a vector.
+#' @param x a data frame returned by \code{\link{epub}} or a character string giving the EPUB filename(s).
 #' @param n integer, first n characters to retain from each e-book section.
 #'
 #' @return a data frame.
 #' @export
 #' @name epub_head
+#' @seealso \code{\link{epub_cat}}
 #'
 #' @examples
 #' file <- system.file("dracula.epub", package = "epubr")
 #' epub_head(file)
-epub_head <- function(file, n = 50){
-  epub(file) %>% tidyr::unnest() %>% dplyr::select(!! c("section", "text")) %>%
+epub_head <- function(x, n = 50){
+  if(inherits(x, "character")) x <- epub(x)
+  tidyr::unnest(x) %>% dplyr::select(!! c("section", "text")) %>%
     dplyr::mutate(text = substr(.data[["text"]], 1, n))
+}
+
+#' Pretty printing of EPUB text
+#'
+#' Print EPUB text to the console in a more readable format.
+#'
+#' This function prints text from EPUB files to the console using \code{cat}.
+#' This is useful for quickly obtaining an overview of the book text parsed by \code{\link{epub}} that is easier to read that looking at strings in the table.
+#' \code{max_paragraphs} is set low by default to prevent accidentally printing entire books to the console.
+#' To print everything in \code{x}, set \code{max_paragraphs = NULL}.
+#'
+#' @param x a data frame returned by \code{\link{epub}} or a character string giving the EPUB filename(s).
+#' @param max_paragraphs integer, maximum number of paragraphs (non-empty lines) to \code{cat} to console.
+#' @param paragraph_spacing integer, number of empty lines between paragraphs.
+#' @param paragraph_indent integer, number of spaces to indent paragraphs.
+#' @param section_sep character, a string to indicate section breaks.
+#' @param book_sep character, separator shown between books when \code{x} has multiple rows (books).
+#'
+#' @return nothing is returned but a more readable format of the text content for books in \code{x} is printed to the console.
+#' @export
+#' @seealso \code{\link{epub_head}}
+#'
+#' @examples
+#' file <- system.file("dracula.epub", package = "epubr")
+#' d <- epub(file)
+#' epub_cat(d, max_paragraphs = 3)
+epub_cat <- function(x, max_paragraphs = 10, paragraph_spacing = 1, paragraph_indent = 2,
+                     section_sep = "====", book_sep = "====\n===="){
+  if(inherits(x, "character")) x <- epub(x)
+  paragraph_spacing <- max(0, round(paragraph_spacing))
+  f <- function(x){
+    x <- dplyr::rowwise(x) %>%
+      dplyr::do(x = .pretty_text(.data[["text"]], paragraph_spacing, paragraph_indent))
+    x <- x$x
+    x <- x[x != ""]
+    if(length(x) > 1){
+      idx <- 1:(length(x) - 1)
+      x[idx] <- paste0(x[idx], "\n\n", section_sep, "\n\n")
+    }
+    paste0(paste0(unlist(x), collapse = ""), "\n")
+  }
+  x <- (dplyr::rowwise(x) %>% dplyr::do(x = f(.[["data"]])))$x
+  if(length(x) > 1){
+    idx <- 1:(length(x) - 1)
+    x[idx] <- paste0(x[idx], "\n\n\n\n", book_sep, "\n\n\n\n")
+  }
+  x <- paste0(unlist(x), collapse = "")
+  x <- strsplit(x, "\n") %>% unlist()
+  max_lines <- if(is.null(max_paragraphs)) length(x) else min(max_paragraphs * (1 + paragraph_spacing), length(x))
+  cat(paste0(paste0(x[1:max_lines], collapse = "\n"), "\n"))
+  invisible()
+}
+
+.pretty_text <- function(x, paragraph_spacing = 1, paragraph_indent = 2){
+  p1 <- if(paragraph_spacing < 1) "" else paste0(rep("\n", paragraph_spacing), collapse = "")
+  p2 <- if(paragraph_indent < 1) "" else paste0(rep(" ", paragraph_indent), collapse = "")
+  x <- gsub("\n", paste0(p1, "\n", p2), x)
+  x
 }
 
 .epub_metakeep <- function(id, href, pattern = NULL){
@@ -77,7 +137,17 @@ epub_head <- function(file, n = 50){
   if(!inherits(template, "character") || !file.exists(template)) stop("`clean` template not found.")
   template <- xml2::read_xml(template)
   x2 <- xslt::xml_xslt(x, template) %>% xml2::xml_text()
-  if(nchar(x2) == 0) trimws(xml2::xml_text(x)) else trimws(x2)
+  if(nchar(x2) == 0) x <- trimws(xml2::xml_text(x)) else x <- trimws(x2)
+  x <- .clean_sub(x)
+  x
+}
+
+.clean_sub <- function(x){
+  x <- gsub("\u2010|\u2011|\u2012|\u2013|\u2014|\u2015", "-", x)
+  x <- gsub("\u2018|\u2019", "'", x)
+  x <- gsub("\u201c|\u201d", "\"", x)
+  x <- gsub("\u2026", "...", x)
+  x
 }
 
 .get_series <- function(x, subseries = FALSE, parent_dir = "novels"){
