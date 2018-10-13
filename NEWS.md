@@ -1,3 +1,14 @@
+# epubr 0.5.0
+
+* Added `epub_cat` function for pretty printing to console as a helpful way to quickly inspect the parsed text in a more easily readable format than looking at the quoted strings in the table entries. `epub_cat` can take an EPUB filename string (may be a vector) as its first argument or a data frame already returned by `epub`.
+* Like `epub_cat`, `epub_head` accepts EPUB character filenames or now also a data frame already returned by `epub` based on those files. Because of this change, the first argument has been renamed from `file` to `x`.
+* Added `encoding` argument to `epub` function, defaulting to UTF-8.
+    * This helps significantly with reading EPUB archive files properly, e.g., providing ability to parse and substitute all the curly single and double quotes, apostrophes, various forms of hyphens and ellipses.
+    * Previously, these were not substituted (e.g., replacing curly quotes with straight quotes), but attempting to do so would have failed anyway because they were not initially read correctly due to the lack of encoding specification.
+    * Now non-standard characters are more likely to be read correctly, and those mentioned above are substituted with standard versions. If necessary, the encoding can be changed from UTF-8 via the new argument.
+    * It appears that the EPUB format *requires* UTF encoding. Currently the only permissible option other than UTF-8 is UTF-16. This keeps things very simple and straightforward. Users should not encounter EPUB files in other encodings.
+* Added unit tests and updated documentation.
+
 # epubr 0.4.1 (Release date: 2018-08-01)
 
 * Improved handling of errors and better messages.
