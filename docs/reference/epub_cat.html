@@ -177,7 +177,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>epub_cat</span>(<span class='no'>x</span>, <span class='kw'>max_paragraphs</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>paragraph_spacing</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+    <pre class="usage"><span class='fu'>epub_cat</span>(<span class='no'>x</span>, <span class='kw'>max_paragraphs</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>paragraph_spacing</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>paragraph_indent</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>section_sep</span> <span class='kw'>=</span> <span class='st'>"===="</span>,
   <span class='kw'>book_sep</span> <span class='kw'>=</span> <span class='st'>"====\n===="</span>)</pre>
     
@@ -191,6 +191,10 @@
     <tr>
       <th>max_paragraphs</th>
       <td><p>integer, maximum number of paragraphs (non-empty lines) to <code>cat</code> to console.</p></td>
+    </tr>
+    <tr>
+      <th>skip</th>
+      <td><p>integer, number of paragraphs to skip.</p></td>
     </tr>
     <tr>
       <th>paragraph_spacing</th>
@@ -229,12 +233,9 @@ To print everything in <code>x</code>, set <code>max_paragraphs = NULL</code>.</
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span>(<span class='no'>file</span>)
-<span class='fu'>epub_cat</span>(<span class='no'>d</span>, <span class='kw'>max_paragraphs</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; The Project Gutenberg EBook of Dracula, by Bram StokerThis eBook is for the use of anyone anywhere at no cost and withalmost no restrictions whatsoever.  You may copy it, give it away orre-use it under the terms of the Project Gutenberg License includedwith this eBook or online at www.gutenberg.org/licenseTitle: DraculaAuthor: Bram StokerRelease Date: August 16, 2013 [EBook #345]Language: English*** START OF THIS PROJECT GUTENBERG EBOOK DRACULA ***Produced by Chuck Greif and the Online DistributedProofreading Team at http://www.pgdp.net (This file wasproduced from images generously made available by TheInternet Archive)
+<span class='fu'>epub_cat</span>(<span class='no'>d</span>, <span class='kw'>max_paragraphs</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>147</span>)</div><div class='output co'>#&gt;   "Welcome to my house. Come freely. Go safely; and leave something of the happiness you bring!" The strength of the handshake was so much akin to that which I had noticed in the driver, whose face I had not seen, that for a moment I doubted if it were not the same person to whom I was speaking; so to make sure, I said interrogatively:-
 #&gt; 
-#&gt;   
-#&gt; 
-#&gt;   Every attempt has been made to replicate the original as printed. Some typographical errors have been corrected; a list follows the text.
-#&gt; </div></pre>
+#&gt;   "Count Dracula?" He bowed in a courtly way as he replied:-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
