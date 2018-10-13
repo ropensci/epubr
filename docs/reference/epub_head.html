@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -177,14 +177,14 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>epub_head</span>(<span class='no'>file</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>)</pre>
+    <pre class="usage"><span class='fu'>epub_head</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>50</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>character, input EPUB filename. May be a vector.</p></td>
+      <th>x</th>
+      <td><p>a data frame returned by <code><a href='epub.html'>epub</a></code> or a character string giving the EPUB filename(s).</p></td>
     </tr>
     <tr>
       <th>n</th>
@@ -198,32 +198,36 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is a wrapper around <code>epub</code> that returns a simplified data frame of only the <code>section</code> and <code>text</code> columns, with the text included only up to the first <code>n</code> character.
+    <p>This function returns a simplified data frame of only the unnested <code>section</code> and <code>text</code> columns of a data frame returned by <code><a href='epub.html'>epub</a></code>, with the text included only up to the first <code>n</code> characters.
 This is useful for previewing the opening text of each e-book section to inspect for possible useful regular expression patterns to use for text-based section identification.
 For example, an e-book may not have meaningful section IDs that distinguish one type of book section from another, such as chapters from non-chapter sections,
 but the text itself may contain this information at or near the start of a section.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='epub_cat.html'>epub_cat</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='fu'>epub_head</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; # A tibble: 15 x 2
-#&gt;    section           text                                                 
-#&gt;    &lt;chr&gt;             &lt;chr&gt;                                                
-#&gt;  1 item6             The Project Gutenberg EBook of Dracula, by Bram St   
-#&gt;  2 item7             But I am not in heart to describe beauty, for when   
-#&gt;  3 item8             “ ‘Lucy, you are an honest-hearted girl, I know. I   
-#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day, 11 o’c"
-#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwo"
-#&gt;  6 item11            Once again we went through that ghastly operation.   
-#&gt;  7 item12            "CHAPTER XIVMINA HARKER’S JOURNAL\n23 September.—Jon"
-#&gt;  8 item13            "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT was jus"
-#&gt;  9 item14            “Thus when we find the habitation of this man-that   
-#&gt; 10 item15            “I see,” I said. “You want big things that you can   
-#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—The tim"
-#&gt; 12 item17            "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, Evening."
-#&gt; 13 item18            " \nLater.—Dr. Van Helsing has returned. He has got "
-#&gt; 14 item19            "End of the Project Gutenberg EBook of Dracula, by " 
-#&gt; 15 coverpage-wrapper ""                                                   </div></pre>
+#&gt;    section           text                                                   
+#&gt;    &lt;chr&gt;             &lt;chr&gt;                                                  
+#&gt;  1 item6             The Project Gutenberg EBook of Dracula, by Bram St     
+#&gt;  2 item7             But I am not in heart to describe beauty, for when     
+#&gt;  3 item8             "\" 'Lucy, you are an honest-hearted girl, I know. I"  
+#&gt;  4 item9             "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'c"  
+#&gt;  5 item10            "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwo"  
+#&gt;  6 item11            Once again we went through that ghastly operation.     
+#&gt;  7 item12            "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jon"  
+#&gt;  8 item13            "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was jus"  
+#&gt;  9 item14            "\"Thus when we find the habitation of this man-that"  
+#&gt; 10 item15            "\"I see,\" I said. \"You want big things that you can"
+#&gt; 11 item16            "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The tim"  
+#&gt; 12 item17            "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening."  
+#&gt; 13 item18            " \nLater.-Dr. Van Helsing has returned. He has got "  
+#&gt; 14 item19            "End of the Project Gutenberg EBook of Dracula, by "   
+#&gt; 15 coverpage-wrapper ""                                                     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -233,6 +237,8 @@ but the text itself may contain this information at or near the start of a secti
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

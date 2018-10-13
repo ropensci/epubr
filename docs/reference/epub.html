@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -178,7 +178,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+  <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"UTF-8"</span>, <span class='no'>...</span>)
 
 <span class='fu'>epub_meta</span>(<span class='no'>file</span>)
 
@@ -204,12 +204,16 @@
       <td><p>character, a regular expression pattern string to attempt distinguishing nested data frame rows of chapter text entries from other types of entries.</p></td>
     </tr>
     <tr>
+      <th>encoding</th>
+      <td><p>character, defaults to <code>"UTF-8"</code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>additional arguments. With the exception of passing <code>title</code> (see details), currently developmental/unsupported.</p></td>
     </tr>
     <tr>
       <th>exdir</th>
-      <td><p>character, extraction directory to place archive contents (files).</p></td>
+      <td><p>for <code>epub_unzip</code>, extraction directory to place archive contents (files). It will be created if necessary.</p></td>
     </tr>
     </table>
     
@@ -306,17 +310,17 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 #&gt;    &lt;chr&gt;          &lt;chr&gt;                                             &lt;int&gt; &lt;int&gt;
 #&gt;  1 item6          "The Project Gutenberg EBook of Dracula, by Bram~ 11252 60972
 #&gt;  2 item7          "But I am not in heart to describe beauty, for w~ 13740 71798
-#&gt;  3 item8          "“ ‘Lucy, you are an honest-hearted girl, I know~ 12356 65522
-#&gt;  4 item9          "CHAPTER VIIIMINA MURRAY’S JOURNAL\nSame day, 11~ 12042 62724
+#&gt;  3 item8          "\" 'Lucy, you are an honest-hearted girl, I kno~ 12356 65522
+#&gt;  4 item9          "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11~ 12042 62724
 #&gt;  5 item10         "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Ho~ 12599 66678
 #&gt;  6 item11         "Once again we went through that ghastly operati~ 11919 62949
-#&gt;  7 item12         "CHAPTER XIVMINA HARKER’S JOURNAL\n23 September.~ 12003 62234
-#&gt;  8 item13         "CHAPTER XVIDR. SEWARD’S DIARY—continued\nIT was~ 13812 72903
-#&gt;  9 item14         "“Thus when we find the habitation of this man-t~ 13201 69779
-#&gt; 10 item15         "“I see,” I said. “You want big things that you ~ 12706 66921
-#&gt; 11 item16         "CHAPTER XXIIIDR. SEWARD’S DIARY\n3 October.—The~ 11818 61550
-#&gt; 12 item17         "CHAPTER XXVDR. SEWARD’S DIARY\n11 October, Even~ 12989 68564
-#&gt; 13 item18         " \nLater.—Dr. Van Helsing has returned. He has ~  8356 43464
+#&gt;  7 item12         "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.~ 12003 62234
+#&gt;  8 item13         "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was~ 13812 72903
+#&gt;  9 item14         "\"Thus when we find the habitation of this man-~ 13201 69779
+#&gt; 10 item15         "\"I see,\" I said. \"You want big things that y~ 12706 66921
+#&gt; 11 item16         "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The~ 11818 61550
+#&gt; 12 item17         "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Even~ 12989 68564
+#&gt; 13 item18         " \nLater.-Dr. Van Helsing has returned. He has ~  8356 43464
 #&gt; 14 item19         "End of the Project Gutenberg EBook of Dracula, ~  2669 18541
 #&gt; 15 coverpage-wra~ ""                                                    0     0</div><div class='input'>
 <span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"title"</span>, <span class='st'>"creator"</span>), <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='st'>"^cov"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 3

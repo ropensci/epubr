@@ -70,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.4.1</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.5.0</span>
       </span>
     </div>
 
@@ -167,23 +167,41 @@
       <small>Source: <a href='https://github.com/ropensci/epubr/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="epubr-0-5-0" class="section level1">
+<h1 class="page-header">
+<a href="#epubr-0-5-0" class="anchor"></a>epubr 0.5.0<small> Unreleased </small>
+</h1>
+<ul>
+<li>Added <code>epub_cat</code> function for pretty printing to console as a helpful way to quickly inspect the parsed text in a more easily readable format than looking at the quoted strings in the table entries. <code>epub_cat</code> can take an EPUB filename string (may be a vector) as its first argument or a data frame already returned by <code>epub</code>.</li>
+<li>Like <code>epub_cat</code>, <code>epub_head</code> accepts EPUB character filenames or now also a data frame already returned by <code>epub</code> based on those files. Because of this change, the first argument has been renamed from <code>file</code> to <code>x</code>.</li>
+<li>Added <code>encoding</code> argument to <code>epub</code> function, defaulting to UTF-8.
+<ul>
+<li>This helps significantly with reading EPUB archive files properly, e.g., providing ability to parse and substitute all the curly single and double quotes, apostrophes, various forms of hyphens and ellipses.</li>
+<li>Previously, these were not substituted (e.g., replacing curly quotes with straight quotes), but attempting to do so would have failed anyway because they were not initially read correctly due to the lack of encoding specification.</li>
+<li>Now non-standard characters are more likely to be read correctly, and those mentioned above are substituted with standard versions. If necessary, the encoding can be changed from UTF-8 via the new argument.</li>
+<li>It appears that the EPUB format <em>requires</em> UTF encoding. Currently the only permissible option other than UTF-8 is UTF-16. This keeps things very simple and straightforward. Users should not encounter EPUB files in other encodings.</li>
+</ul>
+</li>
+<li>Added unit tests and updated documentation.</li>
+</ul>
+</div>
     <div id="epubr-0-4-1" class="section level1">
 <h1 class="page-header">
-<a href="#epubr-0-4-1" class="anchor"></a>epubr 0.4.1<small> Unreleased </small>
+<a href="#epubr-0-4-1" class="anchor"></a>epubr 0.4.1<small> 2018-08-01 </small>
 </h1>
 <ul>
 <li>Improved handling of errors and better messages.</li>
 <li>More robust handling of <code>title</code> field when missing, redundant or requiring remapping/renaming. All outputs of <code>epub</code> now include a <code>title</code> as well as <code>data</code> field, even if the e-book does not have a metadata field named <code>title</code>.</li>
 <li>Minor improvements to e-book section handling.</li>
-<li>Added <code>epub_head</code> function for preivewing the opening text of each e-book section.</li>
+<li>Added <code>epub_head</code> function for previewing the opening text of each e-book section.</li>
 <li>Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.</li>
 <li>Minor fixes.</li>
 <li>Updated documentation, vignette, unit tests.</li>
 </ul>
 </div>
-    <div id="epubr-0-4-0-release-date-2018-05-30" class="section level1">
+    <div id="epubr-0-4-0" class="section level1">
 <h1 class="page-header">
-<a href="#epubr-0-4-0-release-date-2018-05-30" class="anchor"></a>epubr 0.4.0 (Release date: 2018-05-30)<small> 2018-05-30 </small>
+<a href="#epubr-0-4-0" class="anchor"></a>epubr 0.4.0<small> 2018-05-30 </small>
 </h1>
 <ul>
 <li>Enhanced function documentation details.</li>
@@ -233,8 +251,9 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#epubr-0-5-0">0.5.0</a></li>
         <li><a href="#epubr-0-4-1">0.4.1</a></li>
-        <li><a href="#epubr-0-4-0-release-date-2018-05-30">0.4.0</a></li>
+        <li><a href="#epubr-0-4-0">0.4.0</a></li>
         <li><a href="#epubr-0-3-0">0.3.0</a></li>
         <li><a href="#epubr-0-2-0">0.2.0</a></li>
         <li><a href="#epubr-0-1-0">0.1.0</a></li>
