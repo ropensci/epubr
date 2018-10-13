@@ -7,7 +7,7 @@ Description: Provides functions supporting the reading and parsing of internal e
     EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. 
     However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. 
     Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like 'tm' or 'qdap'.
-Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@alaska.edu", role = c("aut", "cre"))
+Authors@R: person("Matthew", "Leonawicz", email = "matt_leonawicz@esource.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
