@@ -48,7 +48,7 @@ epub_head <- function(x, n = 50){
 #' @examples
 #' file <- system.file("dracula.epub", package = "epubr")
 #' d <- epub(file)
-#' epub_cat(d, max_paragraphs = 3)
+#' epub_cat(d, max_paragraphs = 2, skip = 147)
 epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, paragraph_indent = 2,
                      section_sep = "====", book_sep = "====\n===="){
   if(inherits(x, "character")) x <- epub(x)

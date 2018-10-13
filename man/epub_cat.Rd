@@ -38,7 +38,7 @@ To print everything in \code{x}, set \code{max_paragraphs = NULL}.
 \examples{
 file <- system.file("dracula.epub", package = "epubr")
 d <- epub(file)
-epub_cat(d, max_paragraphs = 3)
+epub_cat(d, max_paragraphs = 2, skip = 147)
 }
 \seealso{
 \code{\link{epub_head}}
