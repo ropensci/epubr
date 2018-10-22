@@ -2,12 +2,12 @@
 
 This is an update release submission. In this version I have:
 
-* Removed R version from Depends field of DESCRIPTION. Package Imports that necessitated a higher R version were previously removed.
-* Updated functions and other minor fixes and documentation updates.
+* Changed author/maintainer email address.
+* Added functionality and improvements to the epub parser.
 
 ## Test environments
 * local Windows 10 install, R 3.5.1
-* ubuntu 14.04 (on travis-ci), R 3.5.0
+* ubuntu 14.04 (on travis-ci), R 3.5.1
 * win-builder (devel and release)
 
 ## R CMD check results
