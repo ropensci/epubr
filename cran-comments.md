@@ -14,7 +14,7 @@ This is an update release submission. In this version I have:
 
 0 errors | 0 warnings | 1 note
 
-* Mainter email change
+* Maintainer email change
 
 ## Downstream dependencies
 
