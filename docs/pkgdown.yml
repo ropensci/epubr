@@ -4,6 +4,6 @@ pkgdown_sha: ~
 articles:
   epubr: epubr.html
 urls:
-  reference: http://ropensci.github.io//reference
-  article: http://ropensci.github.io//articles
+  reference: http://ropensci.github.io/epubr//reference
+  article: http://ropensci.github.io/epubr//articles
 
