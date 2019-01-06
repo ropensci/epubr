@@ -13,10 +13,20 @@ reference:
   contents:
   - epubr
 - title: Parse EPUB files
+  desc: "Inspecting and reading EPUB text and metadata."
   contents:
   - epub
   - epub_head
   - epub_cat
+- title: Restructure parsed EPUB text
+  desc: "Working with problematic EPUB formatting."
+  contents:
+  - epub_recombine
+  - epub_reorder
+  - epub_sift
+- title: Other functions
+  contents:
+  - count_words
 
 navbar:
   type: inverse

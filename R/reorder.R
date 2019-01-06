@@ -1,0 +1,42 @@
+#' Reorder sections
+#'
+#' Reorder text sections in an e-book based on a user-provided function.
+#'
+#' Many e-books have chronologically ordered sections based on quality metadata.
+#' This results in properly book sections in the nested data frame.
+#' However, some poorly formatted e-books have their internal sections occur in an arbitrary order.
+#' This can be frustrating to work with when doing text analysis on each section and where order matters.
+#'
+#' This function addresses this case by reordering the text sections in the nested data frame based on a user-provided function that re-indexes the data frame rows based on their content.
+#' In general, the approach is to find something in the content of each section that describes the section order.
+#' For example, \code{epub_recombine} can use a regular expression to identify chapters.
+#' Taking this a step further, \code{epub_reorder} can use a function that works with the same information to reorder the rows.
+#'
+#' It is enough in the former case to identify where in the text the pattern occurs. There is no need to extract numeric ordering from it.
+#' The latter takes more effort. In the example EPUB file included in \code{epubr}, chapters can be identified using a pattern of the word CHAPTER in capital letters followed by a space and then some Roman numerals.
+#' The user must provide a function that would parse the Roman numerals in this pattern so that the rows of the data frame can be reordered properly.
+#'
+#' @param data a data frame created by \code{epub}.
+#' @param .f a scalar function to determine a single row index based on a matched regular expression. It must take two strings, the text and the pattern, and return a single number. See examples.
+#' @param pattern regular expression passed to \code{.f}.
+#'
+#' @return a data frame
+#' @export
+#'
+#' @examples
+#' file <- system.file("dracula.epub", package = "epubr")
+#' x <- epub(file) # parse entire e-book
+#' x <- epub_recombine(x, "CHAPTER [IVX]+", sift = list(n = 1000)) # clean up
+#'
+#' library(dplyr)
+#' set.seed(1)
+#' x$data[[1]] <- sample_frac(x$data[[1]]) # randomize rows for example
+#' x$data[[1]]
+#'
+#' f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\1", x)))
+#' x <- epub_reorder(x, f, "^CHAPTER ([IVX]+).*")
+#' x$data[[1]]
+epub_reorder <- function(data, .f, pattern){
+  data$data <- lapply(data$data, function(x, p) dplyr::slice(x, order(.f(.data[["text"]], p = pattern))))
+  data
+}

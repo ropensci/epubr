@@ -90,6 +90,39 @@ epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, pa
   invisible()
 }
 
+#' Word count
+#'
+#' Count the number of words in a string.
+#'
+#' This function estimates the number of words in strings. Words are first separated using \code{break_pattern}.
+#' Then the resulting character vector elements are counted, including only those that are matched by \code{word_pattern}.
+#' The approach taken is meant to be simple and flexible.
+#'
+#' \code{epub} uses this function internally to estimate the number of words for each e-book section alongside the use of \code{nchar} for counting individual characters.
+#' It can be used directly on character strings and is convenient for applying with different regular expression pattern arguments as needed.
+#'
+#' These two arguments are provided for control, but the defaults are likely good enough.
+#' By default, strings are split only on spaces and new line characters.
+#' The "words" that are counted in the resulting vector are those that contain any alphanumeric characters or the ampersand.
+#' This means for example that hyphenated words, acronyms and numbers displayed with digits, are all counted as words.
+#' The presence of any other characters does not negate that a word has been found.
+#'
+#' @param x character, a string containing words to be counted. May be a vector.
+#' @param word_pattern character, regular expression to match words. Elements not matched are not counted.
+#' @param break_pattern character, regular expression to split a string between words.
+#'
+#' @return an integer
+#' @export
+#'
+#' @examples
+#' x <- " This   sentence will be counted to have:\n\n10 (ten) words."
+#' count_words(x)
+count_words <- function(x, word_pattern = "[A-Za-z0-9&]", break_pattern = " |\n"){
+  if(!inherits(x, "character")) stop("`x` must be character.")
+  if(!length(x)) return(0L)
+  sapply(strsplit(x, break_pattern), function(x) sum(grepl(word_pattern, x)))
+}
+
 .pretty_text <- function(x, paragraph_spacing = 1, paragraph_indent = 2){
   p1 <- if(paragraph_spacing < 1) "" else paste0(rep("\n", paragraph_spacing), collapse = "")
   p2 <- if(paragraph_indent < 1) "" else paste0(rep(" ", paragraph_indent), collapse = "")
@@ -131,16 +164,16 @@ epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, pa
       fix_idx <- rev(nrow(x) - which(duplicated(rev(x$section))) + 1)
       x$section[fix_idx] <- paste0("x", seq_along(fix_idx))
     }
-    double_check <- unlist(purrr::map(paste0("Chapter ", numnames0, "(\\.|\\s|\\n|)"), ~{
-      a <- grep(.x, opening)
+    double_check <- unlist(lapply(paste0("Chapter ", numnames0, "(\\.|\\s|\\n|)"), function(x){
+      a <- grep(x, opening)
       if(!length(a)) return()
       if(length(a) == 1) a else a[which.min(nchar(a))]
     }))
     if(length(double_check)){
-      idx0 <- which(grepl("ch\\d\\d", x$section) & grepl("chapter", tolower(opening)) == TRUE)
+      idx0 <- which(grepl("ch\\d+", x$section) & grepl("chapter", tolower(opening)) == TRUE)
       if(length(idx0) != length(double_check)) idx0 <- rep(idx0, length = length(double_check))
       x[idx0, ] <- x[double_check, ]
-      x$section[idx] <- paste0("ch", formatC(1:sum(idx), width = 2, flag = "0"))
+      x$section[idx] <- paste0("ch", formatC(1:sum(idx), width = max(2, nchar(sum(idx))), flag = "0"))
     }
   }
   list(d, x)

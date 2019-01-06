@@ -1,6 +1,6 @@
 #' Extract and read EPUB e-books
 #'
-#' Read EPUB format e-books into a data frame using \code{epub} or extract epub archive files for direct use with \code{epub_unzip}.
+#' Read EPUB format e-books into a data frame using \code{epub} or extract EPUB archive files for direct use with \code{epub_unzip}.
 #'
 #' @details
 #' The primary function here is \code{epub}. It parses EPUB file metadata and textual content into a data frame.
@@ -62,11 +62,11 @@
 #' @param ... additional arguments. With the exception of passing \code{title} (see details), currently developmental/unsupported.
 #' @param exdir for \code{epub_unzip}, extraction directory to place archive contents (files). It will be created if necessary.
 #'
-#' @return \code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an epub file archive.
+#' @return \code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an EPUB file archive.
 #' @export
 #'
 #' @examples
-#' # Use a local example epub file included in the package
+#' # Use a local example EPUB file included in the package
 #' file <- system.file("dracula.epub", package = "epubr")
 #' bookdir <- file.path(tempdir(), "dracula")
 #' epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files
@@ -89,15 +89,16 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
     fields <- fields[fields != title]
   }
   add_pattern <- dots$add_pattern # nolint
-  d <- purrr::map_dfr(file, ~.epub_read(.x, fields = fields, drop_sections = drop_sections,
-                                        chapter_pattern = chapter_pattern, add_pattern = add_pattern,
-                                        clean = dots$clean, title = title, encoding = encoding))
+  d <- dplyr::bind_rows(
+    lapply(file, .epub_read, fields = fields, drop_sections = drop_sections, chapter_pattern = chapter_pattern,
+           add_pattern = add_pattern, clean = dots$clean, title = title, encoding = encoding)
+  )
   path <- file
   if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
   d <- tidyr::unnest(d)
   if("nchap" %in% names(d)) d <- dplyr::mutate(d, is_chapter = grepl("^ch\\d\\d$", .data[["section"]]))
   d <- dplyr::mutate(d, nchar = nchar(.data[["text"]]),
-                     nword = purrr::map_int(strsplit(.data[["text"]], " "), length))
+                     nword = count_words(.data[["text"]]))
   if(inherits(drop_sections, "character")) d <- dplyr::filter(d, !grepl(drop_sections, .data[["section"]]))
   nested <- c("section", "text")
   if("is_chapter" %in% names(d)) nested <- c(nested, "is_chapter")
@@ -117,13 +118,12 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
 #' @rdname epub
 epub_meta <- function(file){
   .check_file(file)
-  purrr::map_dfr(file, ~{
-    exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(.x))))
-    x <- .epub_meta(epub_unzip(.x, exdir), file)
+  dplyr::bind_rows(lapply(file, function(x){
+    exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(x))))
+    x <- .epub_meta(epub_unzip(x, exdir), file)
     unlink(exdir, recursive = TRUE, force = TRUE)
     x
-  }
-  )
+  }))
 }
 
 #' @export
@@ -187,14 +187,14 @@ epub_unzip <- function(file, exdir = tempdir()){
                   chapter_pattern = chapter_pattern, ...)
   files <- files[grep("html$|htm$", files)]
   files <- files[match(attr(d, "section href"), basename(files))]
-  clean <- list(...)$clean # nolint
+  clean <- list(...)$clean
   x <- dplyr::data_frame(
-    title = d$title, section = attr(d, "section order"), text = purrr::map_chr(files, ~{
+    title = d$title, section = attr(d, "section order"), text = sapply(files, function(i){
       if(use_readr){
-        con <- file(.x, "rb", encoding = encoding)
+        con <- file(i, "rb", encoding = encoding)
         x <- readr::read_lines(con)
       } else {
-        con <- file(.x, "r", encoding = encoding)
+        con <- file(i, "r", encoding = encoding)
         x <- readLines(con, warn = FALSE)
       }
       x <- paste0(x, collapse = "\n") %>% .clean(clean)

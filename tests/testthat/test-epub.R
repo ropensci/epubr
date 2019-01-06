@@ -11,9 +11,9 @@ test_that("epub unzipped as expected", {
 test_that("epub and epub_meta read as expected", {
   err1 <- "File not found."
   err2 <- "All files must end in `.epub`."
-  f <- c(epub, epub_meta, epub_unzip)
-  purrr::walk(f, ~expect_error(.x("X"), err1))
-  purrr::walk(f, ~expect_error(.x(system.file("text.xml", package = "epubr")), err2))
+  funs <- c(epub, epub_meta, epub_unzip)
+  for(f in funs) expect_error(f("X"), err1)
+  for(f in funs) expect_error(f(system.file("text.xml", package = "epubr")), err2)
 
   x <- epub_meta(file)
   expect_identical(names(x), c("rights", "identifier", "creator", "title", "language", "subject", "date", "source"))
@@ -74,7 +74,7 @@ test_that("epub_head returns as expected", {
   expect_equal(dim(x), c(15, 2))
 })
 
-test_that("epub_head returns as expected", {
+test_that("epub_cat returns as expected", {
   x <- epub(file)
   x1 <- capture.output(epub_cat(file))
   x2 <- capture.output(y <- epub_cat(x))
@@ -85,4 +85,13 @@ test_that("epub_head returns as expected", {
   expect_equal(y, 4623)
 
   expect_message(epub_cat(x, skip = 1e5), "`skip` is too large. All text skipped.")
+})
+
+test_that("count_words returns as expected", {
+  x <- " This   sentence will be counted to have:\n\n10 (ten) words."
+  y <- ".$/ *#a1 23b :5;-6 a-b\n\nc"
+  expect_identical(count_words(x), 10L)
+  expect_identical(count_words(c(x, "a", y, "")), c(10L, 1L, 5L, 0L))
+  expect_identical(count_words(character(0)), 0L)
+  expect_error(count_words(5), "`x` must be character.")
 })

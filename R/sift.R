@@ -1,0 +1,35 @@
+#' Sift EPUB sections
+#'
+#' Sift out EPUB sections that have suspiciously low word or character count.
+#'
+#' This function is like a sieve that lets small section rows fall through.
+#' Choose the minimum number of words or characters to accept as a meaningful section in the e-book worth retaining in the nested data frame, e.g., book chapters.
+#' Data frame rows pertaining to smaller sections are dropped.
+#'
+#' This function is helpful for isolating meaningful content by removing extraneous e-book sections that may be difficult to remove by other methods when working with poorly formatted e-books.
+#' The EPUB file included in \code{epubr} is a good example of this. It does not contain meaningful section identifiers in its metadata.
+#' This creates a need to restructure the text table after reading it with \code{epub} by subsequently calling \code{epub_recombine}.
+#' However, some unavoidable ambiguity in this leads to many small sections appearing from the table of contents.
+#' These can then be dropped with \code{epub_sift}. See a more comprehensive in the \code{\link{epub_recombine}} documentation.
+#' A simpler example is shown below.
+#'
+#' @param data a data frame created by \code{epub}.
+#' @param n integer, minimum number of words or characters to retain a section.
+#' @param type character, \code{"word"} or \code{"character"}.
+#'
+#' @return a data frame
+#' @export
+#' @seealso \code{\link{epub_recombine}}
+#'
+#' @examples
+#' file <- system.file("dracula.epub", package = "epubr")
+#' x <- epub(file) # parse entire e-book
+#' x$data[[1]]
+#'
+#' x <- epub_sift(x, n = 3000) # drops last two sections
+#' x$data[[1]]
+epub_sift <- function(data, n, type = c("word", "char")){
+  type <- paste0("n", match.arg(type))
+  data$data <- lapply(data$data, function(x) dplyr::filter(x, .data[[type]] >= n))
+  data
+}
