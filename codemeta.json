@@ -5,19 +5,19 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "epubr",
-  "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, \n    in completely general form, resulting in a singular, consistently formatted output containing all the same variables.\n    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary e-books. \n    However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. \n    Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like 'tm' or 'qdap'.",
+  "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. \n    E-book formatting is not completely standardized across all literature. \n    It can be challenging to curate parsed e-book content across an arbitrary collection of e-books \n    perfectly and in completely general form, to yield a singular, consistently formatted output. \n    Many EPUB files do not even contain all the same pieces of information in their respective metadata. \n    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. \n    However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. \n    There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with 'epubr'. \n    Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. \n    Substantive changes are expected to be performed subsequently by the user as part of their text analysis. \n    Additional text cleaning can be performed at the user's discretion, such as with functions from packages like 'tm' or 'qdap'.",
   "name": "epubr: Read EPUB File Metadata and Text",
   "codeRepository": "https://github.com/ropensci/epubr",
   "issueTracker": "https://github.com/ropensci/epubr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.4.1",
+  "version": "0.6.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.1",
+    "version": "3.5.2",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.1 (2018-07-02)",
+  "runtimePlatform": "R version 3.5.2 (2018-12-20)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -29,7 +29,8 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "mfleonawicz@alaska.edu"
+      "email": "matt_leonawicz@esource.com",
+      "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
   "maintainer": [
@@ -37,7 +38,8 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "mfleonawicz@alaska.edu"
+      "email": "matt_leonawicz@esource.com",
+      "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
   "softwareSuggestions": [
@@ -165,18 +167,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "purrr",
-      "name": "purrr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=purrr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
       "provider": {
@@ -190,7 +180,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "412.367KB",
+  "fileSize": "476.69KB",
   "contIntegration": [
     "https://travis-ci.org/ropensci/epubr",
     "https://ci.appveyor.com/project/leonawicz/epubr",
@@ -208,6 +198,7 @@
     "rstats",
     "r-package",
     "epub",
-    "epub-format"
+    "epub-format",
+    "peer-reviewed"
   ]
 }
