@@ -29,10 +29,10 @@ epub_unzip(file, exdir = tempdir())
 \item{exdir}{for \code{epub_unzip}, extraction directory to place archive contents (files). It will be created if necessary.}
 }
 \value{
-\code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an epub file archive.
+\code{epub} returns a data frame. \code{epub_unzip} returns nothing but extracts files from an EPUB file archive.
 }
 \description{
-Read EPUB format e-books into a data frame using \code{epub} or extract epub archive files for direct use with \code{epub_unzip}.
+Read EPUB format e-books into a data frame using \code{epub} or extract EPUB archive files for direct use with \code{epub_unzip}.
 }
 \details{
 The primary function here is \code{epub}. It parses EPUB file metadata and textual content into a data frame.
@@ -87,7 +87,7 @@ You do not need to use \code{epub_unzip} directly prior to using these other fun
 }
 }
 \examples{
-# Use a local example epub file included in the package
+# Use a local example EPUB file included in the package
 file <- system.file("dracula.epub", package = "epubr")
 bookdir <- file.path(tempdir(), "dracula")
 epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files
