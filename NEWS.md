@@ -1,3 +1,14 @@
+# epubr 0.6.0
+
+* Added `count_words` helper function.
+* Improved word count accuracy in `epub`. Now also splitting words on new line characters rather than only on spaces. Now also ignoring vector elements in the split result that are most likely to not be words, such as stranded pieces of punctuation.
+* Added `epub_recombine` for breaking apart and recombining text sections into new data frame rows using alternative breaks based on a regular expression pattern.
+* Added `epub_sift` function for filtering out small text sections based on low word or character count. This function can also be used directly inside calls to `epub_recombine` through an argument list.
+* Added `epub_reorder` for reordering a specified (by index) subset of text section data frame rows according to a text parsing function (several template functions are available for convenient use to address common cases).
+* Refactored code to remove `purrr` dependency.
+* Added unit tests.
+* Updated function documentation, readme and vignette.
+
 # epubr 0.5.0
 
 * Added `epub_cat` function for pretty printing to console as a helpful way to quickly inspect the parsed text in a more easily readable format than looking at the quoted strings in the table entries. `epub_cat` can take an EPUB filename string (may be a vector) as its first argument or a data frame already returned by `epub`.

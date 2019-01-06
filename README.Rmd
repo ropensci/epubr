@@ -14,30 +14,33 @@ library(epubr)
 
 # epubr <img src="https://github.com/ropensci/epubr/blob/master/data-raw/epubr.png?raw=true" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
+**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
+<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a> [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
 <br/>
-**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
 [![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
 [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
 [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
 [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr)
+<br/>
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
 [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
 
-[![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
 
 ## Read EPUB files in R
 
-Read metadata and textual content of epub files. 
+Read EPUB text and metadata. 
 
-`epubr` provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. 
+The `epubr` package provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. 
 
-E-book formatting is non-standard enough across all literature that no function can curate parsed e-book content across an arbitrary collection of e-books, in completely general form, resulting in a singular, consistently formatted output containing all the same variables.
+E-book formatting is not completely standardized across all literature. It can be challenging to curate parsed e-book content across an arbitrary collection of e-books perfectly and in completely general form, to yield a singular, consistently formatted output. Many EPUB files do not even contain all the same pieces of information in their respective metadata.
 
 EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package.
-Text is read 'as is'. Additional text cleaning should be performed by the user at their discretion, such as with functions from packages like `tm` or `qdap`.
+There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with `epubr`.
+
+Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. Substantive changes are expected to be performed subsequently by the user as part of their text analysis. Additional text cleaning can be performed at the user's discretion, such as with functions from packages like `tm` or `qdap`.
 
 ## Installation
 
@@ -60,7 +63,7 @@ Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of 
 The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters.
 The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
 
-These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters.
+These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the [package vignette](https://ropensci.github.io/epubr/articles/epubr.html) for examples on how to further improve the structure of an e-book with formatting like this.
 
 ```{r ex}
 file <- system.file("dracula.epub", package = "epubr")
