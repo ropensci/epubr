@@ -311,7 +311,7 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt;  9 ch08    "CHAPTER VIII\nMina Murray's Journal\n84\n"              6    38</span>
 <span class="co">#&gt; 10 ch09    "CHAPTER IX\nMina Murray's Journal\n98\n"                6    36</span>
 <span class="co">#&gt; # ... with 45 more rows</span></code></pre></div>
-<p>But this is not quite as expected. There should be 27 chapters, not 54. What was not apparent when looking at the data frame above is that the same pattern also appears in the first section where every chapter is listed the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 “chapters” represent the table of contents being split on each chapter ID. These should be removed.</p>
+<p>But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 “chapters” represent the table of contents being split on each chapter ID. These should be removed.</p>
 <p>An easy way to do this is with <code>epub_sift</code>, which sifts, or filters out, small word- or character-count sections from the nested data frame. It’s a simple sieve and you can control the size of the holes with <code>n</code>. You can choose <code>type = "word"</code> (default) or <code>type = "character"</code>. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
 x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_recombine.html">epub_recombine</a></span>(x, pat) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/epub_sift.html">epub_sift</a></span>(<span class="dt">n =</span> <span class="dv">200</span>)
@@ -329,14 +329,14 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt;  2 ch29    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span>
 <span class="co">#&gt;  3 ch30    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span>
 <span class="co">#&gt;  4 ch31    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span>
-<span class="co">#&gt;  5 ch32    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span>
+<span class="co">#&gt;  5 ch32    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18004</span>
 <span class="co">#&gt;  6 ch33    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span>
 <span class="co">#&gt;  7 ch34    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span>
 <span class="co">#&gt;  8 ch35    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span>
 <span class="co">#&gt;  9 ch36    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span>
 <span class="co">#&gt; 10 ch37    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span>
 <span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
-<p>This is better, but note that sifting the table sections in this case results in a need to re-apply <code>epub_recombine</code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code>epub_recombine</code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code>epub_recombine</code>.</p>
+<p>This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply <code>epub_recombine</code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code>epub_recombine</code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code>epub_recombine</code>, which is applied recursively.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># epub_recombine(x, pat) %&gt;% epub_sift(n = 200) %&gt;% epub_recombine(pat)</span>
 x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_recombine.html">epub_recombine</a></span>(x, pat, <span class="dt">sift =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">n =</span> <span class="dv">200</span>))
 x2
@@ -349,16 +349,16 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt; # A tibble: 27 x 4</span>
 <span class="co">#&gt;    section text                                                 nword nchar</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30603</span>
-<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28463</span>
-<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29779</span>
-<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30196</span>
-<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18006</span>
-<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29146</span>
-<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29913</span>
-<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32597</span>
-<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30130</span>
-<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30731</span>
+<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span>
+<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span>
+<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span>
+<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span>
+<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span>
+<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span>
+<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span>
+<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span>
+<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span>
+<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span>
 <span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
 </div>
 <div id="reorder-sections-based-on-pattern-in-text" class="section level3">
@@ -372,16 +372,16 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt; # A tibble: 27 x 4</span>
 <span class="co">#&gt;    section text                                                 nword nchar</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32597</span>
-<span class="co">#&gt;  2 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30731</span>
-<span class="co">#&gt;  3 ch15    "CHAPTER XVDR. SEWARD'S DIARY-continued.\nFOR a whi~  5803 29706</span>
-<span class="co">#&gt;  4 ch22    "CHAPTER XXIIJONATHAN HARKER'S JOURNAL\n3 October.-~  5450 28082</span>
-<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18006</span>
-<span class="co">#&gt;  6 ch20    "CHAPTER XXJONATHAN HARKER'S JOURNAL\n1 October, ev~  5890 31152</span>
-<span class="co">#&gt;  7 ch24    "CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN ~  6272 32066</span>
-<span class="co">#&gt;  8 ch14    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jo~  6411 32531</span>
-<span class="co">#&gt;  9 ch12    "CHAPTER XIIDR. SEWARD'S DIARY\n18 September.-I dro~  7285 37869</span>
-<span class="co">#&gt; 10 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28463</span>
+<span class="co">#&gt;  1 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span>
+<span class="co">#&gt;  2 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span>
+<span class="co">#&gt;  3 ch15    "CHAPTER XVDR. SEWARD'S DIARY-continued.\nFOR a whi~  5803 29705</span>
+<span class="co">#&gt;  4 ch22    "CHAPTER XXIIJONATHAN HARKER'S JOURNAL\n3 October.-~  5450 28081</span>
+<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span>
+<span class="co">#&gt;  6 ch20    "CHAPTER XXJONATHAN HARKER'S JOURNAL\n1 October, ev~  5890 31151</span>
+<span class="co">#&gt;  7 ch24    "CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN ~  6272 32065</span>
+<span class="co">#&gt;  8 ch14    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jo~  6411 32530</span>
+<span class="co">#&gt;  9 ch12    "CHAPTER XIIDR. SEWARD'S DIARY\n18 September.-I dro~  7285 37868</span>
+<span class="co">#&gt; 10 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span>
 <span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
 <p>It is clear above that sections are now out of order. It is common enough to load poorly formatted EPUB files and yield this type of result. If all you care about is the text in its entirely, this does not matter, but if your analysis involves trends over the course of a book, this is problematic.</p>
 <p>For this book, you need a function that will convert an annoying Roman numeral to an integer. You already have the pattern for finding the relevant information in each text section. You only need to tweak it for proper substitution. Here is an example:</p>
@@ -394,16 +394,16 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <span class="co">#&gt; # A tibble: 27 x 4</span>
 <span class="co">#&gt;    section text                                                 nword nchar</span>
 <span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30603</span>
-<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28463</span>
-<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29779</span>
-<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30196</span>
-<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18006</span>
-<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29146</span>
-<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29913</span>
-<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32597</span>
-<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30130</span>
-<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30731</span>
+<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span>
+<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span>
+<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span>
+<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span>
+<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span>
+<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span>
+<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span>
+<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span>
+<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span>
+<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span>
 <span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
 <p>It is important that this is done on a nested data frame that has already been cleaned to the point of not containing extraneous rows that cannot be matched by the desired pattern. If they cannot be matched, then it is unknown where those rows should be placed relative to the others.</p>
 <p>If sections are both out of order and use arbitrary break points, it would be necessary to reorder them before you split and recombine. If you split and recombine first, this would yield new sections that contain text from different parts of the e-book. However, the two are not likely to occur together; in fact it may be impossible for an EPUB file to be structured this way. In developing <code>epubr</code>, no such examples have been encountered. In any event, reordering out of order sections essentially requires a human-identifiable pattern near the beginning of each section text string, so it does not make sense to perform this operation unless the sections have meaningful break points.</p>
