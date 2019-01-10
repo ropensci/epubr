@@ -1,20 +1,19 @@
+## Test environments
+
+* local Windows 10 install, R 3.5.2
+* ubuntu 14.04 (on travis-ci), R 3.5.2
+* win-builder (devel and release)
+* R-hub (rhub::check_for_cran)
+
 ## Update release
 
 This is an update release submission. In this version I have:
 
-* Changed author/maintainer email address.
-* Added functionality and improvements to the epub parser.
-
-## Test environments
-* local Windows 10 install, R 3.5.1
-* ubuntu 14.04 (on travis-ci), R 3.5.1
-* win-builder (devel and release)
+* Added functionality, documentation, tests.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* Maintainer email change
+0 errors | 0 warnings | 0 notes
 
 ## Downstream dependencies
 
