@@ -444,11 +444,23 @@ x2<span class="op">$</span>data[[<span class="dv">1</span>]]
 <div id="other-functions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#other-functions" class="anchor"></a>Other functions</h2>
+<div id="word-count" class="section level3">
+<h3 class="hasAnchor">
+<a href="#word-count" class="anchor"></a>Word count</h3>
 <p>The helper function <code>count_words</code> provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by <code>epub</code> and <code>epub_recombine</code>. It is exported so that it can be used directly.</p>
 <p>By default, <code>count_words</code> splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> " This   sentence will be counted to have:</span><span class="ch">\n\n</span><span class="st">10 (ten) words."</span>
 <span class="kw"><a href="../reference/count_words.html">count_words</a></span>(x)
 <span class="co">#&gt; [1] 10</span></code></pre></div>
+</div>
+<div id="inspection" class="section level3">
+<h3 class="hasAnchor">
+<a href="#inspection" class="anchor"></a>Inspection</h3>
+<p>Helper functions for inspecting the text in the R console include <code>epub_head</code> and <code>epub_cat</code>.</p>
+<p><code>epub_head</code> provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to <code>n = 50</code>).</p>
+<p><code>epub_cat</code> can be used to <code>cat</code> the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.</p>
+<p>Both functions can take an EPUB filename or a data frame of an already loaded EPUB file as their first argument.</p>
+</div>
 </div>
   </div>
 
