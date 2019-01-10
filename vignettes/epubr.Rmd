@@ -126,7 +126,7 @@ x2
 x2$data[[1]]
 ```
 
-But this is not quite as expected. There should be 27 chapters, not 54. What was not apparent when looking at the data frame above is that the same pattern also appears in the first section where every chapter is listed the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 "chapters" represent the table of contents being split on each chapter ID. These should be removed.
+But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 "chapters" represent the table of contents being split on each chapter ID. These should be removed.
 
 An easy way to do this is with `epub_sift`, which sifts, or filters out, small word- or character-count sections from the nested data frame. It's a simple sieve and you can control the size of the holes with `n`. You can choose `type = "word"` (default) or `type = "character"`. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.
 
@@ -138,7 +138,7 @@ x2
 x2$data[[1]]
 ```
 
-This is better, but note that sifting the table sections in this case results in a need to re-apply `epub_recombine` because the sections we removed had nevertheless offset the chapter indexing. Another call to `epub_recombine` can be chained, but it may be more convenient to use the `sift` argument to `epub_recombine`.
+This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply `epub_recombine` because the sections we removed had nevertheless offset the chapter indexing. Another call to `epub_recombine` can be chained, but it may be more convenient to use the `sift` argument to `epub_recombine`, which is applied recursively.
 
 ```{r recombine3}
 #epub_recombine(x, pat) %>% epub_sift(n = 200) %>% epub_recombine(pat)
