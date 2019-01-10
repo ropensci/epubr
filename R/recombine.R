@@ -61,6 +61,7 @@ epub_recombine <- function(data, pattern, sift = NULL){
   p <- paste0("(", pattern, ")")
   text <- paste0(data$text, collapse = "\n")
   text <- strsplit(gsub(p, "__BREAK__\\1", text), "__BREAK__")[[1]]
+  text <- gsub("\\n\\n$", "\\n", text)
   section <- formatC(1:(length(text) - 1), width = max(2, nchar(length(text))), flag = "0")
   section <- c("prior", paste0("ch", section))
   dplyr::data_frame(section = section, text = text) %>%
