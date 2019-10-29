@@ -10,14 +10,14 @@
   "codeRepository": "https://github.com/ropensci/epubr",
   "issueTracker": "https://github.com/ropensci/epubr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.5.2",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.5.2 (2018-12-20)",
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -78,18 +78,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "lintr",
-      "name": "lintr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lintr"
     },
     {
       "@type": "SoftwareApplication",
@@ -155,6 +143,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "tibble",
+      "name": "tibble",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tibble"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
       "provider": {
@@ -180,13 +180,13 @@
   ],
   "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "477.012KB",
+  "fileSize": "477.439KB",
   "contIntegration": [
     "https://travis-ci.org/ropensci/epubr",
     "https://ci.appveyor.com/project/leonawicz/epubr",
     "https://codecov.io/gh/ropensci/epubr"
   ],
-  "relatedLink": "https://CRAN.R-project.org/package=epubr",
+  "relatedLink": ["https://CRAN.R-project.org/package=epubr", "https://docs.ropensci.org/eia"],
   "review": {
     "@type": "Review",
     "url": "https://github.com/ropensci/onboarding/issues/222",
@@ -200,5 +200,9 @@
     "epub",
     "epub-format",
     "peer-reviewed"
-  ]
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "developmentStatus": "http://www.repostatus.org/#active"
 }

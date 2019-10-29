@@ -13,7 +13,7 @@ globalVariables(c(".", ".data"))
 #' However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package.
 #' There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with \code{epubr}.
 #'
-#' Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes.
+#' Text is read as is for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes.
 #' Substantive changes are expected to be performed subsequently by the user as part of their text analysis.
 #' Additional text cleaning can be performed at the user's discretion, such as with functions from packages like \code{tm} or \code{qdap}.
 #'
