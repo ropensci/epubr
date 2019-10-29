@@ -7,27 +7,27 @@ output: github_document
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", fig.path = "man/figures/README-",
-  message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
+  message = FALSE, warning = FALSE, error = FALSE
 )
 library(epubr)
 ```
 
 # epubr <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
-**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
-<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a> [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr)
+**Author:** [Matthew Leonawicz](https://github.com/leonawicz/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
+<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>
 <br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
-[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
-[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
-[![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr)
-<br/>
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/ropensci/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
 [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
 
+[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
+[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
+[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
+[![Github Stars](https://img.shields.io/github/stars/ropensci/epubr.svg?style=social&label=Github)](https://github.com/ropensci/epubr)
 
 ## Read EPUB files in R
 
@@ -63,7 +63,7 @@ Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of 
 The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters.
 The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
 
-These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the [package vignette](https://ropensci.github.io/epubr/articles/epubr.html) for examples on how to further improve the structure of an e-book with formatting like this.
+These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the [package vignette](https://docs.ropensci.org/epubr/articles/epubr.html) for examples on how to further improve the structure of an e-book with formatting like this.
 
 ```{r ex}
 file <- system.file("dracula.epub", package = "epubr")
@@ -77,7 +77,7 @@ is_md <- knitr::opts_knit$get("rmarkdown.pandoc.to") == "markdown_github-ascii_i
 ```
 
 ```{r md_pkg_ref, echo = FALSE, results = "asis", eval = is_md}
-cat('## Reference\n####Documentation\n[Complete package reference and function documentation](https://ropensci.github.io/epubr/)\n\n')
+cat('## Reference\n####Documentation\n[Complete package reference and function documentation](https://docs.ropensci.org/epubr)\n\n')
 ```
 
 ## Related packages

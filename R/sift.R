@@ -30,6 +30,8 @@
 #' x$data[[1]]
 epub_sift <- function(data, n, type = c("word", "char")){
   type <- paste0("n", match.arg(type))
-  data$data <- lapply(data$data, function(x) dplyr::filter(x, .data[[type]] >= n))
+  data$data <- lapply(data$data, function(x){
+    dplyr::filter(x, .data[[type]] >= n)
+  })
   data
 }

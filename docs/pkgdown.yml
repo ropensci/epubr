@@ -1,9 +1,9 @@
-pandoc: 1.19.2.1
-pkgdown: 1.3.0
+pandoc: 2.7.2
+pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   epubr: epubr.html
 urls:
-  reference: http://ropensci.github.io/epubr/reference
-  article: http://ropensci.github.io/epubr/articles
+  reference: https://docs.ropensci.org/epubr/reference
+  article: https://docs.ropensci.org/epubr/articles
 

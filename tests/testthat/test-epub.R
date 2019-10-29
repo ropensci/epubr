@@ -4,7 +4,8 @@ file <- system.file("dracula.epub", package = "epubr")
 
 test_that("epub unzipped as expected", {
   epub_unzip(file)
-  expect_true(all(c("META-INF", "mimetype", "OEBPS") %in% list.files(tempdir())))
+  expect_true(all(c("META-INF", "mimetype", "OEBPS") %in%
+                    list.files(tempdir())))
   expect_equal(length(list.files(file.path(tempdir(), "OEBPS"))), 22)
 })
 
@@ -13,10 +14,12 @@ test_that("epub and epub_meta read as expected", {
   err2 <- "All files must end in `.epub`."
   funs <- c(epub, epub_meta, epub_unzip)
   for(f in funs) expect_error(f("X"), err1)
-  for(f in funs) expect_error(f(system.file("text.xml", package = "epubr")), err2)
+  for(f in funs) expect_error(f(system.file("text.xml", package = "epubr")),
+                              err2)
 
   x <- epub_meta(file)
-  expect_identical(names(x), c("rights", "identifier", "creator", "title", "language", "subject", "date", "source"))
+  expect_identical(names(x), c("rights", "identifier", "creator", "title",
+                               "language", "subject", "date", "source"))
   expect_equal(dim(x), c(1, 8))
 
   x <- epub(file)
@@ -27,13 +30,16 @@ test_that("epub and epub_meta read as expected", {
   expect_equal(dim(x), c(1, 3))
   expect_equal(dim(x$data[[1]]), c(14, 4))
 
-  x <- epub(file, fields = c("title", "creator", "file"), drop_sections = "^cov", add_pattern = "xyz")
+  x <- epub(file, fields = c("title", "creator", "file"),
+            drop_sections = "^cov", add_pattern = "xyz")
   expect_equal(dim(x), c(1, 4))
   expect_true("file" %in% names(x))
   expect_equal(dim(x$data[[1]]), c(14, 4))
 
-  f <- function() list(pattern = "Dracula", chapter_check = "Dracula", chapter_doublecheck = "Dracula")
-  x <- epub(file, fields = c("title", "creator", "file"), drop_sections = "^cov", add_pattern = f,
+  f <- function() list(pattern = "Dracula", chapter_check = "Dracula",
+                       chapter_doublecheck = "Dracula")
+  x <- epub(file, fields = c("title", "creator", "file"),
+            drop_sections = "^cov", add_pattern = f,
             chapter_pattern = "item\\d\\d")
   expect_equal(dim(x), c(1, 5))
   expect_true("file" %in% names(x))
@@ -44,12 +50,15 @@ test_that("epub and epub_meta read as expected", {
   expect_equal(dim(x$data[[1]]), c(15, 4))
 
 
-  x <- epub(file, fields = c("title", "creator", "file"), drop_sections = "^cov", chapter_pattern = "item\\d\\d")
+  x <- epub(file, fields = c("title", "creator", "file"),
+            drop_sections = "^cov", chapter_pattern = "item\\d\\d")
   expect_equal(dim(x), c(1, 5))
   expect_true("nchap" %in% names(x))
   expect_equal(x$nchap, 10)
-  expect_identical(x$data[[1]]$section, c(paste0("item", 6:9), paste0("ch0", 1:9), "ch10"))
-  expect_identical(x$data[[1]]$is_chapter, rep(c(FALSE, TRUE), times = c(4, 10)))
+  expect_identical(x$data[[1]]$section, c(paste0("item", 6:9),
+                                          paste0("ch0", 1:9), "ch10"))
+  expect_identical(x$data[[1]]$is_chapter,
+                   rep(c(FALSE, TRUE), times = c(4, 10)))
   expect_equal(dim(x$data[[1]]), c(14, 5))
 
   x <- epub(file, fields = c("title", "creator", "file"))
@@ -84,7 +93,8 @@ test_that("epub_cat returns as expected", {
   y <- length(capture.output(epub_cat(x, max_paragraphs = NULL, skip = 1)))
   expect_equal(y, 4623)
 
-  expect_message(epub_cat(x, skip = 1e5), "`skip` is too large. All text skipped.")
+  expect_message(epub_cat(x, skip = 1e5),
+                 "`skip` is too large. All text skipped.")
 })
 
 test_that("count_words returns as expected", {

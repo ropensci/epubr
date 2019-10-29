@@ -1,3 +1,7 @@
+# epubr 0.6.1
+
+* Fix warnings caused by updates to other packages like `tidyr`.
+
 # epubr 0.6.0
 
 * Added `count_words` helper function.

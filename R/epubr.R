@@ -21,5 +21,6 @@ globalVariables(c(".", ".data"))
 #' @name epubr
 NULL
 
+#' @importFrom tibble tibble
 #' @importFrom magrittr %>%
 NULL

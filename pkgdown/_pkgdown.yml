@@ -1,12 +1,8 @@
-url: http://ropensci.github.io/epubr
-
-template:
-  params:
-    ganalytics: UA-46129458-3
+url: https://docs.ropensci.org/epubr
 
 authors:
   Matthew Leonawicz:
-    href: http://leonawicz.github.io/
+    href: https://github.com/leonawicz/
 
 reference:
 - title: Package
@@ -31,25 +27,5 @@ reference:
 navbar:
   type: inverse
   right:
-    - text: "Online"
-      menu:
-        - text: "GitHub"
-          icon: fa-github fa-lg
-          href: https://github.com/leonawicz
-        - text: "Twitter"
-          icon: fa-twitter fa-lg
-          href: https://twitter.com/leonawicz
-        - text: "LinkedIn"
-          icon: fa-linkedin fa-lg
-          href: https://www.linkedin.com/in/leonawicz
-        - text: "YouTube"
-          icon: fa-youtube fa-lg
-          href: https://www.youtube.com/user/StatisticsWithR
-        - text: "Google+"
-          icon: fa-google-plus fa-lg
-          href: https://plus.google.com/+StatisticsWithR/posts
-        - text: "Blog"
-          icon: fa-pencil-square-o fa-lg
-          href: https://leonawicz.github.io/blog/
     - icon: fa-github fa-lg
       href: https://github.com/ropensci/epubr

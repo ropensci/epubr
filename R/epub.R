@@ -79,7 +79,8 @@
 #' x$data[[1]]
 #'
 #' epub(file, fields = c("title", "creator"), drop_sections = "^cov")
-epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NULL, encoding = "UTF-8", ...){
+epub <- function(file, fields = NULL, drop_sections = NULL,
+                 chapter_pattern = NULL, encoding = "UTF-8", ...){
   .check_file(file)
   dots <- list(...)
   if(is.null(dots$title)){
@@ -90,20 +91,25 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
   }
   add_pattern <- dots$add_pattern # nolint
   d <- dplyr::bind_rows(
-    lapply(file, .epub_read, fields = fields, drop_sections = drop_sections, chapter_pattern = chapter_pattern,
-           add_pattern = add_pattern, clean = dots$clean, title = title, encoding = encoding)
+    lapply(file, .epub_read, fields = fields, drop_sections = drop_sections,
+           chapter_pattern = chapter_pattern, add_pattern = add_pattern,
+           clean = dots$clean, title = title, encoding = encoding)
   )
   path <- file
-  if(!"file" %in% names(d) & "file" %in% fields) d <- dplyr::mutate(d, file = basename(path))
-  d <- tidyr::unnest(d)
-  if("nchap" %in% names(d)) d <- dplyr::mutate(d, is_chapter = grepl("^ch\\d\\d$", .data[["section"]]))
+  if(!"file" %in% names(d) & "file" %in% fields)
+    d <- dplyr::mutate(d, file = basename(path))
+  d <- tidyr::unnest(d, .data[["data"]])
+  if("nchap" %in% names(d))
+    d <- dplyr::mutate(d, is_chapter = grepl("^ch\\d\\d$", .data[["section"]]))
   d <- dplyr::mutate(d, nchar = nchar(.data[["text"]]),
                      nword = count_words(.data[["text"]]))
-  if(inherits(drop_sections, "character")) d <- dplyr::filter(d, !grepl(drop_sections, .data[["section"]]))
+  if(inherits(drop_sections, "character"))
+    d <- dplyr::filter(d, !grepl(drop_sections, .data[["section"]]))
   nested <- c("section", "text")
   if("is_chapter" %in% names(d)) nested <- c(nested, "is_chapter")
   nested <- c(nested, "nword", "nchar")
-  d <- tidyr::nest(d, !! nested)
+  d <- tidyr::nest(d, data = !! nested) %>%
+    dplyr::mutate_at("data", ~as.list(.))
   cols <- unique(c(fields, names(d)))
   cols <- cols[cols != "data"]
   if("nchap" %in% names(d)) cols <- c(cols, "nchap")
@@ -119,7 +125,8 @@ epub <- function(file, fields = NULL, drop_sections = NULL, chapter_pattern = NU
 epub_meta <- function(file){
   .check_file(file)
   dplyr::bind_rows(lapply(file, function(x){
-    exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(x))))
+    exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "",
+                                                                basename(x))))
     x <- .epub_meta(epub_unzip(x, exdir), file)
     unlink(exdir, recursive = TRUE, force = TRUE)
     x
@@ -142,7 +149,7 @@ epub_unzip <- function(file, exdir = tempdir()){
   names(x) <- xml2::xml_name(meta)
   x <- x[!duplicated(names(x))]
   epubtitle <- if(is.null(dots$title)) "title" else dots$title
-  d <- dplyr::as_data_frame(x)
+  d <- tibble::as_tibble(x)
   if(!epubtitle %in% names(d)){
     d <- dplyr::mutate(d, title = epubfile)
   } else if(epubtitle != "title"){
@@ -167,10 +174,12 @@ epub_unzip <- function(file, exdir = tempdir()){
     } else if(inherits(add_pattern, "function")){
       check <- add_pattern()$chapter_check
       pat2 <- paste0(pat, "|", add_pattern()$pattern)
-      if(!is.null(check) && d$title %in% check) pat <- pat2 else if(is.null(check)) pat <- pat2
+      if(!is.null(check) && d$title %in% check) pat <- pat2 else
+        if(is.null(check)) pat <- pat2
     }
     chap_idx <- grep(pat, meta2_id)
-    meta2_id[chap_idx] <- paste0("ch", formatC(seq_along(chap_idx), width = 2, flag = "0"))
+    meta2_id[chap_idx] <- paste0("ch", formatC(seq_along(chap_idx), width = 2,
+                                               flag = "0"))
     d <- dplyr::mutate(d, nchap = length(chap_idx))
   }
   attr(d, "section order") <- meta2_id
@@ -178,18 +187,22 @@ epub_unzip <- function(file, exdir = tempdir()){
   d
 }
 
-.epub_read <- function(file, epubfile = basename(file), fields = NULL, drop_sections = NULL,
-                       chapter_pattern = NULL, encoding = getOption("encoding"), ...){
+.epub_read <- function(file, epubfile = basename(file), fields = NULL,
+                       drop_sections = NULL, chapter_pattern = NULL,
+                       encoding = getOption("encoding"), ...){
   use_readr <- requireNamespace("readr", quietly = TRUE) # nolint
-  exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "", basename(file))))
+  exdir <- file.path(tempdir(), gsub("[^A-Za-z0-9]", "", gsub("\\.epub", "",
+                                                              basename(file))))
   files <- epub_unzip(file, exdir)
-  d <- .epub_meta(files, epubfile, fields = fields, drop_sections = drop_sections,
+  d <- .epub_meta(files, epubfile, fields = fields,
+                  drop_sections = drop_sections,
                   chapter_pattern = chapter_pattern, ...)
   files <- files[grep("html$|htm$", files)]
   files <- files[match(attr(d, "section href"), basename(files))]
   clean <- list(...)$clean
-  x <- dplyr::data_frame(
-    title = d$title, section = attr(d, "section order"), text = sapply(files, function(i){
+  x <- tibble::tibble(
+    title = d$title, section = attr(d, "section order"),
+    text = sapply(files, function(i){
       if(use_readr){
         con <- file(i, "rb", encoding = encoding)
         x <- readr::read_lines(con)
@@ -207,13 +220,13 @@ epub_unzip <- function(file, exdir = tempdir()){
   override <- FALSE
   add_pattern <- list(...)$add_pattern
   if(!is.null(add_pattern)){
-    if(inherits(add_pattern, "function")) check <- add_pattern()$chapter_doublecheck else
-      check <- add_pattern
+    if(inherits(add_pattern, "function"))
+      check <- add_pattern()$chapter_doublecheck else check <- add_pattern
     if(inherits(check, "character") && d$title %in% check) override <- TRUE
   }
   out <- .chapter_recovery(d, x, override = override)
   dplyr::left_join(out[[1]], out[[2]], by = "title") %>%
-    tidyr::nest(.data[["section"]], .data[["text"]])
+    tidyr::nest_legacy(.data[["section"]], .data[["text"]])
 }
 
 .check_file <- function(file){

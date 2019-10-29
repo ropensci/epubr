@@ -1,5 +1,5 @@
 Package: epubr
-Version: 0.6.0
+Version: 0.6.1
 Title: Read EPUB File Metadata and Text
 Description: Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
     The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
@@ -19,19 +19,19 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
-URL: https://github.com/ropensci/epubr
+URL: https://docs.ropensci.org/eia (website) https://github.com/ropensci/epubr
 BugReports: https://github.com/ropensci/epubr/issues
 Suggests:
     testthat,
     knitr,
     rmarkdown,
-    lintr,
     covr,
     readr
 Imports: 
     xml2,
     xslt,
     magrittr,
+    tibble,
     dplyr,
     tidyr
 VignetteBuilder: knitr

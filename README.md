@@ -1,27 +1,61 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-epubr <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
-============================================================================================================
 
-**Author:** [Matthew Leonawicz](https://leonawicz.github.io/blog/) <a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget"> <image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a> [![gitter](https://img.shields.io/badge/GITTER-join%20chat-green.svg)](https://gitter.im/leonawicz/epubr) <br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
+# epubr <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
-[![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr) [![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222) [![Rdoc](http://www.rdocumentation.org/badges/version/epubr)](http://www.rdocumentation.org/packages/epubr) <br/> [![Travis-CI Build Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr) [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
+**Author:** [Matthew Leonawicz](https://github.com/leonawicz/)
+<a href="https://orcid.org/0000-0001-9452-2771" target="orcid.widget">
+<image class="orcid" src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" height="16"></a>
+<br/> **License:** [MIT](https://opensource.org/licenses/MIT)<br/>
 
-Read EPUB files in R
---------------------
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Travis-CI Build
+Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr)
+[![AppVeyor Build
+Status](https://ci.appveyor.com/api/projects/status/github/ropensci/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
+[![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
+
+[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
+[![CRAN
+status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
+[![CRAN
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr)
+[![Github
+Stars](https://img.shields.io/github/stars/ropensci/epubr.svg?style=social&label=Github)](https://github.com/ropensci/epubr)
+
+## Read EPUB files in R
 
 Read EPUB text and metadata.
 
-The `epubr` package provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame.
+The `epubr` package provides functions supporting the reading and
+parsing of internal e-book content from EPUB files. E-book metadata and
+text content are parsed separately and joined together in a tidy, nested
+tibble data frame.
 
-E-book formatting is not completely standardized across all literature. It can be challenging to curate parsed e-book content across an arbitrary collection of e-books perfectly and in completely general form, to yield a singular, consistently formatted output. Many EPUB files do not even contain all the same pieces of information in their respective metadata.
+E-book formatting is not completely standardized across all literature.
+It can be challenging to curate parsed e-book content across an
+arbitrary collection of e-books perfectly and in completely general
+form, to yield a singular, consistently formatted output. Many EPUB
+files do not even contain all the same pieces of information in their
+respective metadata.
 
-EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with `epubr`.
+EPUB file parsing functionality in this package is intended for
+relatively general application to arbitrary EPUB e-books. However,
+poorly formatted e-books or e-books with highly uncommon formatting may
+not work with this package. There may even be cases where an EPUB file
+has DRM or some other property that makes it impossible to read with
+`epubr`.
 
-Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. Substantive changes are expected to be performed subsequently by the user as part of their text analysis. Additional text cleaning can be performed at the user's discretion, such as with functions from packages like `tm` or `qdap`.
+Text is read ‘as is’ for the most part. The only nominal changes are
+minor substitutions, for example curly quotes changed to straight
+quotes. Substantive changes are expected to be performed subsequently by
+the user as part of their text analysis. Additional text cleaning can be
+performed at the user’s discretion, such as with functions from packages
+like `tm` or `qdap`.
 
-Installation
-------------
+## Installation
 
 Install `epubr` from CRAN with:
 
@@ -36,12 +70,22 @@ Install the development version from GitHub with:
 remotes::install_github("ropensci/epubr")
 ```
 
-Example
--------
+## Example
 
-Bram Stoker's Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting. The first thing that stands out is the naming convention using `item` followed by some ordered digits does not differentiate sections like the book preamble from the chapters. The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!
+Bram Stoker’s Dracula novel sourced from Project Gutenberg is a good
+example of an EPUB file with unfortunate formatting. The first thing
+that stands out is the naming convention using `item` followed by some
+ordered digits does not differentiate sections like the book preamble
+from the chapters. The numbering also starts in a weird place. But it is
+actually worse than this. Notice that sections are not broken into
+chapters; they can begin and end in the middle of chapters\!
 
-These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the [package vignette](https://ropensci.github.io/epubr/articles/epubr.html) for examples on how to further improve the structure of an e-book with formatting like this.
+These annoyances aside, the metadata and contents can still be read into
+a convenient table. Text mining analyses can still be performed on the
+overall book, if not so easily on individual chapters. See the [package
+vignette](https://docs.ropensci.org/epubr/articles/epubr.html) for
+examples on how to further improve the structure of an e-book with
+formatting like this.
 
 ``` r
 file <- system.file("dracula.epub", package = "epubr")
@@ -72,28 +116,29 @@ x$data[[1]]
 #> 15 coverpage-wra~ ""                                                0     0
 ```
 
-Reference
----------
+## Related packages
 
-#### Documentation
+[tesseract](https://github.com/ropensci/tesseract) by @jeroen for more
+direct control of the OCR process.
 
-[Complete package reference and function documentation](https://ropensci.github.io/epubr/)
+[pdftools](https://github.com/ropensci/pdftools) for extracting metadata
+and text from PDF files (therefore more specific to PDF, and without a
+Java dependency)
 
-Related packages
-----------------
+[tabulizer](https://github.com/ropensci/tabulizer) by @leeper and
+@tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract
+tables, therefore not text, from PDF files.
 
-[tesseract](https://github.com/ropensci/tesseract) by @jeroen for more direct control of the OCR process.
+[rtika](https://github.com/ropensci/rtika) by @goodmansasha for more
+general text parsing.
 
-[pdftools](https://github.com/ropensci/pdftools) for extracting metadata and text from PDF files (therefore more specific to PDF, and without a Java dependency)
+[gutenbergr](https://github.com/ropenscilabs/gutenbergr) by @dgrtwo for
+searching and downloading public domain texts from Project Gutenberg.
 
-[tabulizer](https://github.com/ropensci/tabulizer) by @leeper and @tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract tables, therefore not text, from PDF files.
+-----
 
-[rtika](https://github.com/ropensci/rtika) by @goodmansasha for more general text parsing.
-
-[gutenbergr](https://github.com/ropenscilabs/gutenbergr) by @dgrtwo for searching and downloading public domain texts from Project Gutenberg.
-
-------------------------------------------------------------------------
-
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of
+Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree
+to abide by its terms.
 
 [![ropensci\_footer](https://ropensci.org/public_images/ropensci_footer.png)](https://ropensci.org)

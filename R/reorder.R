@@ -37,6 +37,8 @@
 #' x <- epub_reorder(x, f, "^CHAPTER ([IVX]+).*")
 #' x$data[[1]]
 epub_reorder <- function(data, .f, pattern){
-  data$data <- lapply(data$data, function(x, p) dplyr::slice(x, order(.f(.data[["text"]], p = pattern))))
+  data$data <- lapply(data$data, function(x, p){
+    dplyr::slice(x, order(.f(.data[["text"]], p = pattern)))
+  })
   data
 }

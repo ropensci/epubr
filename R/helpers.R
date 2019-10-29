@@ -20,7 +20,8 @@
 #' epub_head(file)
 epub_head <- function(x, n = 50){
   if(inherits(x, "character")) x <- epub(x)
-  tidyr::unnest(x) %>% dplyr::select(!! c("section", "text")) %>%
+  tidyr::unnest(x, cols = .data[["data"]]) %>%
+    dplyr::select(!! c("section", "text")) %>%
     dplyr::mutate(text = substr(.data[["text"]], 1, n))
 }
 
@@ -49,13 +50,15 @@ epub_head <- function(x, n = 50){
 #' file <- system.file("dracula.epub", package = "epubr")
 #' d <- epub(file)
 #' epub_cat(d, max_paragraphs = 2, skip = 147)
-epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, paragraph_indent = 2,
-                     section_sep = "====", book_sep = "====\n===="){
+epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1,
+                     paragraph_indent = 2, section_sep = "====",
+                     book_sep = "====\n===="){
   if(inherits(x, "character")) x <- epub(x)
   paragraph_spacing <- max(0, round(paragraph_spacing))
   f <- function(x){
     x <- dplyr::rowwise(x) %>%
-      dplyr::do(x = .pretty_text(.data[["text"]], paragraph_spacing, paragraph_indent))
+      dplyr::do(x = .pretty_text(.data[["text"]], paragraph_spacing,
+                                 paragraph_indent))
     x <- x$x
     x <- x[x != ""]
     if(length(x) > 1){
@@ -84,7 +87,8 @@ epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, pa
   if(is.null(max_paragraphs) || max_paragraphs > length(idx)){
     max_lines <- length(x)
   } else {
-    max_lines <- if(length(idx)) min(idx[max_paragraphs], length(x)) else max_paragraphs
+    max_lines <- if(length(idx)) min(idx[max_paragraphs], length(x)) else
+      max_paragraphs
   }
   cat(paste0(paste0(x[first_line:max_lines], collapse = "\n"), "\n"))
   invisible()
@@ -117,15 +121,18 @@ epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1, pa
 #' @examples
 #' x <- " This   sentence will be counted to have:\n\n10 (ten) words."
 #' count_words(x)
-count_words <- function(x, word_pattern = "[A-Za-z0-9&]", break_pattern = " |\n"){
+count_words <- function(x, word_pattern = "[A-Za-z0-9&]",
+                        break_pattern = " |\n"){
   if(!inherits(x, "character")) stop("`x` must be character.")
   if(!length(x)) return(0L)
   sapply(strsplit(x, break_pattern), function(x) sum(grepl(word_pattern, x)))
 }
 
 .pretty_text <- function(x, paragraph_spacing = 1, paragraph_indent = 2){
-  p1 <- if(paragraph_spacing < 1) "" else paste0(rep("\n", paragraph_spacing), collapse = "")
-  p2 <- if(paragraph_indent < 1) "" else paste0(rep(" ", paragraph_indent), collapse = "")
+  p1 <- if(paragraph_spacing < 1) "" else paste0(rep("\n", paragraph_spacing),
+                                                 collapse = "")
+  p2 <- if(paragraph_indent < 1) "" else paste0(rep(" ", paragraph_indent),
+                                                collapse = "")
   x <- gsub("\n", paste0(p1, "\n", p2), x)
   x
 }
@@ -141,13 +148,18 @@ count_words <- function(x, word_pattern = "[A-Za-z0-9&]", break_pattern = " |\n"
   nc <- nchar(x$text)
   opening <- substr(x$text, 1, 30)
   r <- utils::as.roman(1:30)
-  rom <- paste0("^(", paste0(r, collapse = "|"), ")(\\s\\.\\s|\\.\\s|\\n\\n|\\.|[A-Z])")
-  one_to_nine <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")
-  f <- function(x) c(x, paste0(x, one_to_nine), paste0(paste0(x, "-"), tolower(one_to_nine)))
+  rom <- paste0("^(", paste0(r, collapse = "|"),
+                ")(\\s\\.\\s|\\.\\s|\\n\\n|\\.|[A-Z])")
+  one_to_nine <- c("One", "Two", "Three", "Four", "Five", "Six", "Seven",
+                   "Eight", "Nine")
+  f <- function(x) c(x, paste0(x, one_to_nine), paste0(paste0(x, "-"),
+                                                       tolower(one_to_nine)))
   numnames0 <- c(one_to_nine, "Ten", "Eleven", "Twelve",
-                 "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
+                 "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen",
+                 "Eighteen", "Nineteen",
                  as.character(sapply(
-                   c("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"),
+                   c("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy",
+                     "Eighty", "Ninety"),
                    f)))
   numnames1 <- toupper(numnames0)
   pat <- paste0(rom, paste0("|^(", paste0(numnames1, collapse = "|"), ")"),
@@ -164,16 +176,20 @@ count_words <- function(x, word_pattern = "[A-Za-z0-9&]", break_pattern = " |\n"
       fix_idx <- rev(nrow(x) - which(duplicated(rev(x$section))) + 1)
       x$section[fix_idx] <- paste0("x", seq_along(fix_idx))
     }
-    double_check <- unlist(lapply(paste0("Chapter ", numnames0, "(\\.|\\s|\\n|)"), function(x){
+    double_check <- unlist(
+      lapply(paste0("Chapter ", numnames0, "(\\.|\\s|\\n|)"), function(x){
       a <- grep(x, opening)
       if(!length(a)) return()
       if(length(a) == 1) a else a[which.min(nchar(a))]
     }))
     if(length(double_check)){
-      idx0 <- which(grepl("ch\\d+", x$section) & grepl("chapter", tolower(opening)) == TRUE)
-      if(length(idx0) != length(double_check)) idx0 <- rep(idx0, length = length(double_check))
+      idx0 <- which(grepl("ch\\d+", x$section) &
+                      grepl("chapter", tolower(opening)) == TRUE)
+      if(length(idx0) != length(double_check))
+        idx0 <- rep(idx0, length = length(double_check))
       x[idx0, ] <- x[double_check, ]
-      x$section[idx] <- paste0("ch", formatC(1:sum(idx), width = max(2, nchar(sum(idx))), flag = "0"))
+      x$section[idx] <- paste0(
+        "ch", formatC(1:sum(idx), width = max(2, nchar(sum(idx))), flag = "0"))
     }
   }
   list(d, x)
@@ -182,7 +198,8 @@ count_words <- function(x, word_pattern = "[A-Za-z0-9&]", break_pattern = " |\n"
 .clean <- function(x, template = NULL) {
   if (!inherits(x, "html_document")) x <- xml2::read_html(x)
   if(is.null(template)) template <- system.file("text.xml", package = "epubr")
-  if(!inherits(template, "character") || !file.exists(template)) stop("`clean` template not found.")
+  if(!inherits(template, "character") || !file.exists(template))
+    stop("`clean` template not found.")
   template <- xml2::read_xml(template)
   x2 <- xslt::xml_xslt(x, template) %>% xml2::xml_text()
   if(nchar(x2) == 0) x <- trimws(xml2::xml_text(x)) else x <- trimws(x2)

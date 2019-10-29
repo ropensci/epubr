@@ -1,3 +1,4 @@
+^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
@@ -15,3 +16,4 @@
 ^codecov\.yml$
 ^CODE_OF_CONDUCT\.md$
 ^codemeta\.json$
+^README\.html$
