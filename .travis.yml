@@ -4,5 +4,14 @@ language: R
 sudo: false
 cache: packages
 
-after_success:
-    - Rscript -e 'covr::codecov()'
+matrix:
+  include:
+   - r: release
+     after_success:
+       - Rscript -e 'covr::codecov()'
+   - r: devel
+     r_build_args: --no-build-vignettes
+     r_check_args: --ignore-vignettes --no-examples
+   - r: oldrel
+     r_build_args: --no-build-vignettes
+     r_check_args: --ignore-vignettes --no-examples
