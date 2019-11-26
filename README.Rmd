@@ -26,7 +26,7 @@ library(epubr)
 
 [![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
 [![CRAN status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
-[![CRAN downloads](http://cranlogs.r-pkg.org/badges/grand-total/epubr)](https://cran.r-project.org/package=epubr) 
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/epubr)](https://cran.r-project.org/package=epubr)
 [![Github Stars](https://img.shields.io/github/stars/ropensci/epubr.svg?style=social&label=Github)](https://github.com/ropensci/epubr)
 
 ## Read EPUB files in R

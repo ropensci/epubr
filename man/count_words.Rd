@@ -34,6 +34,6 @@ This means for example that hyphenated words, acronyms and numbers displayed wit
 The presence of any other characters does not negate that a word has been found.
 }
 \examples{
-x <- " This   sentence will be counted to have:\\n\\n10 (ten) words."
+x <- " This   sentence will be counted to have:\n\n10 (ten) words."
 count_words(x)
 }

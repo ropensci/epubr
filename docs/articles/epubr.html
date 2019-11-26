@@ -105,29 +105,29 @@
 <a class="sourceLine" id="cb1-2" title="2">file &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"dracula.epub"</span>, <span class="dt">package =</span> <span class="st">"epubr"</span>)</a>
 <a class="sourceLine" id="cb1-3" title="3">(x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub.html">epub</a></span>(file))</a>
 <a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt; # A tibble: 1 x 9</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;   rights  identifier   creator  title language subject date  source   data </span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;lis&gt;</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http://~ &lt;tib~</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;   rights   identifier    creator  title language subject date  source     data  </span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;list&gt;</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://ww~ &lt;tibb~</span></a>
 <a class="sourceLine" id="cb1-8" title="8"></a>
 <a class="sourceLine" id="cb1-9" title="9">x<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; # A tibble: 15 x 4</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;    section        text                                          nword nchar</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;                                         &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  1 item6          "The Project Gutenberg EBook of Dracula, by ~ 11446 60972</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  2 item7          "But I am not in heart to describe beauty, f~ 13879 71798</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  3 item8          "\" 'Lucy, you are an honest-hearted girl, I~ 12474 65522</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt;  4 item9          "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day~ 12177 62724</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt;  5 item10         "CHAPTER X\nLetter, Dr. Seward to Hon. Arthu~ 12806 66678</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt;  6 item11         "Once again we went through that ghastly ope~ 12103 62949</span></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt;  7 item12         "CHAPTER XIVMINA HARKER'S JOURNAL\n23 Septem~ 12214 62234</span></a>
-<a class="sourceLine" id="cb1-20" title="20"><span class="co">#&gt;  8 item13         "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT~ 13990 72903</span></a>
-<a class="sourceLine" id="cb1-21" title="21"><span class="co">#&gt;  9 item14         "\"Thus when we find the habitation of this ~ 13356 69779</span></a>
-<a class="sourceLine" id="cb1-22" title="22"><span class="co">#&gt; 10 item15         "\"I see,\" I said. \"You want big things th~ 12866 66921</span></a>
-<a class="sourceLine" id="cb1-23" title="23"><span class="co">#&gt; 11 item16         "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.~ 11928 61550</span></a>
-<a class="sourceLine" id="cb1-24" title="24"><span class="co">#&gt; 12 item17         "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, ~ 13119 68564</span></a>
-<a class="sourceLine" id="cb1-25" title="25"><span class="co">#&gt; 13 item18         " \nLater.-Dr. Van Helsing has returned. He ~  8435 43464</span></a>
-<a class="sourceLine" id="cb1-26" title="26"><span class="co">#&gt; 14 item19         "End of the Project Gutenberg EBook of Dracu~  2665 18541</span></a>
-<a class="sourceLine" id="cb1-27" title="27"><span class="co">#&gt; 15 coverpage-wra~ ""                                                0     0</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;    section        text                                               nword nchar</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;                                              &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt;  1 item6          "The Project Gutenberg EBook of Dracula, by Bram ~ 11446 60972</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt;  2 item7          "But I am not in heart to describe beauty, for wh~ 13879 71798</span></a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt;  3 item8          "\" 'Lucy, you are an honest-hearted girl, I know~ 12474 65522</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt;  4 item9          "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ 12177 62724</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt;  5 item10         "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ 12806 66678</span></a>
+<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt;  6 item11         "Once again we went through that ghastly operatio~ 12103 62949</span></a>
+<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt;  7 item12         "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ 12214 62234</span></a>
+<a class="sourceLine" id="cb1-20" title="20"><span class="co">#&gt;  8 item13         "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ 13990 72903</span></a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="co">#&gt;  9 item14         "\"Thus when we find the habitation of this man-t~ 13356 69779</span></a>
+<a class="sourceLine" id="cb1-22" title="22"><span class="co">#&gt; 10 item15         "\"I see,\" I said. \"You want big things that yo~ 12866 66921</span></a>
+<a class="sourceLine" id="cb1-23" title="23"><span class="co">#&gt; 11 item16         "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ 11928 61550</span></a>
+<a class="sourceLine" id="cb1-24" title="24"><span class="co">#&gt; 12 item17         "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ 13119 68564</span></a>
+<a class="sourceLine" id="cb1-25" title="25"><span class="co">#&gt; 13 item18         " \nLater.-Dr. Van Helsing has returned. He has g~  8435 43464</span></a>
+<a class="sourceLine" id="cb1-26" title="26"><span class="co">#&gt; 14 item19         "End of the Project Gutenberg EBook of Dracula, b~  2665 18541</span></a>
+<a class="sourceLine" id="cb1-27" title="27"><span class="co">#&gt; 15 coverpage-wra~ ""                                                     0     0</span></a></code></pre></div>
 <p>The <code>file</code> argument may be a vector of EPUB files. There is one row for each book.</p>
 </div>
 <div id="epub-metadata" class="section level2">
@@ -136,9 +136,9 @@
 <p>The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. <code>epub_meta</code> strictly parses file metadata and does not read the e-book text.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw"><a href="../reference/epub.html">epub_meta</a></span>(file)</a>
 <a class="sourceLine" id="cb2-2" title="2"><span class="co">#&gt; # A tibble: 1 x 8</span></a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;   rights    identifier    creator  title language subject date  source     </span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; 1 Public d~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://www~</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;   rights     identifier      creator  title language subject date  source       </span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        </span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; 1 Public do~ http://www.gut~ Bram St~ Drac~ en       Horror~ 1995~ http://www.g~</span></a></code></pre></div>
 <p>This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first <code>epub</code> example.</p>
 <p><code>file</code> can also be a vector for <code>epub_meta</code>. Whenever <code>file</code> is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return <code>NA</code> for that row and column.</p>
 </div>
@@ -171,22 +171,22 @@
 <p>One section that can be discarded is the cover. For many books it can be helpful to use a pattern like <code>"^(C|c)ov"</code> to drop any sections whose IDs begin with <code>Cov</code>, <code>cov</code>, and may be that abbreviation or the full word. For this book, <code>cov</code> suffices. The nested data frame has one less row than before.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw"><a href="../reference/epub.html">epub</a></span>(file, <span class="dt">drop_sections =</span> <span class="st">"cov"</span>)<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb4-2" title="2"><span class="co">#&gt; # A tibble: 14 x 4</span></a>
-<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by Bram St~ 11446 60972</span></a>
-<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;  2 item7   "But I am not in heart to describe beauty, for when~ 13879 71798</span></a>
-<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted girl, I know. ~ 12474 65522</span></a>
-<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~ 12177 62724</span></a>
-<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  5 item10  "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~ 12806 66678</span></a>
-<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;  6 item11  "Once again we went through that ghastly operation.~ 12103 62949</span></a>
-<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  7 item12  "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jo~ 12214 62234</span></a>
-<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  8 item13  "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ju~ 13990 72903</span></a>
-<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt;  9 item14  "\"Thus when we find the habitation of this man-tha~ 13356 69779</span></a>
-<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; 10 item15  "\"I see,\" I said. \"You want big things that you ~ 12866 66921</span></a>
-<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; 11 item16  "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ti~ 11928 61550</span></a>
-<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; 12 item17  "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening~ 13119 68564</span></a>
-<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; 13 item18  " \nLater.-Dr. Van Helsing has returned. He has got~  8435 43464</span></a>
-<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; 14 item19  "End of the Project Gutenberg EBook of Dracula, by ~  2665 18541</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-3" title="3"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb4-4" title="4"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb4-5" title="5"><span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by Bram StokerT~ 11446 60972</span></a>
+<a class="sourceLine" id="cb4-6" title="6"><span class="co">#&gt;  2 item7   "But I am not in heart to describe beauty, for when I ha~ 13879 71798</span></a>
+<a class="sourceLine" id="cb4-7" title="7"><span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted girl, I know. I sho~ 12474 65522</span></a>
+<a class="sourceLine" id="cb4-8" title="8"><span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~ 12177 62724</span></a>
+<a class="sourceLine" id="cb4-9" title="9"><span class="co">#&gt;  5 item10  "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~ 12806 66678</span></a>
+<a class="sourceLine" id="cb4-10" title="10"><span class="co">#&gt;  6 item11  "Once again we went through that ghastly operation. I ha~ 12103 62949</span></a>
+<a class="sourceLine" id="cb4-11" title="11"><span class="co">#&gt;  7 item12  "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha~ 12214 62234</span></a>
+<a class="sourceLine" id="cb4-12" title="12"><span class="co">#&gt;  8 item13  "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was just a ~ 13990 72903</span></a>
+<a class="sourceLine" id="cb4-13" title="13"><span class="co">#&gt;  9 item14  "\"Thus when we find the habitation of this man-that-was~ 13356 69779</span></a>
+<a class="sourceLine" id="cb4-14" title="14"><span class="co">#&gt; 10 item15  "\"I see,\" I said. \"You want big things that you can m~ 12866 66921</span></a>
+<a class="sourceLine" id="cb4-15" title="15"><span class="co">#&gt; 11 item16  "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The time se~ 11928 61550</span></a>
+<a class="sourceLine" id="cb4-16" title="16"><span class="co">#&gt; 12 item17  "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon~ 13119 68564</span></a>
+<a class="sourceLine" id="cb4-17" title="17"><span class="co">#&gt; 13 item18  " \nLater.-Dr. Van Helsing has returned. He has got the ~  8435 43464</span></a>
+<a class="sourceLine" id="cb4-18" title="18"><span class="co">#&gt; 14 item19  "End of the Project Gutenberg EBook of Dracula, by Bram ~  2665 18541</span></a></code></pre></div>
 </div>
 <div id="guess-chapters" class="section level3">
 <h3 class="hasAnchor">
@@ -195,28 +195,28 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub.html">epub</a></span>(file, <span class="dt">drop_sections =</span> <span class="st">"cov"</span>, <span class="dt">chapter_pattern =</span> <span class="st">"^item</span><span class="ch">\\</span><span class="st">d</span><span class="ch">\\</span><span class="st">d"</span>)</a>
 <a class="sourceLine" id="cb5-2" title="2">x</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;   rights identifier creator title language subject date  source nchap data </span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt; &lt;lis&gt;</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; 1 Publi~ http://ww~ Bram S~ Drac~ en       Horror~ 1995~ http:~    10 &lt;tib~</span></a>
+<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span></a>
+<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    10 &lt;tib~</span></a>
 <a class="sourceLine" id="cb5-7" title="7"></a>
 <a class="sourceLine" id="cb5-8" title="8">x<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt; # A tibble: 14 x 5</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;    section text                                      is_chapter nword nchar</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                     &lt;lgl&gt;      &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula,~ FALSE      11446 60972</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  2 item7   "But I am not in heart to describe beaut~ FALSE      13879 71798</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted gir~ FALSE      12474 65522</span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame~ FALSE      12177 62724</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  5 ch01    "CHAPTER X\nLetter, Dr. Seward to Hon. A~ TRUE       12806 66678</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt;  6 ch02    "Once again we went through that ghastly~ TRUE       12103 62949</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;  7 ch03    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 Se~ TRUE       12214 62234</span></a>
-<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt;  8 ch04    "CHAPTER XVIDR. SEWARD'S DIARY-continued~ TRUE       13990 72903</span></a>
-<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt;  9 ch05    "\"Thus when we find the habitation of t~ TRUE       13356 69779</span></a>
-<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt; 10 ch06    "\"I see,\" I said. \"You want big thing~ TRUE       12866 66921</span></a>
-<a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt; 11 ch07    "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 Octo~ TRUE       11928 61550</span></a>
-<a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt; 12 ch08    "CHAPTER XXVDR. SEWARD'S DIARY\n11 Octob~ TRUE       13119 68564</span></a>
-<a class="sourceLine" id="cb5-24" title="24"><span class="co">#&gt; 13 ch09    " \nLater.-Dr. Van Helsing has returned.~ TRUE        8435 43464</span></a>
-<a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt; 14 ch10    "End of the Project Gutenberg EBook of D~ TRUE        2665 18541</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;    section text                                           is_chapter nword nchar</span></a>
+<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                          &lt;lgl&gt;      &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by B~ FALSE      11446 60972</span></a>
+<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  2 item7   "But I am not in heart to describe beauty, fo~ FALSE      13879 71798</span></a>
+<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted girl, I ~ FALSE      12474 65522</span></a>
+<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day,~ FALSE      12177 62724</span></a>
+<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt;  5 ch01    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur~ TRUE       12806 66678</span></a>
+<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt;  6 ch02    "Once again we went through that ghastly oper~ TRUE       12103 62949</span></a>
+<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt;  7 ch03    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 Septemb~ TRUE       12214 62234</span></a>
+<a class="sourceLine" id="cb5-19" title="19"><span class="co">#&gt;  8 ch04    "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT ~ TRUE       13990 72903</span></a>
+<a class="sourceLine" id="cb5-20" title="20"><span class="co">#&gt;  9 ch05    "\"Thus when we find the habitation of this m~ TRUE       13356 69779</span></a>
+<a class="sourceLine" id="cb5-21" title="21"><span class="co">#&gt; 10 ch06    "\"I see,\" I said. \"You want big things tha~ TRUE       12866 66921</span></a>
+<a class="sourceLine" id="cb5-22" title="22"><span class="co">#&gt; 11 ch07    "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-~ TRUE       11928 61550</span></a>
+<a class="sourceLine" id="cb5-23" title="23"><span class="co">#&gt; 12 ch08    "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, E~ TRUE       13119 68564</span></a>
+<a class="sourceLine" id="cb5-24" title="24"><span class="co">#&gt; 13 ch09    " \nLater.-Dr. Van Helsing has returned. He h~ TRUE        8435 43464</span></a>
+<a class="sourceLine" id="cb5-25" title="25"><span class="co">#&gt; 14 ch10    "End of the Project Gutenberg EBook of Dracul~ TRUE        2665 18541</span></a></code></pre></div>
 <p>This renaming of sections is helpful if the e-book content is split into meaningful sections, but the sections are not named in a similarly meaningful way. It is not helpful in cases where the sections are poorly or arbitrarily defined as in the above example where they begin with <code>item*</code> regardless of content. See the examples below on restructuring parsed content for an approach to dealing with this more problematic case.</p>
 <p>Another problematic formatting that you may encounter is the random order of book sections as defined in the metadata, even if the sections themselves are well-defined. For example, there may be clear breaks between chapters, but the chapters may occur out of order such as <code>ch05, ch11, ch02, ...</code> and so on. Merely identifying which sections are chapters does not help in this case. They are still be labeled incorrectly since they are already out of order. Properly reordering sections is also addressed below.</p>
 <p>Also note that not all books have chapters or something like them. Make sure an optional argument like <code>chapter_pattern</code> makes sense to use with a given e-book in the first place.</p>
@@ -237,24 +237,24 @@
 <a class="sourceLine" id="cb6-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_recombine.html">epub_recombine</a></span>(x, pat)</a>
 <a class="sourceLine" id="cb6-3" title="3">x2</a>
 <a class="sourceLine" id="cb6-4" title="4"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
-<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   rights identifier creator title language subject date  source nchap data </span></a>
-<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt; &lt;lis&gt;</span></a>
-<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 1 Publi~ http://ww~ Bram S~ Drac~ en       Horror~ 1995~ http:~    54 &lt;tib~</span></a>
+<a class="sourceLine" id="cb6-5" title="5"><span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span></a>
+<a class="sourceLine" id="cb6-6" title="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb6-7" title="7"><span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 &lt;tib~</span></a>
 <a class="sourceLine" id="cb6-8" title="8"></a>
 <a class="sourceLine" id="cb6-9" title="9">x2<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb6-10" title="10"><span class="co">#&gt; # A tibble: 55 x 4</span></a>
-<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt;  1 prior   "The Project Gutenberg EBook of Dracula, by Bram St~   159  1110</span></a>
-<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  2 ch01    "CHAPTER I\nPage\nJonathan Harker's Journal\n1\n"        7    43</span></a>
-<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  3 ch02    "CHAPTER II\nJonathan Harker's Journal\n14\n"            6    40</span></a>
-<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;  4 ch03    "CHAPTER III\nJonathan Harker's Journal\n26\n"           6    41</span></a>
-<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;  5 ch04    "CHAPTER IV\nJonathan Harker's Journal\n38\n"            6    40</span></a>
-<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;  6 ch05    "CHAPTER V\nLetters-Lucy and Mina\n51\n"                 6    35</span></a>
-<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;  7 ch06    "CHAPTER VI\nMina Murray's Journal\n59\n"                6    36</span></a>
-<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt;  8 ch07    "CHAPTER VII\nCutting from \"The Dailygraph,\" 8 Au~     9    55</span></a>
-<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt;  9 ch08    "CHAPTER VIII\nMina Murray's Journal\n84\n"              6    38</span></a>
-<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 10 ch09    "CHAPTER IX\nMina Murray's Journal\n98\n"                6    36</span></a>
+<a class="sourceLine" id="cb6-11" title="11"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb6-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-13" title="13"><span class="co">#&gt;  1 prior   "The Project Gutenberg EBook of Dracula, by Bram StokerT~   159  1110</span></a>
+<a class="sourceLine" id="cb6-14" title="14"><span class="co">#&gt;  2 ch01    "CHAPTER I\nPage\nJonathan Harker's Journal\n1\n"             7    43</span></a>
+<a class="sourceLine" id="cb6-15" title="15"><span class="co">#&gt;  3 ch02    "CHAPTER II\nJonathan Harker's Journal\n14\n"                 6    40</span></a>
+<a class="sourceLine" id="cb6-16" title="16"><span class="co">#&gt;  4 ch03    "CHAPTER III\nJonathan Harker's Journal\n26\n"                6    41</span></a>
+<a class="sourceLine" id="cb6-17" title="17"><span class="co">#&gt;  5 ch04    "CHAPTER IV\nJonathan Harker's Journal\n38\n"                 6    40</span></a>
+<a class="sourceLine" id="cb6-18" title="18"><span class="co">#&gt;  6 ch05    "CHAPTER V\nLetters-Lucy and Mina\n51\n"                      6    35</span></a>
+<a class="sourceLine" id="cb6-19" title="19"><span class="co">#&gt;  7 ch06    "CHAPTER VI\nMina Murray's Journal\n59\n"                     6    36</span></a>
+<a class="sourceLine" id="cb6-20" title="20"><span class="co">#&gt;  8 ch07    "CHAPTER VII\nCutting from \"The Dailygraph,\" 8 August\~     9    55</span></a>
+<a class="sourceLine" id="cb6-21" title="21"><span class="co">#&gt;  9 ch08    "CHAPTER VIII\nMina Murray's Journal\n84\n"                   6    38</span></a>
+<a class="sourceLine" id="cb6-22" title="22"><span class="co">#&gt; 10 ch09    "CHAPTER IX\nMina Murray's Journal\n98\n"                     6    36</span></a>
 <a class="sourceLine" id="cb6-23" title="23"><span class="co">#&gt; # ... with 45 more rows</span></a></code></pre></div>
 <p>But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 “chapters” represent the table of contents being split on each chapter ID. These should be removed.</p>
 <p>An easy way to do this is with <code>epub_sift</code>, which sifts, or filters out, small word- or character-count sections from the nested data frame. It’s a simple sieve and you can control the size of the holes with <code>n</code>. You can choose <code>type = "word"</code> (default) or <code>type = "character"</code>. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.</p>
@@ -262,48 +262,48 @@
 <a class="sourceLine" id="cb7-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_recombine.html">epub_recombine</a></span>(x, pat) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/epub_sift.html">epub_sift</a></span>(<span class="dt">n =</span> <span class="dv">200</span>)</a>
 <a class="sourceLine" id="cb7-3" title="3">x2</a>
 <a class="sourceLine" id="cb7-4" title="4"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
-<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt;   rights identifier creator title language subject date  source nchap data </span></a>
-<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt; &lt;lis&gt;</span></a>
-<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt; 1 Publi~ http://ww~ Bram S~ Drac~ en       Horror~ 1995~ http:~    54 &lt;tib~</span></a>
+<a class="sourceLine" id="cb7-5" title="5"><span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span></a>
+<a class="sourceLine" id="cb7-6" title="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb7-7" title="7"><span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 &lt;tib~</span></a>
 <a class="sourceLine" id="cb7-8" title="8"></a>
 <a class="sourceLine" id="cb7-9" title="9">x2<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb7-10" title="10"><span class="co">#&gt; # A tibble: 27 x 4</span></a>
-<a class="sourceLine" id="cb7-11" title="11"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb7-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb7-13" title="13"><span class="co">#&gt;  1 ch28    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span></a>
-<a class="sourceLine" id="cb7-14" title="14"><span class="co">#&gt;  2 ch29    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span></a>
-<a class="sourceLine" id="cb7-15" title="15"><span class="co">#&gt;  3 ch30    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span></a>
-<a class="sourceLine" id="cb7-16" title="16"><span class="co">#&gt;  4 ch31    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span></a>
-<a class="sourceLine" id="cb7-17" title="17"><span class="co">#&gt;  5 ch32    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18004</span></a>
-<a class="sourceLine" id="cb7-18" title="18"><span class="co">#&gt;  6 ch33    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span></a>
-<a class="sourceLine" id="cb7-19" title="19"><span class="co">#&gt;  7 ch34    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span></a>
-<a class="sourceLine" id="cb7-20" title="20"><span class="co">#&gt;  8 ch35    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span></a>
-<a class="sourceLine" id="cb7-21" title="21"><span class="co">#&gt;  9 ch36    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span></a>
-<a class="sourceLine" id="cb7-22" title="22"><span class="co">#&gt; 10 ch37    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span></a>
+<a class="sourceLine" id="cb7-11" title="11"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb7-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb7-13" title="13"><span class="co">#&gt;  1 ch28    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span></a>
+<a class="sourceLine" id="cb7-14" title="14"><span class="co">#&gt;  2 ch29    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span></a>
+<a class="sourceLine" id="cb7-15" title="15"><span class="co">#&gt;  3 ch30    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span></a>
+<a class="sourceLine" id="cb7-16" title="16"><span class="co">#&gt;  4 ch31    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span></a>
+<a class="sourceLine" id="cb7-17" title="17"><span class="co">#&gt;  5 ch32    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18004</span></a>
+<a class="sourceLine" id="cb7-18" title="18"><span class="co">#&gt;  6 ch33    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span></a>
+<a class="sourceLine" id="cb7-19" title="19"><span class="co">#&gt;  7 ch34    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span></a>
+<a class="sourceLine" id="cb7-20" title="20"><span class="co">#&gt;  8 ch35    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span></a>
+<a class="sourceLine" id="cb7-21" title="21"><span class="co">#&gt;  9 ch36    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span></a>
+<a class="sourceLine" id="cb7-22" title="22"><span class="co">#&gt; 10 ch37    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span></a>
 <a class="sourceLine" id="cb7-23" title="23"><span class="co">#&gt; # ... with 17 more rows</span></a></code></pre></div>
 <p>This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply <code>epub_recombine</code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code>epub_recombine</code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code>epub_recombine</code>, which is applied recursively.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="co">#epub_recombine(x, pat) %&gt;% epub_sift(n = 200) %&gt;% epub_recombine(pat)</span></a>
 <a class="sourceLine" id="cb8-2" title="2">x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_recombine.html">epub_recombine</a></span>(x, pat, <span class="dt">sift =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">n =</span> <span class="dv">200</span>))</a>
 <a class="sourceLine" id="cb8-3" title="3">x2</a>
 <a class="sourceLine" id="cb8-4" title="4"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
-<a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;   rights identifier creator title language subject date  source nchap data </span></a>
-<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;int&gt; &lt;lis&gt;</span></a>
-<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt; 1 Publi~ http://ww~ Bram S~ Drac~ en       Horror~ 1995~ http:~    27 &lt;tib~</span></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span></a>
+<a class="sourceLine" id="cb8-6" title="6"><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span></a>
+<a class="sourceLine" id="cb8-7" title="7"><span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 &lt;tib~</span></a>
 <a class="sourceLine" id="cb8-8" title="8"></a>
 <a class="sourceLine" id="cb8-9" title="9">x2<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb8-10" title="10"><span class="co">#&gt; # A tibble: 27 x 4</span></a>
-<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span></a>
-<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span></a>
-<a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span></a>
-<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span></a>
-<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span></a>
-<a class="sourceLine" id="cb8-18" title="18"><span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span></a>
-<a class="sourceLine" id="cb8-19" title="19"><span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span></a>
-<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span></a>
-<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span></a>
-<a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span></a>
+<a class="sourceLine" id="cb8-11" title="11"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb8-12" title="12"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb8-13" title="13"><span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span></a>
+<a class="sourceLine" id="cb8-14" title="14"><span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span></a>
+<a class="sourceLine" id="cb8-15" title="15"><span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span></a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span></a>
+<a class="sourceLine" id="cb8-17" title="17"><span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18005</span></a>
+<a class="sourceLine" id="cb8-18" title="18"><span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span></a>
+<a class="sourceLine" id="cb8-19" title="19"><span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span></a>
+<a class="sourceLine" id="cb8-20" title="20"><span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span></a>
+<a class="sourceLine" id="cb8-21" title="21"><span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span></a>
+<a class="sourceLine" id="cb8-22" title="22"><span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span></a>
 <a class="sourceLine" id="cb8-23" title="23"><span class="co">#&gt; # ... with 17 more rows</span></a></code></pre></div>
 </div>
 <div id="reorder-sections-based-on-pattern-in-text" class="section level3">
@@ -315,18 +315,18 @@
 <a class="sourceLine" id="cb9-2" title="2">x2<span class="op">$</span>data[[<span class="dv">1</span>]] &lt;-<span class="st"> </span><span class="kw">sample_frac</span>(x2<span class="op">$</span>data[[<span class="dv">1</span>]]) <span class="co"># randomize rows for example</span></a>
 <a class="sourceLine" id="cb9-3" title="3">x2<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt; # A tibble: 27 x 4</span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  1 ch25    "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening~  6214 32544</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  2 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  3 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  4 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  5 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  6 ch11    "CHAPTER XI\nLucy Westenra's Diary.\n12 September.-~  5126 26926</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  7 ch14    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jo~  6411 32530</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  8 ch18    "CHAPTER XVIIIDR. SEWARD'S DIARY\n30 September.-I g~  6911 35881</span></a>
-<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  9 ch19    "CHAPTER XIXJONATHAN HARKER'S JOURNAL\n1 October, 5~  5670 29431</span></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt; 10 ch24    "CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN ~  6272 32065</span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  1 ch25    "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon~  6214 32544</span></a>
+<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  2 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span></a>
+<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  3 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span></a>
+<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  4 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span></a>
+<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  5 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span></a>
+<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  6 ch11    "CHAPTER XI\nLucy Westenra's Diary.\n12 September.-How g~  5126 26926</span></a>
+<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  7 ch14    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha~  6411 32530</span></a>
+<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  8 ch18    "CHAPTER XVIIIDR. SEWARD'S DIARY\n30 September.-I got ho~  6911 35881</span></a>
+<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  9 ch19    "CHAPTER XIXJONATHAN HARKER'S JOURNAL\n1 October, 5 a. m~  5670 29431</span></a>
+<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt; 10 ch24    "CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN BY VA~  6272 32065</span></a>
 <a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt; # ... with 17 more rows</span></a></code></pre></div>
 <p>It is clear above that sections are now out of order. It is common enough to load poorly formatted EPUB files and yield this type of result. If all you care about is the text in its entirely, this does not matter, but if your analysis involves trends over the course of a book, this is problematic.</p>
 <p>For this book, you need a function that will convert an annoying Roman numeral to an integer. You already have the pattern for finding the relevant information in each text section. You only need to tweak it for proper substitution. Here is an example:</p>
@@ -337,18 +337,18 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">x2 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/epub_reorder.html">epub_reorder</a></span>(x2, f, <span class="st">"^CHAPTER ([IVX]+).*"</span>)</a>
 <a class="sourceLine" id="cb11-2" title="2">x2<span class="op">$</span>data[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="co">#&gt; # A tibble: 27 x 4</span></a>
-<a class="sourceLine" id="cb11-4" title="4"><span class="co">#&gt;    section text                                                 nword nchar</span></a>
-<a class="sourceLine" id="cb11-5" title="5"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                &lt;int&gt; &lt;int&gt;</span></a>
-<a class="sourceLine" id="cb11-6" title="6"><span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in short~  5694 30602</span></a>
-<a class="sourceLine" id="cb11-7" title="7"><span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 M~  5476 28462</span></a>
-<a class="sourceLine" id="cb11-8" title="8"><span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWH~  5703 29778</span></a>
-<a class="sourceLine" id="cb11-9" title="9"><span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI A~  5828 30195</span></a>
-<a class="sourceLine" id="cb11-10" title="10"><span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lu~  3546 18005</span></a>
-<a class="sourceLine" id="cb11-11" title="11"><span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-~  5654 29145</span></a>
-<a class="sourceLine" id="cb11-12" title="12"><span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGU~  5567 29912</span></a>
-<a class="sourceLine" id="cb11-13" title="13"><span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'~  6267 32596</span></a>
-<a class="sourceLine" id="cb11-14" title="14"><span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\~  5910 30129</span></a>
-<a class="sourceLine" id="cb11-15" title="15"><span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmw~  5932 30730</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="co">#&gt;    section text                                                      nword nchar</span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb11-6" title="6"><span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span></a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span></a>
+<a class="sourceLine" id="cb11-9" title="9"><span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span></a>
+<a class="sourceLine" id="cb11-10" title="10"><span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18005</span></a>
+<a class="sourceLine" id="cb11-11" title="11"><span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span></a>
+<a class="sourceLine" id="cb11-12" title="12"><span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span></a>
+<a class="sourceLine" id="cb11-13" title="13"><span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span></a>
+<a class="sourceLine" id="cb11-14" title="14"><span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span></a>
+<a class="sourceLine" id="cb11-15" title="15"><span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span></a>
 <a class="sourceLine" id="cb11-16" title="16"><span class="co">#&gt; # ... with 17 more rows</span></a></code></pre></div>
 <p>It is important that this is done on a nested data frame that has already been cleaned to the point of not containing extraneous rows that cannot be matched by the desired pattern. If they cannot be matched, then it is unknown where those rows should be placed relative to the others.</p>
 <p>If sections are both out of order and use arbitrary break points, it would be necessary to reorder them before you split and recombine. If you split and recombine first, this would yield new sections that contain text from different parts of the e-book. However, the two are not likely to occur together; in fact it may be impossible for an EPUB file to be structured this way. In developing <code>epubr</code>, no such examples have been encountered. In any event, reordering out of order sections essentially requires a human-identifiable pattern near the beginning of each section text string, so it does not make sense to perform this operation unless the sections have meaningful break points.</p>

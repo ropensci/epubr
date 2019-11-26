@@ -130,8 +130,14 @@
     <p>Read EPUB format e-books into a data frame using <code>epub</code> or extract EPUB archive files for direct use with <code>epub_unzip</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"UTF-8"</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>epub</span>(
+  <span class='no'>file</span>,
+  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"UTF-8"</span>,
+  <span class='no'>...</span>
+)
 
 <span class='fu'>epub_meta</span>(<span class='no'>file</span>)
 
