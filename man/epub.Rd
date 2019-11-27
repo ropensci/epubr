@@ -99,6 +99,7 @@ bookdir <- file.path(tempdir(), "dracula")
 epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files
 list.files(bookdir, recursive = TRUE)
 
+\donttest{
 epub_meta(file) # parse EPUB file metadata only
 
 x <- epub(file) # parse entire e-book
@@ -106,4 +107,5 @@ x
 x$data[[1]]
 
 epub(file, fields = c("title", "creator"), drop_sections = "^cov")
+}
 }

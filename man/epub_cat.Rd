@@ -42,9 +42,11 @@ This is useful for quickly obtaining an overview of the book text parsed by \cod
 To print everything in \code{x}, set \code{max_paragraphs = NULL}.
 }
 \examples{
+\donttest{
 file <- system.file("dracula.epub", package = "epubr")
 d <- epub(file)
 epub_cat(d, max_paragraphs = 2, skip = 147)
+}
 }
 \seealso{
 \code{\link{epub_head}}

@@ -32,12 +32,14 @@ These can then be dropped with \code{epub_sift}. See a more comprehensive in the
 A simpler example is shown below.
 }
 \examples{
+\donttest{
 file <- system.file("dracula.epub", package = "epubr")
 x <- epub(file) # parse entire e-book
 x$data[[1]]
 
 x <- epub_sift(x, n = 3000) # drops last two sections
 x$data[[1]]
+}
 }
 \seealso{
 \code{\link{epub_recombine}}

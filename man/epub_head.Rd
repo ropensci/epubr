@@ -24,8 +24,10 @@ For example, an e-book may not have meaningful section IDs that distinguish one 
 but the text itself may contain this information at or near the start of a section.
 }
 \examples{
+\donttest{
 file <- system.file("dracula.epub", package = "epubr")
 epub_head(file)
+}
 }
 \seealso{
 \code{\link{epub_cat}}

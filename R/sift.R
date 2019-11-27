@@ -22,12 +22,14 @@
 #' @seealso \code{\link{epub_recombine}}
 #'
 #' @examples
+#' \donttest{
 #' file <- system.file("dracula.epub", package = "epubr")
 #' x <- epub(file) # parse entire e-book
 #' x$data[[1]]
 #'
 #' x <- epub_sift(x, n = 3000) # drops last two sections
 #' x$data[[1]]
+#' }
 epub_sift <- function(data, n, type = c("word", "char")){
   type <- paste0("n", match.arg(type))
   data$data <- lapply(data$data, function(x){

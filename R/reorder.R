@@ -24,6 +24,7 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' file <- system.file("dracula.epub", package = "epubr")
 #' x <- epub(file) # parse entire e-book
 #' x <- epub_recombine(x, "CHAPTER [IVX]+", sift = list(n = 1000)) # clean up
@@ -36,6 +37,7 @@
 #' f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\1", x)))
 #' x <- epub_reorder(x, f, "^CHAPTER ([IVX]+).*")
 #' x$data[[1]]
+#' }
 epub_reorder <- function(data, .f, pattern){
   data$data <- lapply(data$data, function(x, p){
     dplyr::slice(x, order(.f(.data[["text"]], p = pattern)))

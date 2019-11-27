@@ -35,6 +35,7 @@ The latter takes more effort. In the example EPUB file included in \code{epubr},
 The user must provide a function that would parse the Roman numerals in this pattern so that the rows of the data frame can be reordered properly.
 }
 \examples{
+\donttest{
 file <- system.file("dracula.epub", package = "epubr")
 x <- epub(file) # parse entire e-book
 x <- epub_recombine(x, "CHAPTER [IVX]+", sift = list(n = 1000)) # clean up
@@ -47,4 +48,5 @@ x$data[[1]]
 f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\1", x)))
 x <- epub_reorder(x, f, "^CHAPTER ([IVX]+).*")
 x$data[[1]]
+}
 }

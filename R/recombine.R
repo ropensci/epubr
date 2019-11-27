@@ -28,6 +28,7 @@
 #' @seealso \code{\link{epub_sift}}
 #'
 #' @examples
+#' \donttest{
 #' file <- system.file("dracula.epub", package = "epubr")
 #' x <- epub(file) # parse entire e-book
 #' x$data[[1]] # note arbitrary section breaks (not between chapters)
@@ -36,6 +37,7 @@
 #' epub_recombine(x, pat) # not as expected; pattern also in table of contents
 #'
 #' epub_recombine(x, pat, sift = list(n = 1000)) # sift low word-count sections
+#' }
 epub_recombine <- function(data, pattern, sift = NULL){
   data$data <- lapply(data$data, .epub_recombine, pattern)
   data <- dplyr::mutate(

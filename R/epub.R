@@ -72,6 +72,7 @@
 #' epub_unzip(file, exdir = bookdir) # unzip to directly inspect archive files
 #' list.files(bookdir, recursive = TRUE)
 #'
+#' \donttest{
 #' epub_meta(file) # parse EPUB file metadata only
 #'
 #' x <- epub(file) # parse entire e-book
@@ -79,6 +80,7 @@
 #' x$data[[1]]
 #'
 #' epub(file, fields = c("title", "creator"), drop_sections = "^cov")
+#' }
 epub <- function(file, fields = NULL, drop_sections = NULL,
                  chapter_pattern = NULL, encoding = "UTF-8", ...){
   .check_file(file)

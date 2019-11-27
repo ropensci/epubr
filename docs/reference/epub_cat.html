@@ -187,11 +187,13 @@ To print everything in <code>x</code>, set <code>max_paragraphs = NULL</code>.</
     <div class='dont-index'><p><code><a href='epub_head.html'>epub_head</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span>(<span class='no'>file</span>)
 <span class='fu'>epub_cat</span>(<span class='no'>d</span>, <span class='kw'>max_paragraphs</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>skip</span> <span class='kw'>=</span> <span class='fl'>147</span>)</div><div class='output co'>#&gt;   "Welcome to my house. Come freely. Go safely; and leave something of the happiness you bring!" The strength of the handshake was so much akin to that which I had noticed in the driver, whose face I had not seen, that for a moment I doubted if it were not the same person to whom I was speaking; so to make sure, I said interrogatively:-
 #&gt; 
-#&gt;   "Count Dracula?" He bowed in a courtly way as he replied:-</div></pre>
+#&gt;   "Count Dracula?" He bowed in a courtly way as he replied:-</div><div class='input'># }
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

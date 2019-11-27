@@ -16,8 +16,10 @@
 #' @seealso \code{\link{epub_cat}}
 #'
 #' @examples
+#' \donttest{
 #' file <- system.file("dracula.epub", package = "epubr")
 #' epub_head(file)
+#' }
 epub_head <- function(x, n = 50){
   if(inherits(x, "character")) x <- epub(x)
   tidyr::unnest(x, cols = .data[["data"]]) %>%
@@ -47,9 +49,11 @@ epub_head <- function(x, n = 50){
 #' @seealso \code{\link{epub_head}}
 #'
 #' @examples
+#' \donttest{
 #' file <- system.file("dracula.epub", package = "epubr")
 #' d <- epub(file)
 #' epub_cat(d, max_paragraphs = 2, skip = 147)
+#' }
 epub_cat <- function(x, max_paragraphs = 10, skip = 0, paragraph_spacing = 1,
                      paragraph_indent = 2, section_sep = "====",
                      book_sep = "====\n===="){

@@ -167,7 +167,8 @@ The latter takes more effort. In the example EPUB file included in <code>epubr</
 The user must provide a function that would parse the Roman numerals in this pattern so that the rows of the data frame can be reordered properly.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span>(<span class='no'>file</span>) <span class='co'># parse entire e-book</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub_recombine.html'>epub_recombine</a></span>(<span class='no'>x</span>, <span class='st'>"CHAPTER [IVX]+"</span>, <span class='kw'>sift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>)) <span class='co'># clean up</span>
 
@@ -206,7 +207,8 @@ The user must provide a function that would parse the Roman numerals in this pat
 #&gt; </span><span style='color: #555555;'> 8</span><span> ch18    </span><span style='color: #555555;'>"</span><span>CHAPTER XVIIIDR. SEWARD'S DIARY\n30 September.-I got ho~  </span><span style='text-decoration: underline;'>6</span><span>911 </span><span style='text-decoration: underline;'>35</span><span>881
 #&gt; </span><span style='color: #555555;'> 9</span><span> ch19    </span><span style='color: #555555;'>"</span><span>CHAPTER XIXJONATHAN HARKER'S JOURNAL\n1 October, 5 a. m~  </span><span style='text-decoration: underline;'>5</span><span>670 </span><span style='text-decoration: underline;'>29</span><span>431
 #&gt; </span><span style='color: #555555;'>10</span><span> ch24    </span><span style='color: #555555;'>"</span><span>CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN BY VA~  </span><span style='text-decoration: underline;'>6</span><span>272 </span><span style='text-decoration: underline;'>32</span><span>065
-#&gt; </span><span style='color: #555555;'># ... with 17 more rows</span><span></div></span></pre>
+#&gt; </span><span style='color: #555555;'># ... with 17 more rows</span><span></div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -159,7 +159,8 @@ but the text itself may contain this information at or near the start of a secti
     <div class='dont-index'><p><code><a href='epub_cat.html'>epub_cat</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='fu'>epub_head</span>(<span class='no'>file</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 2</span><span>
 #&gt;    section           text                                                   
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                  
@@ -177,7 +178,8 @@ but the text itself may contain this information at or near the start of a secti
 #&gt; </span><span style='color: #555555;'>12</span><span> item17            </span><span style='color: #555555;'>"</span><span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.</span><span style='color: #555555;'>"</span><span>  
 #&gt; </span><span style='color: #555555;'>13</span><span> item18            </span><span style='color: #555555;'>"</span><span> \nLater.-Dr. Van Helsing has returned. He has got </span><span style='color: #555555;'>"</span><span>  
 #&gt; </span><span style='color: #555555;'>14</span><span> item19            </span><span style='color: #555555;'>"</span><span>End of the Project Gutenberg EBook of Dracula, by </span><span style='color: #555555;'>"</span><span>   
-#&gt; </span><span style='color: #555555;'>15</span><span> coverpage-wrapper </span><span style='color: #555555;'>""</span><span>                                                     </div></span></pre>
+#&gt; </span><span style='color: #555555;'>15</span><span> coverpage-wrapper </span><span style='color: #555555;'>""</span><span>                                                     </div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

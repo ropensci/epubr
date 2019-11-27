@@ -171,7 +171,8 @@ However, recombining a second time does not lead to a need to resift, so recursi
     <div class='dont-index'><p><code><a href='epub_sift.html'>epub_sift</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
+    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
+<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span>(<span class='no'>file</span>) <span class='co'># parse entire e-book</span>
 <span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]] <span class='co'># note arbitrary section breaks (not between chapters)</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 4</span><span>
 #&gt;    section        text                                               nword nchar
@@ -199,7 +200,8 @@ However, recombining a second time does not lead to a need to resift, so recursi
 <span class='fu'>epub_recombine</span>(<span class='no'>x</span>, <span class='no'>pat</span>, <span class='kw'>sift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>)) <span class='co'># sift low word-count sections</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
 #&gt;   rights  identifier   creator  title language subject date  source  nchap data 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lis&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 </span><span style='color: #555555;'>&lt;tib</span><span>~</div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 </span><span style='color: #555555;'>&lt;tib</span><span>~</div><div class='input'># }
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
