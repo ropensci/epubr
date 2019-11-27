@@ -17,6 +17,6 @@ This is an update release.
 
 ## Downstream dependencies
 
-I have also run R CMD check on downstream dependencies of epubr 
+I have also run R CMD check on downstream dependencies
 (https://github.com/leonawicz/epubr/blob/master/revdep/). 
 All packages passed.
