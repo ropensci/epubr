@@ -13,7 +13,8 @@
 
 ## Update release
 
-This is an update release.
+* This is an update release.
+* This update includes a maintainer email address update.
 
 ## Downstream dependencies
 
