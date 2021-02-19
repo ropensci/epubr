@@ -45,7 +45,7 @@ set.seed(1)
 x$data[[1]] <- sample_frac(x$data[[1]]) # randomize rows for example
 x$data[[1]]
 
-f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\1", x)))
+f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\\\1", x)))
 x <- epub_reorder(x, f, "^CHAPTER ([IVX]+).*")
 x$data[[1]]
 }

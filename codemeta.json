@@ -14,14 +14,13 @@
   ],
   "issueTracker": "https://github.com/ropensci/epubr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -33,7 +32,7 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "matt_leonawicz@esource.com",
+      "email": "mfleonawicz@gmail.com",
       "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
@@ -45,7 +44,7 @@
       "@type": "Person",
       "givenName": "Matthew",
       "familyName": "Leonawicz",
-      "email": "matt_leonawicz@esource.com",
+      "email": "mfleonawicz@gmail.com",
       "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
@@ -187,17 +186,13 @@
   ],
   "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "478.222KB",
-  "contIntegration": [
-    "https://travis-ci.org/ropensci/epubr",
-    "https://ci.appveyor.com/project/leonawicz/epubr",
-    "https://codecov.io/gh/ropensci/epubr"
-  ],
+  "fileSize": "1367.561KB",
+  "contIntegration": ["https://travis-ci.org/ropensci/epubr", "https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/ropensci/epubr"],
   "developmentStatus": "http://www.repostatus.org/#active",
   "review": {
     "@type": "Review",
-    "url": "https://github.com/ropensci/onboarding/issues/222",
-    "provider": "http://ropensci.org"
+    "url": "https://github.com/ropensci/software-review/issues/222",
+    "provider": "https://ropensci.org"
   },
   "keywords": [
     "epub-files",

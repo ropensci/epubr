@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -47,7 +51,6 @@
 <meta property="og:title" content="Extract and read EPUB e-books — epub" />
 <meta property="og:description" content="Read EPUB format e-books into a data frame using epub or extract EPUB archive files for direct use with epub_unzip." />
 <meta property="og:image" content="https://docs.ropensci.org/epubr/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -65,7 +68,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -79,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
       </span>
     </div>
 
@@ -87,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +107,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/epubr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,18 +133,18 @@
     <p>Read EPUB format e-books into a data frame using <code>epub</code> or extract EPUB archive files for direct use with <code>epub_unzip</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>epub</span>(
-  <span class='no'>file</span>,
-  <span class='kw'>fields</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>chapter_pattern</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"UTF-8"</span>,
-  <span class='no'>...</span>
-)
+    <pre class="usage"><span class='fu'>epub</span><span class='op'>(</span>
+  <span class='va'>file</span>,
+  fields <span class='op'>=</span> <span class='cn'>NULL</span>,
+  drop_sections <span class='op'>=</span> <span class='cn'>NULL</span>,
+  chapter_pattern <span class='op'>=</span> <span class='cn'>NULL</span>,
+  encoding <span class='op'>=</span> <span class='st'>"UTF-8"</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
-<span class='fu'>epub_meta</span>(<span class='no'>file</span>)
+<span class='fu'>epub_meta</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span>
 
-<span class='fu'>epub_unzip</span>(<span class='no'>file</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>())</pre>
+<span class='fu'>epub_unzip</span><span class='op'>(</span><span class='va'>file</span>, exdir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -191,7 +194,7 @@ This could take a long time to process as well as could potentially use up all o
 However, the optional arguments <code>fields</code>, <code>drop_sections</code> and <code>chapter_pattern</code> allow you to do some of this as part of the EPUB file reading process.
 You can ignore these arguments and do all your own post-processing of the resulting data frame, but if using these arguments,
 they are most likely to be useful for bulk e-book processing where <code>file</code> is a vector of like-formatted files.</p>
-<h3>Main columns</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Main columns</h3>
 <p>The <code>fields</code> argument can be used to limit the columns returned in the primary data frame.
 E.g., <code>fields = c("title", "creator", "date", "identifier", "publisher", "file")</code>. Some fields will be returned even if not in <code>fields</code>, such as <code>data</code> and <code>title</code>.
 <br /><br />
@@ -206,7 +209,7 @@ File names are the fallback option because unlike e-book metadata fields, file n
 ensuring that <code>title</code> can be a column in the output data frame that uniquely identifies different e-books even if the books did not have a <code>title</code> field in their metadata.
 <br /><br />
 Columns of the nested data frames in <code>data</code> are fixed. Select from these in subsequent data frame manipulations.</p>
-<h3>Nested rows</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Nested rows</h3>
 <p>The <code>chapter_pattern</code> argument may be helpful for bulk processing of similarly formatted EPUB files. This should be ignored for poorly formatted EPUB files or where there is inconsistent naming across an e-book collection.
 Like with <code>fields</code>, you should explore file metadata in advance or this argument will not be useful. If provided, a column <code>nchap</code> is added to the output data frame giving the guessed number of chapters.
 In the <code>data</code> column, the <code>section</code> column of the nested data frames will also be updated to reflect guessed chapters with new, consistent chapter IDs, always beginning with <code>ch</code> and ending with digits.
@@ -216,11 +219,11 @@ This is useful for dropping rows that may pertain to book cover, copyright and a
 An example that might work for many books could be <code>drop_sections = "^co(v|p)|^ack"</code>
 <br /><br />
 Rows of the primary data frame are fixed. Filter or otherwise manipulate these in subsequent data frame manipulations. There is one row per file so filtering does not make sense to do as part of the initial file reading.</p>
-<h3>EPUB metadata</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>EPUB metadata</h3>
 <p>Use <code>epub_meta</code> to return a data frame of only the metadata for each file in <code>file</code>. This skips the reading of each file's text contents, strictly parsing the metadata.
 It returns a data frame with one row for each file and <code>n</code> columns where <code>n</code> is equal to the union of all fields identified across all files in <code>file</code>.
 Fields available for at least one e-book in <code>file</code> will return <code>NA</code> in that column for any row pertaining to an e-book that does not have that field in its metadata.</p>
-<h3>Unzipping EPUB files</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Unzipping EPUB files</h3>
 <p>If using <code>epub_unzip</code> directly on individual EPUB files, this gives you control over where to extract archive files to and what to do with them subsequently.
 <code>epub</code> and <code>epub_meta</code> use <code>epub_unzip</code> internally to extract EPUB archive files to the R session temp directory (with <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code>).
 You do not need to use <code>epub_unzip</code> directly prior to using these other functions. It is only needed if you want the internal files for some other purpose in or out of R.</p>
@@ -228,10 +231,11 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use a local example EPUB file included in the package</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
-<span class='no'>bookdir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span>(), <span class='st'>"dracula"</span>)
-<span class='fu'>epub_unzip</span>(<span class='no'>file</span>, <span class='kw'>exdir</span> <span class='kw'>=</span> <span class='no'>bookdir</span>) <span class='co'># unzip to directly inspect archive files</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span>(<span class='no'>bookdir</span>, <span class='kw'>recursive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;  [1] "META-INF/container.xml"                                                  
+<span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"dracula.epub"</span>, package <span class='op'>=</span> <span class='st'>"epubr"</span><span class='op'>)</span>
+<span class='va'>bookdir</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/file.path.html'>file.path</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"dracula"</span><span class='op'>)</span>
+<span class='fu'>epub_unzip</span><span class='op'>(</span><span class='va'>file</span>, exdir <span class='op'>=</span> <span class='va'>bookdir</span><span class='op'>)</span> <span class='co'># unzip to directly inspect archive files</span>
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='va'>bookdir</span>, recursive <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "META-INF/container.xml"                                                  
 #&gt;  [2] "mimetype"                                                                
 #&gt;  [3] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-0.htm.html"   
 #&gt;  [4] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-1.htm.html"   
@@ -256,47 +260,46 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 #&gt; [23] "OEBPS/toc.ncx"                                                           
 #&gt; [24] "OEBPS/wrap0000.html"                                                     </div><div class='input'>
 <span class='co'># \donttest{</span>
-<span class='fu'>epub_meta</span>(<span class='no'>file</span>) <span class='co'># parse EPUB file metadata only</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
+<span class='fu'>epub_meta</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> <span class='co'># parse EPUB file metadata only</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 8</span><span>
 #&gt;   rights     identifier      creator  title language subject date  source       
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        
-#&gt; </span><span style='color: #555555;'>1</span><span> Public do~ http://www.gut~ Bram St~ Drac~ en       Horror~ 1995~ http://www.g~</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>epub</span>(<span class='no'>file</span>) <span class='co'># parse entire e-book</span>
-<span class='no'>x</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 9</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public do~ http://www.gut~ Bram St~ Drac~ en       Horror~ 1995~ http://www.g~</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>epub</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> <span class='co'># parse entire e-book</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 9</span><span>
 #&gt;   rights   identifier    creator  title language subject date  source     data  
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://ww~ </span><span style='color: #555555;'>&lt;tibb</span><span>~</div><div class='input'><span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]]</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 15 x 4</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://ww~ </span><span style='color: #949494;'>&lt;tibb</span><span>~</div><div class='input'><span class='va'>x</span><span class='op'>$</span><span class='va'>data</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 15 x 4</span><span>
 #&gt;    section        text                                               nword nchar
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> item6          </span><span style='color: #555555;'>"</span><span>The Project Gutenberg EBook of Dracula, by Bram ~ </span><span style='text-decoration: underline;'>11</span><span>446 </span><span style='text-decoration: underline;'>60</span><span>972
-#&gt; </span><span style='color: #555555;'> 2</span><span> item7          </span><span style='color: #555555;'>"</span><span>But I am not in heart to describe beauty, for wh~ </span><span style='text-decoration: underline;'>13</span><span>879 </span><span style='text-decoration: underline;'>71</span><span>798
-#&gt; </span><span style='color: #555555;'> 3</span><span> item8          </span><span style='color: #555555;'>"</span><span>\" 'Lucy, you are an honest-hearted girl, I know~ </span><span style='text-decoration: underline;'>12</span><span>474 </span><span style='text-decoration: underline;'>65</span><span>522
-#&gt; </span><span style='color: #555555;'> 4</span><span> item9          </span><span style='color: #555555;'>"</span><span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ </span><span style='text-decoration: underline;'>12</span><span>177 </span><span style='text-decoration: underline;'>62</span><span>724
-#&gt; </span><span style='color: #555555;'> 5</span><span> item10         </span><span style='color: #555555;'>"</span><span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ </span><span style='text-decoration: underline;'>12</span><span>806 </span><span style='text-decoration: underline;'>66</span><span>678
-#&gt; </span><span style='color: #555555;'> 6</span><span> item11         </span><span style='color: #555555;'>"</span><span>Once again we went through that ghastly operatio~ </span><span style='text-decoration: underline;'>12</span><span>103 </span><span style='text-decoration: underline;'>62</span><span>949
-#&gt; </span><span style='color: #555555;'> 7</span><span> item12         </span><span style='color: #555555;'>"</span><span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ </span><span style='text-decoration: underline;'>12</span><span>214 </span><span style='text-decoration: underline;'>62</span><span>234
-#&gt; </span><span style='color: #555555;'> 8</span><span> item13         </span><span style='color: #555555;'>"</span><span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ </span><span style='text-decoration: underline;'>13</span><span>990 </span><span style='text-decoration: underline;'>72</span><span>903
-#&gt; </span><span style='color: #555555;'> 9</span><span> item14         </span><span style='color: #555555;'>"</span><span>\"Thus when we find the habitation of this man-t~ </span><span style='text-decoration: underline;'>13</span><span>356 </span><span style='text-decoration: underline;'>69</span><span>779
-#&gt; </span><span style='color: #555555;'>10</span><span> item15         </span><span style='color: #555555;'>"</span><span>\"I see,\" I said. \"You want big things that yo~ </span><span style='text-decoration: underline;'>12</span><span>866 </span><span style='text-decoration: underline;'>66</span><span>921
-#&gt; </span><span style='color: #555555;'>11</span><span> item16         </span><span style='color: #555555;'>"</span><span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ </span><span style='text-decoration: underline;'>11</span><span>928 </span><span style='text-decoration: underline;'>61</span><span>550
-#&gt; </span><span style='color: #555555;'>12</span><span> item17         </span><span style='color: #555555;'>"</span><span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ </span><span style='text-decoration: underline;'>13</span><span>119 </span><span style='text-decoration: underline;'>68</span><span>564
-#&gt; </span><span style='color: #555555;'>13</span><span> item18         </span><span style='color: #555555;'>"</span><span> \nLater.-Dr. Van Helsing has returned. He has g~  </span><span style='text-decoration: underline;'>8</span><span>435 </span><span style='text-decoration: underline;'>43</span><span>464
-#&gt; </span><span style='color: #555555;'>14</span><span> item19         </span><span style='color: #555555;'>"</span><span>End of the Project Gutenberg EBook of Dracula, b~  </span><span style='text-decoration: underline;'>2</span><span>665 </span><span style='text-decoration: underline;'>18</span><span>541
-#&gt; </span><span style='color: #555555;'>15</span><span> coverpage-wra~ </span><span style='color: #555555;'>""</span><span>                                                     0     0</div><div class='input'>
-<span class='fu'>epub</span>(<span class='no'>file</span>, <span class='kw'>fields</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"title"</span>, <span class='st'>"creator"</span>), <span class='kw'>drop_sections</span> <span class='kw'>=</span> <span class='st'>"^cov"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 3</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> item6          </span><span style='color: #949494;'>"</span><span>The Project Gutenberg EBook of Dracula, by Bram ~ </span><span style='text-decoration: underline;'>11</span><span>446 </span><span style='text-decoration: underline;'>60</span><span>972
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> item7          </span><span style='color: #949494;'>"</span><span>But I am not in heart to describe beauty, for wh~ </span><span style='text-decoration: underline;'>13</span><span>879 </span><span style='text-decoration: underline;'>71</span><span>798
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> item8          </span><span style='color: #949494;'>"</span><span>\" 'Lucy, you are an honest-hearted girl, I know~ </span><span style='text-decoration: underline;'>12</span><span>474 </span><span style='text-decoration: underline;'>65</span><span>522
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> item9          </span><span style='color: #949494;'>"</span><span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ </span><span style='text-decoration: underline;'>12</span><span>177 </span><span style='text-decoration: underline;'>62</span><span>724
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> item10         </span><span style='color: #949494;'>"</span><span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ </span><span style='text-decoration: underline;'>12</span><span>806 </span><span style='text-decoration: underline;'>66</span><span>678
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> item11         </span><span style='color: #949494;'>"</span><span>Once again we went through that ghastly operatio~ </span><span style='text-decoration: underline;'>12</span><span>103 </span><span style='text-decoration: underline;'>62</span><span>949
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> item12         </span><span style='color: #949494;'>"</span><span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ </span><span style='text-decoration: underline;'>12</span><span>214 </span><span style='text-decoration: underline;'>62</span><span>234
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> item13         </span><span style='color: #949494;'>"</span><span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ </span><span style='text-decoration: underline;'>13</span><span>990 </span><span style='text-decoration: underline;'>72</span><span>903
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> item14         </span><span style='color: #949494;'>"</span><span>\"Thus when we find the habitation of this man-t~ </span><span style='text-decoration: underline;'>13</span><span>356 </span><span style='text-decoration: underline;'>69</span><span>779
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> item15         </span><span style='color: #949494;'>"</span><span>\"I see,\" I said. \"You want big things that yo~ </span><span style='text-decoration: underline;'>12</span><span>866 </span><span style='text-decoration: underline;'>66</span><span>921
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> item16         </span><span style='color: #949494;'>"</span><span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ </span><span style='text-decoration: underline;'>11</span><span>928 </span><span style='text-decoration: underline;'>61</span><span>550
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> item17         </span><span style='color: #949494;'>"</span><span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ </span><span style='text-decoration: underline;'>13</span><span>119 </span><span style='text-decoration: underline;'>68</span><span>564
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> item18         </span><span style='color: #949494;'>"</span><span> \nLater.-Dr. Van Helsing has returned. He has g~  </span><span style='text-decoration: underline;'>8</span><span>435 </span><span style='text-decoration: underline;'>43</span><span>464
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> item19         </span><span style='color: #949494;'>"</span><span>End of the Project Gutenberg EBook of Dracula, b~  </span><span style='text-decoration: underline;'>2</span><span>665 </span><span style='text-decoration: underline;'>18</span><span>541
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> coverpage-wra~ </span><span style='color: #949494;'>""</span><span>                                                     0     0</div><div class='input'>
+<span class='fu'>epub</span><span class='op'>(</span><span class='va'>file</span>, fields <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"title"</span>, <span class='st'>"creator"</span><span class='op'>)</span>, drop_sections <span class='op'>=</span> <span class='st'>"^cov"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 3</span><span>
 #&gt;   title   creator     data             
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;list&gt;</span><span>           
-#&gt; </span><span style='color: #555555;'>1</span><span> Dracula Bram Stoker </span><span style='color: #555555;'>&lt;tibble [14 x 4]&gt;</span><span></div><div class='input'># }
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>           
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Dracula Bram Stoker </span><span style='color: #949494;'>&lt;tibble [14 x 4]&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -307,7 +310,7 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

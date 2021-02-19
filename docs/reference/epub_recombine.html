@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -47,7 +51,6 @@
 <meta property="og:title" content="Recombine text sections — epub_recombine" />
 <meta property="og:description" content="Split and recombine EPUB text sections based on regular expression pattern matching." />
 <meta property="og:image" content="https://docs.ropensci.org/epubr/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -65,7 +68,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -79,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
       </span>
     </div>
 
@@ -87,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -104,7 +107,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/ropensci/epubr">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fas fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -130,7 +133,7 @@
     <p>Split and recombine EPUB text sections based on regular expression pattern matching.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>epub_recombine</span>(<span class='no'>data</span>, <span class='no'>pattern</span>, <span class='kw'>sift</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>epub_recombine</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>pattern</span>, sift <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,47 +175,44 @@ However, recombining a second time does not lead to a need to resift, so recursi
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='no'>file</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"dracula.epub"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"epubr"</span>)
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span>(<span class='no'>file</span>) <span class='co'># parse entire e-book</span>
-<span class='no'>x</span>$<span class='no'>data</span><span class='kw'>[[</span><span class='fl'>1</span>]] <span class='co'># note arbitrary section breaks (not between chapters)</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 15 x 4</span><span>
+<span class='va'>file</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"dracula.epub"</span>, package <span class='op'>=</span> <span class='st'>"epubr"</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='epub.html'>epub</a></span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> <span class='co'># parse entire e-book</span>
+<span class='va'>x</span><span class='op'>$</span><span class='va'>data</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># note arbitrary section breaks (not between chapters)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15 x 4</span><span>
 #&gt;    section        text                                               nword nchar
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                              </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> item6          </span><span style='color: #555555;'>"</span><span>The Project Gutenberg EBook of Dracula, by Bram ~ </span><span style='text-decoration: underline;'>11</span><span>446 </span><span style='text-decoration: underline;'>60</span><span>972
-#&gt; </span><span style='color: #555555;'> 2</span><span> item7          </span><span style='color: #555555;'>"</span><span>But I am not in heart to describe beauty, for wh~ </span><span style='text-decoration: underline;'>13</span><span>879 </span><span style='text-decoration: underline;'>71</span><span>798
-#&gt; </span><span style='color: #555555;'> 3</span><span> item8          </span><span style='color: #555555;'>"</span><span>\" 'Lucy, you are an honest-hearted girl, I know~ </span><span style='text-decoration: underline;'>12</span><span>474 </span><span style='text-decoration: underline;'>65</span><span>522
-#&gt; </span><span style='color: #555555;'> 4</span><span> item9          </span><span style='color: #555555;'>"</span><span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ </span><span style='text-decoration: underline;'>12</span><span>177 </span><span style='text-decoration: underline;'>62</span><span>724
-#&gt; </span><span style='color: #555555;'> 5</span><span> item10         </span><span style='color: #555555;'>"</span><span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ </span><span style='text-decoration: underline;'>12</span><span>806 </span><span style='text-decoration: underline;'>66</span><span>678
-#&gt; </span><span style='color: #555555;'> 6</span><span> item11         </span><span style='color: #555555;'>"</span><span>Once again we went through that ghastly operatio~ </span><span style='text-decoration: underline;'>12</span><span>103 </span><span style='text-decoration: underline;'>62</span><span>949
-#&gt; </span><span style='color: #555555;'> 7</span><span> item12         </span><span style='color: #555555;'>"</span><span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ </span><span style='text-decoration: underline;'>12</span><span>214 </span><span style='text-decoration: underline;'>62</span><span>234
-#&gt; </span><span style='color: #555555;'> 8</span><span> item13         </span><span style='color: #555555;'>"</span><span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ </span><span style='text-decoration: underline;'>13</span><span>990 </span><span style='text-decoration: underline;'>72</span><span>903
-#&gt; </span><span style='color: #555555;'> 9</span><span> item14         </span><span style='color: #555555;'>"</span><span>\"Thus when we find the habitation of this man-t~ </span><span style='text-decoration: underline;'>13</span><span>356 </span><span style='text-decoration: underline;'>69</span><span>779
-#&gt; </span><span style='color: #555555;'>10</span><span> item15         </span><span style='color: #555555;'>"</span><span>\"I see,\" I said. \"You want big things that yo~ </span><span style='text-decoration: underline;'>12</span><span>866 </span><span style='text-decoration: underline;'>66</span><span>921
-#&gt; </span><span style='color: #555555;'>11</span><span> item16         </span><span style='color: #555555;'>"</span><span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ </span><span style='text-decoration: underline;'>11</span><span>928 </span><span style='text-decoration: underline;'>61</span><span>550
-#&gt; </span><span style='color: #555555;'>12</span><span> item17         </span><span style='color: #555555;'>"</span><span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ </span><span style='text-decoration: underline;'>13</span><span>119 </span><span style='text-decoration: underline;'>68</span><span>564
-#&gt; </span><span style='color: #555555;'>13</span><span> item18         </span><span style='color: #555555;'>"</span><span> \nLater.-Dr. Van Helsing has returned. He has g~  </span><span style='text-decoration: underline;'>8</span><span>435 </span><span style='text-decoration: underline;'>43</span><span>464
-#&gt; </span><span style='color: #555555;'>14</span><span> item19         </span><span style='color: #555555;'>"</span><span>End of the Project Gutenberg EBook of Dracula, b~  </span><span style='text-decoration: underline;'>2</span><span>665 </span><span style='text-decoration: underline;'>18</span><span>541
-#&gt; </span><span style='color: #555555;'>15</span><span> coverpage-wra~ </span><span style='color: #555555;'>""</span><span>                                                     0     0</div><div class='input'>
-<span class='no'>pat</span> <span class='kw'>&lt;-</span> <span class='st'>"CHAPTER [IVX]+"</span> <span class='co'># but a reliable pattern exists for new breaks</span>
-<span class='fu'>epub_recombine</span>(<span class='no'>x</span>, <span class='no'>pat</span>) <span class='co'># not as expected; pattern also in table of contents</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> item6          </span><span style='color: #949494;'>"</span><span>The Project Gutenberg EBook of Dracula, by Bram ~ </span><span style='text-decoration: underline;'>11</span><span>446 </span><span style='text-decoration: underline;'>60</span><span>972
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> item7          </span><span style='color: #949494;'>"</span><span>But I am not in heart to describe beauty, for wh~ </span><span style='text-decoration: underline;'>13</span><span>879 </span><span style='text-decoration: underline;'>71</span><span>798
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> item8          </span><span style='color: #949494;'>"</span><span>\" 'Lucy, you are an honest-hearted girl, I know~ </span><span style='text-decoration: underline;'>12</span><span>474 </span><span style='text-decoration: underline;'>65</span><span>522
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> item9          </span><span style='color: #949494;'>"</span><span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ </span><span style='text-decoration: underline;'>12</span><span>177 </span><span style='text-decoration: underline;'>62</span><span>724
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> item10         </span><span style='color: #949494;'>"</span><span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ </span><span style='text-decoration: underline;'>12</span><span>806 </span><span style='text-decoration: underline;'>66</span><span>678
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> item11         </span><span style='color: #949494;'>"</span><span>Once again we went through that ghastly operatio~ </span><span style='text-decoration: underline;'>12</span><span>103 </span><span style='text-decoration: underline;'>62</span><span>949
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> item12         </span><span style='color: #949494;'>"</span><span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ </span><span style='text-decoration: underline;'>12</span><span>214 </span><span style='text-decoration: underline;'>62</span><span>234
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> item13         </span><span style='color: #949494;'>"</span><span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ </span><span style='text-decoration: underline;'>13</span><span>990 </span><span style='text-decoration: underline;'>72</span><span>903
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> item14         </span><span style='color: #949494;'>"</span><span>\"Thus when we find the habitation of this man-t~ </span><span style='text-decoration: underline;'>13</span><span>356 </span><span style='text-decoration: underline;'>69</span><span>779
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> item15         </span><span style='color: #949494;'>"</span><span>\"I see,\" I said. \"You want big things that yo~ </span><span style='text-decoration: underline;'>12</span><span>866 </span><span style='text-decoration: underline;'>66</span><span>921
+#&gt; </span><span style='color: #BCBCBC;'>11</span><span> item16         </span><span style='color: #949494;'>"</span><span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ </span><span style='text-decoration: underline;'>11</span><span>928 </span><span style='text-decoration: underline;'>61</span><span>550
+#&gt; </span><span style='color: #BCBCBC;'>12</span><span> item17         </span><span style='color: #949494;'>"</span><span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ </span><span style='text-decoration: underline;'>13</span><span>119 </span><span style='text-decoration: underline;'>68</span><span>564
+#&gt; </span><span style='color: #BCBCBC;'>13</span><span> item18         </span><span style='color: #949494;'>"</span><span> \nLater.-Dr. Van Helsing has returned. He has g~  </span><span style='text-decoration: underline;'>8</span><span>435 </span><span style='text-decoration: underline;'>43</span><span>464
+#&gt; </span><span style='color: #BCBCBC;'>14</span><span> item19         </span><span style='color: #949494;'>"</span><span>End of the Project Gutenberg EBook of Dracula, b~  </span><span style='text-decoration: underline;'>2</span><span>665 </span><span style='text-decoration: underline;'>18</span><span>541
+#&gt; </span><span style='color: #BCBCBC;'>15</span><span> coverpage-wra~ </span><span style='color: #949494;'>""</span><span>                                                     0     0</div><div class='input'>
+<span class='va'>pat</span> <span class='op'>&lt;-</span> <span class='st'>"CHAPTER [IVX]+"</span> <span class='co'># but a reliable pattern exists for new breaks</span>
+<span class='fu'>epub_recombine</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>pat</span><span class='op'>)</span> <span class='co'># not as expected; pattern also in table of contents</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 10</span><span>
 #&gt;   rights  identifier   creator  title language subject date  source  nchap data 
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lis&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 </span><span style='color: #555555;'>&lt;tib</span><span>~</div><div class='input'>
-<span class='fu'>epub_recombine</span>(<span class='no'>x</span>, <span class='no'>pat</span>, <span class='kw'>sift</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1000</span>)) <span class='co'># sift low word-count sections</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 10</span><span>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lis&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 </span><span style='color: #949494;'>&lt;tib</span><span>~</div><div class='input'>
+<span class='fu'>epub_recombine</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>pat</span>, sift <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>n <span class='op'>=</span> <span class='fl'>1000</span><span class='op'>)</span><span class='op'>)</span> <span class='co'># sift low word-count sections</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 10</span><span>
 #&gt;   rights  identifier   creator  title language subject date  source  nchap data 
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;lis&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 </span><span style='color: #555555;'>&lt;tib</span><span>~</div><div class='input'># }
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;lis&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 </span><span style='color: #949494;'>&lt;tib</span><span>~</div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -223,7 +223,7 @@ However, recombining a second time does not lead to a need to resift, so recursi
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

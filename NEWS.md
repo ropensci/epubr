@@ -1,3 +1,7 @@
+# epubr 0.6.2
+
+* Documentation updates.
+
 # epubr 0.6.1
 
 * Fix warnings caused by updates to other packages like `tidyr`.
