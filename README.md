@@ -10,14 +10,14 @@
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
-developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
 [![Travis-CI Build
 Status](https://travis-ci.org/ropensci/epubr.svg?branch=master)](https://travis-ci.org/ropensci/epubr)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/ropensci/epubr?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/epubr)
 [![codecov](https://codecov.io/gh/ropensci/epubr/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/epubr)
 
-[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/onboarding/issues/222)
+[![](https://badges.ropensci.org/222_status.svg)](https://github.com/ropensci/software-review/issues/222)
 [![CRAN
 status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/package=epubr)
 [![CRAN RStudio mirror
@@ -132,7 +132,7 @@ tables, therefore not text, from PDF files.
 [rtika](https://github.com/ropensci/rtika) by @goodmansasha for more
 general text parsing.
 
-[gutenbergr](https://github.com/ropenscilabs/gutenbergr) by @dgrtwo for
+[gutenbergr](https://github.com/ropensci/gutenbergr) by @dgrtwo for
 searching and downloading public domain texts from Project Gutenberg.
 
 -----
