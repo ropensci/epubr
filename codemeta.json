@@ -187,7 +187,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "1368.417KB",
+  "fileSize": "1368.233KB",
   "contIntegration": ["https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/ropensci/epubr"],
   "developmentStatus": "https://www.repostatus.org/",
   "review": {
