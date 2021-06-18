@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.3</span>
       </span>
     </div>
 
@@ -222,7 +222,8 @@ Rows of the primary data frame are fixed. Filter or otherwise manipulate these i
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>EPUB metadata</h3>
 <p>Use <code>epub_meta</code> to return a data frame of only the metadata for each file in <code>file</code>. This skips the reading of each file's text contents, strictly parsing the metadata.
 It returns a data frame with one row for each file and <code>n</code> columns where <code>n</code> is equal to the union of all fields identified across all files in <code>file</code>.
-Fields available for at least one e-book in <code>file</code> will return <code>NA</code> in that column for any row pertaining to an e-book that does not have that field in its metadata.</p>
+Fields available for at least one e-book in <code>file</code> will return <code>NA</code> in that column for any row pertaining to an e-book that does not have that field in its metadata.
+If the metadata contains multiple entries for a field, such as multiple subjects or publication dates, they are collapsed using the pipe character.</p>
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Unzipping EPUB files</h3>
 <p>If using <code>epub_unzip</code> directly on individual EPUB files, this gives you control over where to extract archive files to and what to do with them subsequently.
 <code>epub</code> and <code>epub_meta</code> use <code>epub_unzip</code> internally to extract EPUB archive files to the R session temp directory (with <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code>).
@@ -262,15 +263,15 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 <span class='co'># \donttest{</span>
 <span class='fu'>epub_meta</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> <span class='co'># parse EPUB file metadata only</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 8</span><span>
-#&gt;   rights     identifier      creator  title language subject date  source       
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public do~ http://www.gut~ Bram St~ Drac~ en       Horror~ 1995~ http://www.g~</div><div class='input'>
+#&gt;   rights   identifier    creator  title language subject      date     source   
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public ~ http://www.g~ Bram St~ Drac~ en       Horror tale~ 1995-10~ http://w~</div><div class='input'>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>epub</span><span class='op'>(</span><span class='va'>file</span><span class='op'>)</span> <span class='co'># parse entire e-book</span>
 <span class='va'>x</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 9</span><span>
-#&gt;   rights   identifier    creator  title language subject date  source     data  
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://ww~ </span><span style='color: #949494;'>&lt;tibb</span><span>~</div><div class='input'><span class='va'>x</span><span class='op'>$</span><span class='va'>data</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+#&gt;   rights  identifier   creator  title  language subject    date   source   data 
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;lis&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Public~ http://www.~ Bram St~ Dracu~ en       Horror ta~ 1995-~ http://~ </span><span style='color: #949494;'>&lt;tib</span><span>~</div><div class='input'><span class='va'>x</span><span class='op'>$</span><span class='va'>data</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 15 x 4</span><span>
 #&gt;    section        text                                               nword nchar
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
@@ -291,9 +292,9 @@ You do not need to use <code>epub_unzip</code> directly prior to using these oth
 #&gt; </span><span style='color: #BCBCBC;'>15</span><span> coverpage-wra~ </span><span style='color: #949494;'>""</span><span>                                                     0     0</div><div class='input'>
 <span class='fu'>epub</span><span class='op'>(</span><span class='va'>file</span>, fields <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"title"</span>, <span class='st'>"creator"</span><span class='op'>)</span>, drop_sections <span class='op'>=</span> <span class='st'>"^cov"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1 x 3</span><span>
-#&gt;   title   creator     data             
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Dracula Bram Stoker </span><span style='color: #949494;'>&lt;tibble [14 x 4]&gt;</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;   title   creator     data                 
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;list&gt;</span><span>               
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Dracula Bram Stoker </span><span style='color: #949494;'>&lt;tibble[,4] [14 x 4]&gt;</span><span></div><div class='input'><span class='co'># }</span>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

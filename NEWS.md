@@ -1,3 +1,8 @@
+# epubr 0.6.3
+
+* Allow multiple values for a metadata field, pipe-separated.
+* Update documentation and tests.
+
 # epubr 0.6.2
 
 * Documentation updates.

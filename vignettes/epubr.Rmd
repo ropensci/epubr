@@ -31,7 +31,7 @@ The numbering also starts in a weird place. But it is actually worse than this. 
 
 These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the section below on restructuring for examples of `epubr` functions that help get around these issues.
 
-Here a single file is read with `epub`. The output of the returned primary data frame and the book text data frame that is nested within its `data` column are shown.
+Here a single file is read with `epub()`. The output of the returned primary data frame and the book text data frame that is nested within its `data` column are shown.
 
 ```{r read}
 library(epubr)
@@ -45,19 +45,19 @@ The `file` argument may be a vector of EPUB files. There is one row for each boo
 
 ## EPUB metadata
 
-The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. `epub_meta` strictly parses file metadata and does not read the e-book text.
+The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. `epub_meta()` strictly parses file metadata and does not read the e-book text.
 
 ```{r metadata}
 epub_meta(file)
 ```
 
-This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first `epub` example.
+This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first `epub()` example.
 
-`file` can also be a vector for `epub_meta`. Whenever `file` is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return `NA` for that row and column.
+`file` can also be a vector for `epub_meta()`. Whenever `file` is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return `NA` for that row and column.
 
 ## Additional arguments
 
-There are three optional arguments that can be provided to `epub` to:
+There are three optional arguments that can be provided to `epub()` to:
 
 *    select fields, or columns of the primary data frame.
 *    filter sections, or rows of the nested data frame.
@@ -114,7 +114,7 @@ For e-books with poor metadata formatting this is not always possible, or may be
 
 ### Split and recombine into new sections
 
-This book is internally broken into sections at arbitrary break points, hence why several sections begin in the middle of chapters, as seen above. Other chapters begin in the middle of sections. Use `epub_recombine` along with a regular expression that can match the true section breaks. This function collapses the full text and then rebuilds the text table using new sections with proper break points. In the process it also recalculates the numbers of words and characters and relabels the sections with chapter notation.
+This book is internally broken into sections at arbitrary break points, hence why several sections begin in the middle of chapters, as seen above. Other chapters begin in the middle of sections. Use `epub_recombine()` along with a regular expression that can match the true section breaks. This function collapses the full text and then rebuilds the text table using new sections with proper break points. In the process it also recalculates the numbers of words and characters and relabels the sections with chapter notation.
 
 Fortunately, a reliable pattern exists, which consists of `CHAPTER` in capital letters followed by a space and some Roman numerals. Recombine the text into a new object.
 
@@ -128,7 +128,7 @@ x2$data[[1]]
 
 But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 "chapters" represent the table of contents being split on each chapter ID. These should be removed.
 
-An easy way to do this is with `epub_sift`, which sifts, or filters out, small word- or character-count sections from the nested data frame. It's a simple sieve and you can control the size of the holes with `n`. You can choose `type = "word"` (default) or `type = "character"`. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.
+An easy way to do this is with `epub_sift()`, which sifts, or filters out, small word- or character-count sections from the nested data frame. It's a simple sieve and you can control the size of the holes with `n`. You can choose `type = "word"` (default) or `type = "character"`. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.
 
 ```{r recombine2}
 library(dplyr)
@@ -138,7 +138,7 @@ x2
 x2$data[[1]]
 ```
 
-This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply `epub_recombine` because the sections we removed had nevertheless offset the chapter indexing. Another call to `epub_recombine` can be chained, but it may be more convenient to use the `sift` argument to `epub_recombine`, which is applied recursively.
+This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply `epub_recombine()` because the sections we removed had nevertheless offset the chapter indexing. Another call to `epub_recombine()` can be chained, but it may be more convenient to use the `sift` argument to `epub_recombine()`, which is applied recursively.
 
 ```{r recombine3}
 #epub_recombine(x, pat) %>% epub_sift(n = 200) %>% epub_recombine(pat)
@@ -152,7 +152,7 @@ x2$data[[1]]
 
 Some poorly formatted e-books have their internal sections occur in an arbitrary order. This can be frustrating to work with when doing text analysis on each section and where order matters. Just like recombining into new sections based on a pattern, sections that are out of order can be reordered based on a pattern. This requires a bit more work. In this case the user must provide a function that will map something in the matched pattern to an integer representing the desired row index.
 
-Continue with the Dracula example, but with one difference. Even though the sections were originally broken at arbitrary points, they were in chronological order. To demonstrate the utility of `epub_reorder`, first randomize the rows so that chronological order can be recovered.
+Continue with the Dracula example, but with one difference. Even though the sections were originally broken at arbitrary points, they were in chronological order. To demonstrate the utility of `epub_reorder()`, first randomize the rows so that chronological order can be recovered.
 
 ```{r reorder1}
 set.seed(1)
@@ -168,11 +168,11 @@ For this book, you need a function that will convert an annoying Roman numeral t
 f <- function(x, pattern) as.numeric(as.roman(gsub(pattern, "\\1", x)))
 ```
 
-This function is passed to `epub_reorder`. It takes and returns scalars. It must take two arguments: the first is a text string. The second is the regular expression. It must return a single number representing the index of that row. For example, if the pattern matches `CHAPTER IV`, the function should return a `4`.
+This function is passed to `epub_reorder()`. It takes and returns scalars. It must take two arguments: the first is a text string. The second is the regular expression. It must return a single number representing the index of that row. For example, if the pattern matches `CHAPTER IV`, the function should return a `4`.
 
-`epub_reorder` takes care of the rest. It applies your function to every row in the the nested data frame and then reorders the rows based on the full set of indices. Note that it also repeats this for every row (book) in the primary data frame, i.e., for every nested table. This means that the same function will be applied to every book. Therefore, you should only use this in bulk on a collection of e-books if you know the pattern does not change and the function will work correctly in each case.
+`epub_reorder()` takes care of the rest. It applies your function to every row in the the nested data frame and then reorders the rows based on the full set of indices. Note that it also repeats this for every row (book) in the primary data frame, i.e., for every nested table. This means that the same function will be applied to every book. Therefore, you should only use this in bulk on a collection of e-books if you know the pattern does not change and the function will work correctly in each case.
 
-The pattern has changed slightly. Parentheses are used to retain the important part of the matched pattern, the Roman numeral. The function `f` here substitutes the entire string (because now it begins with `^` and ends with `.*`) with only the part stored in parentheses (In `f`, this is the `\\1` substitution). `epub_reorder` applies this to all rows in the nested data frame:
+The pattern has changed slightly. Parentheses are used to retain the important part of the matched pattern, the Roman numeral. The function `f` here substitutes the entire string (because now it begins with `^` and ends with `.*`) with only the part stored in parentheses (In `f`, this is the `\\1` substitution). `epub_reorder()` applies this to all rows in the nested data frame:
 
 ```{r reorder3}
 x2 <- epub_reorder(x2, f, "^CHAPTER ([IVX]+).*")
@@ -185,7 +185,7 @@ If sections are both out of order and use arbitrary break points, it would be ne
 
 ## Unzip EPUB file
 
-Separate from using `epub_meta` and `epub`, you can call `epub_unzip` directly if all you want to do is extract the files from the `.epub` file archive. By default the archive files are extracted to `tempdir()` so you may want to change this with the `exdir` argument.
+Separate from using `epub_meta()` and `epub()`, you can call `epub_unzip()` directly if all you want to do is extract the files from the `.epub` file archive. By default the archive files are extracted to `tempdir()` so you may want to change this with the `exdir` argument.
 
 ```{r unzip}
 bookdir <- file.path(tempdir(), "dracula")
@@ -197,9 +197,9 @@ list.files(bookdir, recursive = TRUE)
 
 ### Word count
 
-The helper function `count_words` provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by `epub` and `epub_recombine`. It is exported so that it can be used directly.
+The helper function `count_words()` provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by `epub()` and `epub_recombine()`. It is exported so that it can be used directly.
 
-By default, `count_words` splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.
+By default, `count_words()` splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.
 
 ```{r count_words}
 x <- " This   sentence will be counted to have:\n\n10 (ten) words."
@@ -208,10 +208,10 @@ count_words(x)
 
 ### Inspection
 
-Helper functions for inspecting the text in the R console include `epub_head` and `epub_cat`. 
+Helper functions for inspecting the text in the R console include `epub_head()` and `epub_cat()`. 
 
-`epub_head` provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to `n = 50`).
+`epub_head()` provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to `n = 50`).
 
-`epub_cat` can be used to `cat` the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.
+`epub_cat()` can be used to `cat` the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.
 
 Both functions can take an EPUB filename or a data frame of an already loaded EPUB file as their first argument.

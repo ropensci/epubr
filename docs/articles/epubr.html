@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.3</span>
       </span>
     </div>
 
@@ -100,15 +100,15 @@
 <a href="#read-epub-files" class="anchor"></a>Read EPUB files</h2>
 <p>Bram Stoker’s Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting. The first thing that stands out is the naming convention using <code>item</code> followed by some ordered digits does not differentiate sections like the book preamble from the chapters. The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!</p>
 <p>These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the section below on restructuring for examples of <code>epubr</code> functions that help get around these issues.</p>
-<p>Here a single file is read with <code>epub</code>. The output of the returned primary data frame and the book text data frame that is nested within its <code>data</code> column are shown.</p>
+<p>Here a single file is read with <code><a href="../reference/epub.html">epub()</a></code>. The output of the returned primary data frame and the book text data frame that is nested within its <code>data</code> column are shown.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/epubr">epubr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/epubr/">epubr</a></span><span class="op">)</span>
 <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"dracula.epub"</span>, package <span class="op">=</span> <span class="st">"epubr"</span><span class="op">)</span>
 <span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   rights   identifier    creator  title language subject date  source     data  </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      &lt;list&gt;</span>
-<span class="co">#&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror~ 1995~ http://ww~ &lt;tibb~</span>
+<span class="co">#&gt;   rights  identifier   creator  title  language subject    date   source   data </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;    &lt;lis&gt;</span>
+<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Dracu~ en       Horror ta~ 1995-~ http://~ &lt;tib~</span>
 
 <span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; # A tibble: 15 x 4</span>
@@ -134,20 +134,20 @@
 <div id="epub-metadata" class="section level2">
 <h2 class="hasAnchor">
 <a href="#epub-metadata" class="anchor"></a>EPUB metadata</h2>
-<p>The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. <code>epub_meta</code> strictly parses file metadata and does not read the e-book text.</p>
+<p>The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. <code><a href="../reference/epub.html">epub_meta()</a></code> strictly parses file metadata and does not read the e-book text.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/epub.html">epub_meta</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   rights     identifier      creator  title language subject date  source       </span>
-<span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;        </span>
-<span class="co">#&gt; 1 Public do~ http://www.gut~ Bram St~ Drac~ en       Horror~ 1995~ http://www.g~</span></code></pre></div>
-<p>This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first <code>epub</code> example.</p>
-<p><code>file</code> can also be a vector for <code>epub_meta</code>. Whenever <code>file</code> is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return <code>NA</code> for that row and column.</p>
+<span class="co">#&gt;   rights   identifier    creator  title language subject      date     source   </span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;    </span>
+<span class="co">#&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror tale~ 1995-10~ http://w~</span></code></pre></div>
+<p>This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first <code><a href="../reference/epub.html">epub()</a></code> example.</p>
+<p><code>file</code> can also be a vector for <code><a href="../reference/epub.html">epub_meta()</a></code>. Whenever <code>file</code> is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return <code>NA</code> for that row and column.</p>
 </div>
 <div id="additional-arguments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#additional-arguments" class="anchor"></a>Additional arguments</h2>
-<p>There are three optional arguments that can be provided to <code>epub</code> to:</p>
+<p>There are three optional arguments that can be provided to <code><a href="../reference/epub.html">epub()</a></code> to:</p>
 <ul>
 <li>select fields, or columns of the primary data frame.</li>
 <li>filter sections, or rows of the nested data frame.</li>
@@ -161,9 +161,9 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"creator"</span>, <span class="st">"file"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title   creator     file         data             </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;        &lt;list&gt;           </span>
-<span class="co">#&gt; 1 Dracula Bram Stoker dracula.epub &lt;tibble [15 x 4]&gt;</span></code></pre></div>
+<span class="co">#&gt;   title   creator     file         data                 </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;        &lt;list&gt;               </span>
+<span class="co">#&gt; 1 Dracula Bram Stoker dracula.epub &lt;tibble[,4] [15 x 4]&gt;</span></code></pre></div>
 <p>Note that <code>file</code> was not a field identified in the metadata. This is a special case. Including <code>file</code> will include the <code>basename</code> of the input file. This is helpful when you want to retain file names and <code>source</code> is included in the metadata but may represent something else. Some fields like <code>data</code> and <code>title</code> are always returned and do not need to be specified in <code>fields</code>.</p>
 <p>Also, if your e-book does not have a metadata field named <code>title</code>, you can pass an additional argument to <code>...</code> to map a different, known metadata field to <code>title</code>. E.g., <code>title = "BookTitle"</code>. The resulting table always has a <code>title</code> field, but in this case <code>title</code> would be populated with information from the <code>BookTitle</code> metadata field. If the default <code>title</code> field or any other field name passed to the additional <code>title</code> argument does not exist in the file metadata, the output <code>title</code> column falls back on filling in with the same unique file names obtained when requesting the <code>file</code> field.</p>
 </div>
@@ -200,9 +200,9 @@
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, drop_sections <span class="op">=</span> <span class="st">"cov"</span>, chapter_pattern <span class="op">=</span> <span class="st">"^item\\d\\d"</span><span class="op">)</span>
 <span class="va">x</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    10 &lt;tib~</span>
+<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
+<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    10 &lt;tib~</span>
 
 <span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; # A tibble: 14 x 5</span>
@@ -236,16 +236,16 @@
 <div id="split-and-recombine-into-new-sections" class="section level3">
 <h3 class="hasAnchor">
 <a href="#split-and-recombine-into-new-sections" class="anchor"></a>Split and recombine into new sections</h3>
-<p>This book is internally broken into sections at arbitrary break points, hence why several sections begin in the middle of chapters, as seen above. Other chapters begin in the middle of sections. Use <code>epub_recombine</code> along with a regular expression that can match the true section breaks. This function collapses the full text and then rebuilds the text table using new sections with proper break points. In the process it also recalculates the numbers of words and characters and relabels the sections with chapter notation.</p>
+<p>This book is internally broken into sections at arbitrary break points, hence why several sections begin in the middle of chapters, as seen above. Other chapters begin in the middle of sections. Use <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> along with a regular expression that can match the true section breaks. This function collapses the full text and then rebuilds the text table using new sections with proper break points. In the process it also recalculates the numbers of words and characters and relabels the sections with chapter notation.</p>
 <p>Fortunately, a reliable pattern exists, which consists of <code>CHAPTER</code> in capital letters followed by a space and some Roman numerals. Recombine the text into a new object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pat</span> <span class="op">&lt;-</span> <span class="st">"CHAPTER [IVX]+"</span>
 <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span>
 <span class="va">x2</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 &lt;tib~</span>
+<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
+<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    54 &lt;tib~</span>
 
 <span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; # A tibble: 55 x 4</span>
@@ -263,15 +263,15 @@
 <span class="co">#&gt; 10 ch09    "CHAPTER IX\nMina Murray's Journal\n98\n"                     6    36</span>
 <span class="co">#&gt; # ... with 45 more rows</span></code></pre></div>
 <p>But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 “chapters” represent the table of contents being split on each chapter ID. These should be removed.</p>
-<p>An easy way to do this is with <code>epub_sift</code>, which sifts, or filters out, small word- or character-count sections from the nested data frame. It’s a simple sieve and you can control the size of the holes with <code>n</code>. You can choose <code>type = "word"</code> (default) or <code>type = "character"</code>. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.</p>
+<p>An easy way to do this is with <code><a href="../reference/epub_sift.html">epub_sift()</a></code>, which sifts, or filters out, small word- or character-count sections from the nested data frame. It’s a simple sieve and you can control the size of the holes with <code>n</code>. You can choose <code>type = "word"</code> (default) or <code>type = "character"</code>. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/epub_sift.html">epub_sift</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
 <span class="va">x2</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    54 &lt;tib~</span>
+<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
+<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    54 &lt;tib~</span>
 
 <span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; # A tibble: 27 x 4</span>
@@ -288,15 +288,15 @@
 <span class="co">#&gt;  9 ch36    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span>
 <span class="co">#&gt; 10 ch37    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span>
 <span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
-<p>This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply <code>epub_recombine</code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code>epub_recombine</code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code>epub_recombine</code>, which is applied recursively.</p>
+<p>This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>, which is applied recursively.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#epub_recombine(x, pat) %&gt;% epub_sift(n = 200) %&gt;% epub_recombine(pat)</span>
 <span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span>, sift <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span>
 <span class="va">x2</span>
 <span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier   creator  title language subject date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Drac~ en       Horror~ 1995~ http:/~    27 &lt;tib~</span>
+<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
+<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
+<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    27 &lt;tib~</span>
 
 <span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
 <span class="co">#&gt; # A tibble: 27 x 4</span>
@@ -318,7 +318,7 @@
 <h3 class="hasAnchor">
 <a href="#reorder-sections-based-on-pattern-in-text" class="anchor"></a>Reorder sections based on pattern in text</h3>
 <p>Some poorly formatted e-books have their internal sections occur in an arbitrary order. This can be frustrating to work with when doing text analysis on each section and where order matters. Just like recombining into new sections based on a pattern, sections that are out of order can be reordered based on a pattern. This requires a bit more work. In this case the user must provide a function that will map something in the matched pattern to an integer representing the desired row index.</p>
-<p>Continue with the Dracula example, but with one difference. Even though the sections were originally broken at arbitrary points, they were in chronological order. To demonstrate the utility of <code>epub_reorder</code>, first randomize the rows so that chronological order can be recovered.</p>
+<p>Continue with the Dracula example, but with one difference. Even though the sections were originally broken at arbitrary points, they were in chronological order. To demonstrate the utility of <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>, first randomize the rows so that chronological order can be recovered.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># randomize rows for example</span>
@@ -341,9 +341,9 @@
 <p>For this book, you need a function that will convert an annoying Roman numeral to an integer. You already have the pattern for finding the relevant information in each text section. You only need to tweak it for proper substitution. Here is an example:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">pattern</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/roman.html">as.roman</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="st">"\\1"</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This function is passed to <code>epub_reorder</code>. It takes and returns scalars. It must take two arguments: the first is a text string. The second is the regular expression. It must return a single number representing the index of that row. For example, if the pattern matches <code>CHAPTER IV</code>, the function should return a <code>4</code>.</p>
-<p><code>epub_reorder</code> takes care of the rest. It applies your function to every row in the the nested data frame and then reorders the rows based on the full set of indices. Note that it also repeats this for every row (book) in the primary data frame, i.e., for every nested table. This means that the same function will be applied to every book. Therefore, you should only use this in bulk on a collection of e-books if you know the pattern does not change and the function will work correctly in each case.</p>
-<p>The pattern has changed slightly. Parentheses are used to retain the important part of the matched pattern, the Roman numeral. The function <code>f</code> here substitutes the entire string (because now it begins with <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and ends with <code>.*</code>) with only the part stored in parentheses (In <code>f</code>, this is the <code>\\1</code> substitution). <code>epub_reorder</code> applies this to all rows in the nested data frame:</p>
+<p>This function is passed to <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>. It takes and returns scalars. It must take two arguments: the first is a text string. The second is the regular expression. It must return a single number representing the index of that row. For example, if the pattern matches <code>CHAPTER IV</code>, the function should return a <code>4</code>.</p>
+<p><code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> takes care of the rest. It applies your function to every row in the the nested data frame and then reorders the rows based on the full set of indices. Note that it also repeats this for every row (book) in the primary data frame, i.e., for every nested table. This means that the same function will be applied to every book. Therefore, you should only use this in bulk on a collection of e-books if you know the pattern does not change and the function will work correctly in each case.</p>
+<p>The pattern has changed slightly. Parentheses are used to retain the important part of the matched pattern, the Roman numeral. The function <code>f</code> here substitutes the entire string (because now it begins with <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and ends with <code>.*</code>) with only the part stored in parentheses (In <code>f</code>, this is the <code>\\1</code> substitution). <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> applies this to all rows in the nested data frame:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_reorder.html">epub_reorder</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">f</span>, <span class="st">"^CHAPTER ([IVX]+).*"</span><span class="op">)</span>
 <span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
@@ -368,7 +368,7 @@
 <div id="unzip-epub-file" class="section level2">
 <h2 class="hasAnchor">
 <a href="#unzip-epub-file" class="anchor"></a>Unzip EPUB file</h2>
-<p>Separate from using <code>epub_meta</code> and <code>epub</code>, you can call <code>epub_unzip</code> directly if all you want to do is extract the files from the <code>.epub</code> file archive. By default the archive files are extracted to <code><a href="https://rdrr.io/r/base/tempfile.html">tempdir()</a></code> so you may want to change this with the <code>exdir</code> argument.</p>
+<p>Separate from using <code><a href="../reference/epub.html">epub_meta()</a></code> and <code><a href="../reference/epub.html">epub()</a></code>, you can call <code><a href="../reference/epub.html">epub_unzip()</a></code> directly if all you want to do is extract the files from the <code>.epub</code> file archive. By default the archive files are extracted to <code><a href="https://rdrr.io/r/base/tempfile.html">tempdir()</a></code> so you may want to change this with the <code>exdir</code> argument.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bookdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"dracula"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/epub.html">epub_unzip</a></span><span class="op">(</span><span class="va">file</span>, exdir <span class="op">=</span> <span class="va">bookdir</span><span class="op">)</span>
@@ -404,8 +404,8 @@
 <div id="word-count" class="section level3">
 <h3 class="hasAnchor">
 <a href="#word-count" class="anchor"></a>Word count</h3>
-<p>The helper function <code>count_words</code> provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by <code>epub</code> and <code>epub_recombine</code>. It is exported so that it can be used directly.</p>
-<p>By default, <code>count_words</code> splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.</p>
+<p>The helper function <code><a href="../reference/count_words.html">count_words()</a></code> provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by <code><a href="../reference/epub.html">epub()</a></code> and <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>. It is exported so that it can be used directly.</p>
+<p>By default, <code><a href="../reference/count_words.html">count_words()</a></code> splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">" This   sentence will be counted to have:\n\n10 (ten) words."</span>
 <span class="fu"><a href="../reference/count_words.html">count_words</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -414,9 +414,9 @@
 <div id="inspection" class="section level3">
 <h3 class="hasAnchor">
 <a href="#inspection" class="anchor"></a>Inspection</h3>
-<p>Helper functions for inspecting the text in the R console include <code>epub_head</code> and <code>epub_cat</code>.</p>
-<p><code>epub_head</code> provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to <code>n = 50</code>).</p>
-<p><code>epub_cat</code> can be used to <code>cat</code> the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.</p>
+<p>Helper functions for inspecting the text in the R console include <code><a href="../reference/epub_head.html">epub_head()</a></code> and <code><a href="../reference/epub_cat.html">epub_cat()</a></code>.</p>
+<p><code><a href="../reference/epub_head.html">epub_head()</a></code> provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to <code>n = 50</code>).</p>
+<p><code><a href="../reference/epub_cat.html">epub_cat()</a></code> can be used to <code>cat</code> the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.</p>
 <p>Both functions can take an EPUB filename or a data frame of an already loaded EPUB file as their first argument.</p>
 </div>
 </div>

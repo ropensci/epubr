@@ -47,6 +47,7 @@
 #' Use \code{epub_meta} to return a data frame of only the metadata for each file in \code{file}. This skips the reading of each file's text contents, strictly parsing the metadata.
 #' It returns a data frame with one row for each file and \code{n} columns where \code{n} is equal to the union of all fields identified across all files in \code{file}.
 #' Fields available for at least one e-book in \code{file} will return \code{NA} in that column for any row pertaining to an e-book that does not have that field in its metadata.
+#' If the metadata contains multiple entries for a field, such as multiple subjects or publication dates, they are collapsed using the pipe character.
 #' }
 #' \subsection{Unzipping EPUB files}{
 #' If using \code{epub_unzip} directly on individual EPUB files, this gives you control over where to extract archive files to and what to do with them subsequently.
@@ -148,8 +149,9 @@ epub_unzip <- function(file, exdir = tempdir()){
   suppressWarnings(opf <- files[grep("opf$", files)] %>% xml2::read_xml())
   meta <- xml2::xml_find_all(opf, ".//dc:*")
   x <- as.list(gsub("\"", "", xml2::xml_text(meta)))
-  names(x) <- xml2::xml_name(meta)
-  x <- x[!duplicated(names(x))]
+  y <- xml2::xml_name(meta)
+  y <- factor(y, levels = unique(y))
+  x <- lapply(split(x, y), function(i) paste(i, collapse = "|"))
   epubtitle <- if(is.null(dots$title)) "title" else dots$title
   d <- tibble::as_tibble(x)
   if(!epubtitle %in% names(d)){

@@ -1,5 +1,5 @@
 Package: epubr
-Version: 0.6.2
+Version: 0.6.3
 Title: Read EPUB File Metadata and Text
 Description: Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
     The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. 

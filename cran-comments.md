@@ -1,9 +1,8 @@
 ## Test environments
 
-* local Windows 10 install, R 4.0.3
-* Windows 10 (AppVeyor), R 4.0.3
+* local Windows 10 install, R 4.0.5
+* Windows 10 (AppVeyor), R 4.0.5
 * Ubuntu 16.04 (Travis CI), R-devel, R-release, R-oldrel
-* Mac OSX (Travis CI) R-release
 * win-builder (devel and release)
 
 ## R CMD check results
@@ -12,11 +11,4 @@
 
 ## Update release
 
-* This is an update release.
-* This update includes a maintainer email address update.
-
-## Downstream dependencies
-
-I have also run R CMD check on downstream dependencies
-(https://github.com/leonawicz/epubr/blob/master/revdep/). 
-All packages passed.
+* Minor fixes.

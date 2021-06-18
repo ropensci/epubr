@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   epubr: epubr.html
-last_built: 2021-02-19T19:18Z
+last_built: 2021-06-18T19:53Z
 urls:
   reference: https://docs.ropensci.org/epubr/reference
   article: https://docs.ropensci.org/epubr/articles
