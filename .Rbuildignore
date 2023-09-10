@@ -8,8 +8,6 @@
 ^revdep$
 ^docs$
 ^pkgdown$
-^appveyor\.yml$
-^\.travis\.yml$
 ^codecov\.yml$
 ^CODE_OF_CONDUCT\.md$
 ^codemeta\.json$

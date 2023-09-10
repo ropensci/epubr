@@ -1,5 +1,5 @@
 Package: epubr
-Version: 0.6.3
+Version: 0.6.4
 Title: Read EPUB File Metadata and Text
 Description: Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
     The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
@@ -24,7 +24,6 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    covr,
     readr
 Imports: 
     xml2,
@@ -34,4 +33,4 @@ Imports:
     dplyr,
     tidyr
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3

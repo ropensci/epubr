@@ -19,6 +19,7 @@ globalVariables(c(".", ".data"))
 #'
 #' @docType package
 #' @name epubr
+#' @aliases epubr-package
 NULL
 
 #' @importFrom tibble tibble

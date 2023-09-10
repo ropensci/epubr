@@ -1,3 +1,7 @@
+# epubr 0.6.4
+
+* Added required package alias in documentation.
+
 # epubr 0.6.3
 
 * Allow multiple values for a metadata field, pipe-separated.

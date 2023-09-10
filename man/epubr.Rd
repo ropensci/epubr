@@ -3,6 +3,7 @@
 \docType{package}
 \name{epubr}
 \alias{epubr}
+\alias{epubr-package}
 \title{epubr: Read EPUB file metadata and text.}
 \description{
 \code{epubr} provides functions supporting the reading and parsing of internal e-book content from EPUB files.

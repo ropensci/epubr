@@ -1,27 +1,20 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "epubr",
-  "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. \n    E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. \n    E-book formatting is not completely standardized across all literature. \n    It can be challenging to curate parsed e-book content across an arbitrary collection of e-books \n    perfectly and in completely general form, to yield a singular, consistently formatted output. \n    Many EPUB files do not even contain all the same pieces of information in their respective metadata. \n    EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. \n    However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. \n    There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with 'epubr'. \n    Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. \n    Substantive changes are expected to be performed subsequently by the user as part of their text analysis. \n    Additional text cleaning can be performed at the user's discretion, such as with functions from packages like 'tm' or 'qdap'.",
+  "description": "Provides functions supporting the reading and parsing of internal e-book content from EPUB files. The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame. E-book formatting is not completely standardized across all literature. It can be challenging to curate parsed e-book content across an arbitrary collection of e-books perfectly and in completely general form, to yield a singular, consistently formatted output. Many EPUB files do not even contain all the same pieces of information in their respective metadata. EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with 'epubr'. Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. Substantive changes are expected to be performed subsequently by the user as part of their text analysis. Additional text cleaning can be performed at the user's discretion, such as with functions from packages like 'tm' or 'qdap'.",
   "name": "epubr: Read EPUB File Metadata and Text",
+  "relatedLink": "https://docs.ropensci.org/epubr/",
   "codeRepository": "https://github.com/ropensci/epubr",
-  "relatedLink": [
-    "https://docs.ropensci.org/epubr",
-    "https://CRAN.R-project.org/package=epubr",
-    "https://docs.ropensci.org/epubr/"
-  ],
   "issueTracker": "https://github.com/ropensci/epubr/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.5 (2021-03-31)",
+  "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -37,9 +30,6 @@
       "@id": "https://orcid.org/0000-0001-9452-2771"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -88,18 +78,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "covr",
-      "name": "covr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=covr"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
       "provider": {
@@ -111,8 +89,8 @@
       "sameAs": "https://CRAN.R-project.org/package=readr"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "xml2",
       "name": "xml2",
@@ -124,7 +102,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xml2"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "xslt",
       "name": "xslt",
@@ -136,7 +114,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=xslt"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "magrittr",
       "name": "magrittr",
@@ -148,7 +126,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=magrittr"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -160,7 +138,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -172,7 +150,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "tidyr",
       "name": "tidyr",
@@ -183,25 +161,8 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=tidyr"
-    }
-  ],
-  "releaseNotes": "https://github.com/ropensci/epubr/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/epubr/blob/master/README.md",
-  "fileSize": "1368.233KB",
-  "contIntegration": ["https://ci.appveyor.com/project/leonawicz/epubr", "https://codecov.io/gh/ropensci/epubr"],
-  "developmentStatus": "https://www.repostatus.org/",
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/222",
-    "provider": "https://ropensci.org"
+    },
+    "SystemRequirements": null
   },
-  "keywords": [
-    "epub-files",
-    "r",
-    "rstats",
-    "r-package",
-    "epub",
-    "epub-format",
-    "peer-reviewed"
-  ]
+  "fileSize": "556.167KB"
 }
