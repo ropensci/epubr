@@ -1,10 +1,10 @@
-acknowledgements
-AppVeyor
 Bram
-codecov
 DRM
 EPUB
 Github
+RStudio
+Tabula
+acknowledgements
 gutenbergr
 is’
 pdftools
@@ -14,9 +14,7 @@ readme
 resift
 resifting
 ropensci
-RStudio
 rtika
-Tabula
 tabulizer
 tesseract
 tibble
