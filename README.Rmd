@@ -71,7 +71,7 @@ x$data[[1]]
 
 [pdftools](https://github.com/ropensci/pdftools) for extracting metadata and text from PDF files (therefore more specific to PDF, and without a Java dependency)
 
-[tabulizer](https://github.com/ropensci/tabulizer) by @leeper and @tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract tables, therefore not text, from PDF files.
+[tabulizer](https://github.com/ropensci/tabulapdf) by @leeper and @tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract tables, therefore not text, from PDF files.
 
 [rtika](https://github.com/ropensci/rtika) by @goodmansasha for more general text parsing.
 

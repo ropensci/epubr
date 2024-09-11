@@ -117,7 +117,7 @@ direct control of the OCR process.
 and text from PDF files (therefore more specific to PDF, and without a
 Java dependency)
 
-[tabulizer](https://github.com/ropensci/tabulizer) by @leeper and
+[tabulizer](https://github.com/ropensci/tabulapdf) by @leeper and
 @tpaskhalis, Bindings for Tabula PDF Table Extractor Library, to extract
 tables, therefore not text, from PDF files.
 

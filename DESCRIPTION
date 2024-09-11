@@ -18,7 +18,8 @@ Authors@R: person("Matthew", "Leonawicz", email = "rpkgs@pm.me", role = c("aut",
 License: MIT + file LICENSE
 Encoding: UTF-8
 ByteCompile: true
-URL: https://docs.ropensci.org/epubr/ (website) https://github.com/ropensci/epubr
+URL: https://docs.ropensci.org/epubr/ (website)
+    https://github.com/ropensci/epubr
 BugReports: https://github.com/ropensci/epubr/issues
 Suggests:
     testthat,
