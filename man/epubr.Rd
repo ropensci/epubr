@@ -13,7 +13,8 @@ Provides functions supporting the reading and parsing of internal e-book content
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://docs.ropensci.org/epubr/ (website) https://github.com/ropensci/epubr}
+  \item \url{https://docs.ropensci.org/epubr/}
+  \item \url{https://github.com/ropensci/epubr}
   \item Report bugs at \url{https://github.com/ropensci/epubr/issues}
 }
 
