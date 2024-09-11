@@ -3,6 +3,8 @@
 
 # epubr <img src="man/figures/logo.png" style="margin-left:10px;margin-bottom:5px;" width="120" align="right">
 
+<!-- badges: start -->
+
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](http://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/)
@@ -13,6 +15,7 @@ status](http://www.r-pkg.org/badges/version/epubr)](https://cran.r-project.org/p
 downloads](http://cranlogs.r-pkg.org/badges/epubr)](https://cran.r-project.org/package=epubr)
 [![Github
 Stars](https://img.shields.io/github/stars/ropensci/epubr.svg?style=social&label=Github)](https://github.com/ropensci/epubr)
+<!-- badges: end -->
 
 ## Read EPUB files in R
 

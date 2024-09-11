@@ -1,3 +1,7 @@
+# epubr 0.6.5
+
+* Documentation updates.
+
 # epubr 0.6.4
 
 * Added required package alias in documentation.

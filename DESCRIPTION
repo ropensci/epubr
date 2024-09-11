@@ -1,5 +1,5 @@
 Package: epubr
-Version: 0.6.4
+Version: 0.6.5
 Title: Read EPUB File Metadata and Text
 Description: Provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
     The 'epubr' package provides functions supporting the reading and parsing of internal e-book content from EPUB files. 
@@ -14,7 +14,7 @@ Description: Provides functions supporting the reading and parsing of internal e
     Text is read 'as is' for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. 
     Substantive changes are expected to be performed subsequently by the user as part of their text analysis. 
     Additional text cleaning can be performed at the user's discretion, such as with functions from packages like 'tm' or 'qdap'.
-Authors@R: person("Matthew", "Leonawicz", email = "mfleonawicz@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
+Authors@R: person("Matthew", "Leonawicz", email = "rpkgs@pm.me", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-9452-2771"))
 License: MIT + file LICENSE
 Encoding: UTF-8
 ByteCompile: true
@@ -33,4 +33,4 @@ Imports:
     dplyr,
     tidyr
 VignetteBuilder: knitr
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2

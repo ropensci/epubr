@@ -12,23 +12,23 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Introduction to epubr">
-<meta property="og:description" content="epubr">
-<meta property="og:image" content="https://docs.ropensci.org/epubr/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+
+
     <div class="container template-article">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -39,18 +39,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">epubr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.6.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/epubr.html">Get started</a>
 </li>
@@ -63,9 +57,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ropensci/epubr">
-    <span class="fas fa-github fa-lg"></span>
-     
+  <a href="https://github.com/ropensci/epubr/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+
   </a>
 </li>
       </ul>
@@ -76,374 +70,584 @@
 </div>
 <!--/.navbar -->
 
-      
 
-      </header><script src="epubr_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to epubr</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/ropensci/epubr/blob/master/vignettes/epubr.Rmd"><code>vignettes/epubr.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/ropensci/epubr/blob/HEAD/vignettes/epubr.Rmd" class="external-link"><code>vignettes/epubr.Rmd</code></a></small>
       <div class="hidden name"><code>epubr.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>epubr</code> package provides functions supporting the reading and parsing of internal e-book content from EPUB files. E-book metadata and text content are parsed separately and joined together in a tidy, nested tibble data frame.</p>
-<p>E-book formatting is not completely standardized across all literature. It can be challenging to curate parsed e-book content across an arbitrary collection of e-books perfectly and in completely general form, to yield a singular, consistently formatted output. Many EPUB files do not even contain all the same pieces of information in their respective metadata.</p>
-<p>EPUB file parsing functionality in this package is intended for relatively general application to arbitrary EPUB e-books. However, poorly formatted e-books or e-books with highly uncommon formatting may not work with this package. There may even be cases where an EPUB file has DRM or some other property that makes it impossible to read with <code>epubr</code>.</p>
-<p>Text is read ‘as is’ for the most part. The only nominal changes are minor substitutions, for example curly quotes changed to straight quotes. Substantive changes are expected to be performed subsequently by the user as part of their text analysis. Additional text cleaning can be performed at the user’s discretion, such as with functions from packages like <code>tm</code> or <code>qdap</code>.</p>
-<div id="read-epub-files" class="section level2">
-<h2 class="hasAnchor">
-<a href="#read-epub-files" class="anchor"></a>Read EPUB files</h2>
-<p>Bram Stoker’s Dracula novel sourced from Project Gutenberg is a good example of an EPUB file with unfortunate formatting. The first thing that stands out is the naming convention using <code>item</code> followed by some ordered digits does not differentiate sections like the book preamble from the chapters. The numbering also starts in a weird place. But it is actually worse than this. Notice that sections are not broken into chapters; they can begin and end in the middle of chapters!</p>
-<p>These annoyances aside, the metadata and contents can still be read into a convenient table. Text mining analyses can still be performed on the overall book, if not so easily on individual chapters. See the section below on restructuring for examples of <code>epubr</code> functions that help get around these issues.</p>
-<p>Here a single file is read with <code><a href="../reference/epub.html">epub()</a></code>. The output of the returned primary data frame and the book text data frame that is nested within its <code>data</code> column are shown.</p>
+<p>The <code>epubr</code> package provides functions supporting the
+reading and parsing of internal e-book content from EPUB files. E-book
+metadata and text content are parsed separately and joined together in a
+tidy, nested tibble data frame.</p>
+<p>E-book formatting is not completely standardized across all
+literature. It can be challenging to curate parsed e-book content across
+an arbitrary collection of e-books perfectly and in completely general
+form, to yield a singular, consistently formatted output. Many EPUB
+files do not even contain all the same pieces of information in their
+respective metadata.</p>
+<p>EPUB file parsing functionality in this package is intended for
+relatively general application to arbitrary EPUB e-books. However,
+poorly formatted e-books or e-books with highly uncommon formatting may
+not work with this package. There may even be cases where an EPUB file
+has DRM or some other property that makes it impossible to read with
+<code>epubr</code>.</p>
+<p>Text is read ‘as is’ for the most part. The only nominal changes are
+minor substitutions, for example curly quotes changed to straight
+quotes. Substantive changes are expected to be performed subsequently by
+the user as part of their text analysis. Additional text cleaning can be
+performed at the user’s discretion, such as with functions from packages
+like <code>tm</code> or <code>qdap</code>.</p>
+<div class="section level2">
+<h2 id="read-epub-files">Read EPUB files<a class="anchor" aria-label="anchor" href="#read-epub-files"></a>
+</h2>
+<p>Bram Stoker’s Dracula novel sourced from Project Gutenberg is a good
+example of an EPUB file with unfortunate formatting. The first thing
+that stands out is the naming convention using <code>item</code>
+followed by some ordered digits does not differentiate sections like the
+book preamble from the chapters. The numbering also starts in a weird
+place. But it is actually worse than this. Notice that sections are not
+broken into chapters; they can begin and end in the middle of
+chapters!</p>
+<p>These annoyances aside, the metadata and contents can still be read
+into a convenient table. Text mining analyses can still be performed on
+the overall book, if not so easily on individual chapters. See the
+section below on restructuring for examples of <code>epubr</code>
+functions that help get around these issues.</p>
+<p>Here a single file is read with <code><a href="../reference/epub.html">epub()</a></code>. The output of
+the returned primary data frame and the book text data frame that is
+nested within its <code>data</code> column are shown.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/epubr/">epubr</a></span><span class="op">)</span>
-<span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"dracula.epub"</span>, package <span class="op">=</span> <span class="st">"epubr"</span><span class="op">)</span>
-<span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
-<span class="co">#&gt;   rights  identifier   creator  title  language subject    date   source   data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;    &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www.~ Bram St~ Dracu~ en       Horror ta~ 1995-~ http://~ &lt;tib~</span>
-
-<span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 15 x 4</span>
-<span class="co">#&gt;    section        text                                               nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;                                              &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 item6          "The Project Gutenberg EBook of Dracula, by Bram ~ 11446 60972</span>
-<span class="co">#&gt;  2 item7          "But I am not in heart to describe beauty, for wh~ 13879 71798</span>
-<span class="co">#&gt;  3 item8          "\" 'Lucy, you are an honest-hearted girl, I know~ 12474 65522</span>
-<span class="co">#&gt;  4 item9          "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 ~ 12177 62724</span>
-<span class="co">#&gt;  5 item10         "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Hol~ 12806 66678</span>
-<span class="co">#&gt;  6 item11         "Once again we went through that ghastly operatio~ 12103 62949</span>
-<span class="co">#&gt;  7 item12         "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-~ 12214 62234</span>
-<span class="co">#&gt;  8 item13         "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was ~ 13990 72903</span>
-<span class="co">#&gt;  9 item14         "\"Thus when we find the habitation of this man-t~ 13356 69779</span>
-<span class="co">#&gt; 10 item15         "\"I see,\" I said. \"You want big things that yo~ 12866 66921</span>
-<span class="co">#&gt; 11 item16         "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The ~ 11928 61550</span>
-<span class="co">#&gt; 12 item17         "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Eveni~ 13119 68564</span>
-<span class="co">#&gt; 13 item18         " \nLater.-Dr. Van Helsing has returned. He has g~  8435 43464</span>
-<span class="co">#&gt; 14 item19         "End of the Project Gutenberg EBook of Dracula, b~  2665 18541</span>
-<span class="co">#&gt; 15 coverpage-wra~ ""                                                     0     0</span></code></pre></div>
-<p>The <code>file</code> argument may be a vector of EPUB files. There is one row for each book.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/epubr/">epubr</a></span><span class="op">)</span></span>
+<span><span class="va">file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"dracula.epub"</span>, package <span class="op">=</span> <span class="st">"epubr"</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
+<span><span class="co">#&gt;   rights         identifier creator title language subject date  source data    </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public domain… http://ww… Bram S… Drac… en       Horror… 1995… http:… <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 15 × 4</span></span></span>
+<span><span class="co">#&gt;    section           text                                            nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> item6             <span style="color: #949494;">"</span>The Project Gutenberg EBook of Dracula, by Br… <span style="text-decoration: underline;">11</span>446 <span style="text-decoration: underline;">60</span>972</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> item7             <span style="color: #949494;">"</span>But I am not in heart to describe beauty, for… <span style="text-decoration: underline;">13</span>879 <span style="text-decoration: underline;">71</span>798</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> item8             <span style="color: #949494;">"</span>\" 'Lucy, you are an honest-hearted girl, I k… <span style="text-decoration: underline;">12</span>474 <span style="text-decoration: underline;">65</span>522</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> item9             <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, … <span style="text-decoration: underline;">12</span>177 <span style="text-decoration: underline;">62</span>724</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> item10            <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur … <span style="text-decoration: underline;">12</span>806 <span style="text-decoration: underline;">66</span>678</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> item11            <span style="color: #949494;">"</span>Once again we went through that ghastly opera… <span style="text-decoration: underline;">12</span>103 <span style="text-decoration: underline;">62</span>949</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> item12            <span style="color: #949494;">"</span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 Septembe… <span style="text-decoration: underline;">12</span>214 <span style="text-decoration: underline;">62</span>234</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> item13            <span style="color: #949494;">"</span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT w… <span style="text-decoration: underline;">13</span>990 <span style="text-decoration: underline;">72</span>903</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> item14            <span style="color: #949494;">"</span>\"Thus when we find the habitation of this ma… <span style="text-decoration: underline;">13</span>356 <span style="text-decoration: underline;">69</span>779</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> item15            <span style="color: #949494;">"</span>\"I see,\" I said. \"You want big things that… <span style="text-decoration: underline;">12</span>866 <span style="text-decoration: underline;">66</span>921</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> item16            <span style="color: #949494;">"</span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-T… <span style="text-decoration: underline;">11</span>928 <span style="text-decoration: underline;">61</span>550</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> item17            <span style="color: #949494;">"</span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Ev… <span style="text-decoration: underline;">13</span>119 <span style="text-decoration: underline;">68</span>564</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> item18            <span style="color: #949494;">"</span> \nLater.-Dr. Van Helsing has returned. He ha…  <span style="text-decoration: underline;">8</span>435 <span style="text-decoration: underline;">43</span>464</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> item19            <span style="color: #949494;">"</span>End of the Project Gutenberg EBook of Dracula…  <span style="text-decoration: underline;">2</span>665 <span style="text-decoration: underline;">18</span>541</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">15</span> coverpage-wrapper <span style="color: #949494;">""</span>                                                  0     0</span></span></code></pre></div>
+<p>The <code>file</code> argument may be a vector of EPUB files. There
+is one row for each book.</p>
 </div>
-<div id="epub-metadata" class="section level2">
-<h2 class="hasAnchor">
-<a href="#epub-metadata" class="anchor"></a>EPUB metadata</h2>
-<p>The above examples jump right in, but it can be helpful to inspect file metadata before reading a large number of books into memory. Formatting may differ across books. It can be helpful to know what fields to expect, the degree of consistency, and what content you may want to drop during the file reading process. <code><a href="../reference/epub.html">epub_meta()</a></code> strictly parses file metadata and does not read the e-book text.</p>
+<div class="section level2">
+<h2 id="epub-metadata">EPUB metadata<a class="anchor" aria-label="anchor" href="#epub-metadata"></a>
+</h2>
+<p>The above examples jump right in, but it can be helpful to inspect
+file metadata before reading a large number of books into memory.
+Formatting may differ across books. It can be helpful to know what
+fields to expect, the degree of consistency, and what content you may
+want to drop during the file reading process. <code><a href="../reference/epub.html">epub_meta()</a></code>
+strictly parses file metadata and does not read the e-book text.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/epub.html">epub_meta</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 8</span>
-<span class="co">#&gt;   rights   identifier    creator  title language subject      date     source   </span>
-<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;    &lt;chr&gt;    </span>
-<span class="co">#&gt; 1 Public ~ http://www.g~ Bram St~ Drac~ en       Horror tale~ 1995-10~ http://w~</span></code></pre></div>
-<p>This provides the big picture, though it will not reveal the internal breakdown of book section naming conventions that were seen in the first <code><a href="../reference/epub.html">epub()</a></code> example.</p>
-<p><code>file</code> can also be a vector for <code><a href="../reference/epub.html">epub_meta()</a></code>. Whenever <code>file</code> is a vector, the fields (columns) returned are the union of all fields detected across all EPUB files. Any books (rows) that do not have a field found in another book return <code>NA</code> for that row and column.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/epub.html">epub_meta</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 8</span></span></span>
+<span><span class="co">#&gt;   rights                  identifier creator title language subject date  source</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public domain in the U… http://ww… Bram S… Drac… en       Horror… 1995… http:…</span></span></code></pre></div>
+<p>This provides the big picture, though it will not reveal the internal
+breakdown of book section naming conventions that were seen in the first
+<code><a href="../reference/epub.html">epub()</a></code> example.</p>
+<p><code>file</code> can also be a vector for <code><a href="../reference/epub.html">epub_meta()</a></code>.
+Whenever <code>file</code> is a vector, the fields (columns) returned
+are the union of all fields detected across all EPUB files. Any books
+(rows) that do not have a field found in another book return
+<code>NA</code> for that row and column.</p>
 </div>
-<div id="additional-arguments" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-arguments" class="anchor"></a>Additional arguments</h2>
-<p>There are three optional arguments that can be provided to <code><a href="../reference/epub.html">epub()</a></code> to:</p>
+<div class="section level2">
+<h2 id="additional-arguments">Additional arguments<a class="anchor" aria-label="anchor" href="#additional-arguments"></a>
+</h2>
+<p>There are three optional arguments that can be provided to
+<code><a href="../reference/epub.html">epub()</a></code> to:</p>
 <ul>
 <li>select fields, or columns of the primary data frame.</li>
 <li>filter sections, or rows of the nested data frame.</li>
-<li>attempt to detect which rows or sections in the nested data frame identify book chapters.</li>
+<li>attempt to detect which rows or sections in the nested data frame
+identify book chapters.</li>
 </ul>
-<p>Unless you have a collection of well-formatted and similarly formatted EPUB files, these arguments may not be helpful and can be ignored, especially chapter detection.</p>
-<div id="select-fields" class="section level3">
-<h3 class="hasAnchor">
-<a href="#select-fields" class="anchor"></a>Select fields</h3>
-<p>Selecting fields is straightforward. All fields found are returned unless a vector of fields is provided.</p>
+<p>Unless you have a collection of well-formatted and similarly
+formatted EPUB files, these arguments may not be helpful and can be
+ignored, especially chapter detection.</p>
+<div class="section level3">
+<h3 id="select-fields">Select fields<a class="anchor" aria-label="anchor" href="#select-fields"></a>
+</h3>
+<p>Selecting fields is straightforward. All fields found are returned
+unless a vector of fields is provided.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"creator"</span>, <span class="st">"file"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 4</span>
-<span class="co">#&gt;   title   creator     file         data                 </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;        &lt;list&gt;               </span>
-<span class="co">#&gt; 1 Dracula Bram Stoker dracula.epub &lt;tibble[,4] [15 x 4]&gt;</span></code></pre></div>
-<p>Note that <code>file</code> was not a field identified in the metadata. This is a special case. Including <code>file</code> will include the <code>basename</code> of the input file. This is helpful when you want to retain file names and <code>source</code> is included in the metadata but may represent something else. Some fields like <code>data</code> and <code>title</code> are always returned and do not need to be specified in <code>fields</code>.</p>
-<p>Also, if your e-book does not have a metadata field named <code>title</code>, you can pass an additional argument to <code>...</code> to map a different, known metadata field to <code>title</code>. E.g., <code>title = "BookTitle"</code>. The resulting table always has a <code>title</code> field, but in this case <code>title</code> would be populated with information from the <code>BookTitle</code> metadata field. If the default <code>title</code> field or any other field name passed to the additional <code>title</code> argument does not exist in the file metadata, the output <code>title</code> column falls back on filling in with the same unique file names obtained when requesting the <code>file</code> field.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, fields <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"creator"</span>, <span class="st">"file"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 4</span></span></span>
+<span><span class="co">#&gt;   title   creator     file         data             </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Dracula Bram Stoker dracula.epub <span style="color: #949494;">&lt;tibble [15 × 4]&gt;</span></span></span></code></pre></div>
+<p>Note that <code>file</code> was not a field identified in the
+metadata. This is a special case. Including <code>file</code> will
+include the <code>basename</code> of the input file. This is helpful
+when you want to retain file names and <code>source</code> is included
+in the metadata but may represent something else. Some fields like
+<code>data</code> and <code>title</code> are always returned and do not
+need to be specified in <code>fields</code>.</p>
+<p>Also, if your e-book does not have a metadata field named
+<code>title</code>, you can pass an additional argument to
+<code>...</code> to map a different, known metadata field to
+<code>title</code>. E.g., <code>title = "BookTitle"</code>. The
+resulting table always has a <code>title</code> field, but in this case
+<code>title</code> would be populated with information from the
+<code>BookTitle</code> metadata field. If the default <code>title</code>
+field or any other field name passed to the additional
+<code>title</code> argument does not exist in the file metadata, the
+output <code>title</code> column falls back on filling in with the same
+unique file names obtained when requesting the <code>file</code>
+field.</p>
 </div>
-<div id="drop-sections" class="section level3">
-<h3 class="hasAnchor">
-<a href="#drop-sections" class="anchor"></a>Drop sections</h3>
-<p>Filtering out unwanted sections, or rows of the nested data frame, uses a regular expression pattern. Matched rows are dropped. This is where knowing the naming conventions used in the e-books in <code>file</code>, or at least knowing they are satisfactorily consistent and predictable for a collection, helps with removing extraneous clutter.</p>
-<p>One section that can be discarded is the cover. For many books it can be helpful to use a pattern like <code>"^(C|c)ov"</code> to drop any sections whose IDs begin with <code>Cov</code>, <code>cov</code>, and may be that abbreviation or the full word. For this book, <code>cov</code> suffices. The nested data frame has one less row than before.</p>
+<div class="section level3">
+<h3 id="drop-sections">Drop sections<a class="anchor" aria-label="anchor" href="#drop-sections"></a>
+</h3>
+<p>Filtering out unwanted sections, or rows of the nested data frame,
+uses a regular expression pattern. Matched rows are dropped. This is
+where knowing the naming conventions used in the e-books in
+<code>file</code>, or at least knowing they are satisfactorily
+consistent and predictable for a collection, helps with removing
+extraneous clutter.</p>
+<p>One section that can be discarded is the cover. For many books it can
+be helpful to use a pattern like <code>"^(C|c)ov"</code> to drop any
+sections whose IDs begin with <code>Cov</code>, <code>cov</code>, and
+may be that abbreviation or the full word. For this book,
+<code>cov</code> suffices. The nested data frame has one less row than
+before.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, drop_sections <span class="op">=</span> <span class="st">"cov"</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 14 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by Bram StokerT~ 11446 60972</span>
-<span class="co">#&gt;  2 item7   "But I am not in heart to describe beauty, for when I ha~ 13879 71798</span>
-<span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted girl, I know. I sho~ 12474 65522</span>
-<span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~ 12177 62724</span>
-<span class="co">#&gt;  5 item10  "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~ 12806 66678</span>
-<span class="co">#&gt;  6 item11  "Once again we went through that ghastly operation. I ha~ 12103 62949</span>
-<span class="co">#&gt;  7 item12  "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha~ 12214 62234</span>
-<span class="co">#&gt;  8 item13  "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was just a ~ 13990 72903</span>
-<span class="co">#&gt;  9 item14  "\"Thus when we find the habitation of this man-that-was~ 13356 69779</span>
-<span class="co">#&gt; 10 item15  "\"I see,\" I said. \"You want big things that you can m~ 12866 66921</span>
-<span class="co">#&gt; 11 item16  "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The time se~ 11928 61550</span>
-<span class="co">#&gt; 12 item17  "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon~ 13119 68564</span>
-<span class="co">#&gt; 13 item18  " \nLater.-Dr. Van Helsing has returned. He has got the ~  8435 43464</span>
-<span class="co">#&gt; 14 item19  "End of the Project Gutenberg EBook of Dracula, by Bram ~  2665 18541</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, drop_sections <span class="op">=</span> <span class="st">"cov"</span><span class="op">)</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 14 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> item6   <span style="color: #949494;">"</span>The Project Gutenberg EBook of Dracula, by Bram StokerT… <span style="text-decoration: underline;">11</span>446 <span style="text-decoration: underline;">60</span>972</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> item7   <span style="color: #949494;">"</span>But I am not in heart to describe beauty, for when I ha… <span style="text-decoration: underline;">13</span>879 <span style="text-decoration: underline;">71</span>798</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> item8   <span style="color: #949494;">"</span>\" 'Lucy, you are an honest-hearted girl, I know. I sho… <span style="text-decoration: underline;">12</span>474 <span style="text-decoration: underline;">65</span>522</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> item9   <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock… <span style="text-decoration: underline;">12</span>177 <span style="text-decoration: underline;">62</span>724</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> item10  <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\… <span style="text-decoration: underline;">12</span>806 <span style="text-decoration: underline;">66</span>678</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> item11  <span style="color: #949494;">"</span>Once again we went through that ghastly operation. I ha… <span style="text-decoration: underline;">12</span>103 <span style="text-decoration: underline;">62</span>949</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> item12  <span style="color: #949494;">"</span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha… <span style="text-decoration: underline;">12</span>214 <span style="text-decoration: underline;">62</span>234</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> item13  <span style="color: #949494;">"</span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT was just a … <span style="text-decoration: underline;">13</span>990 <span style="text-decoration: underline;">72</span>903</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> item14  <span style="color: #949494;">"</span>\"Thus when we find the habitation of this man-that-was… <span style="text-decoration: underline;">13</span>356 <span style="text-decoration: underline;">69</span>779</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> item15  <span style="color: #949494;">"</span>\"I see,\" I said. \"You want big things that you can m… <span style="text-decoration: underline;">12</span>866 <span style="text-decoration: underline;">66</span>921</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> item16  <span style="color: #949494;">"</span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-The time se… <span style="text-decoration: underline;">11</span>928 <span style="text-decoration: underline;">61</span>550</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> item17  <span style="color: #949494;">"</span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon… <span style="text-decoration: underline;">13</span>119 <span style="text-decoration: underline;">68</span>564</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> item18  <span style="color: #949494;">"</span> \nLater.-Dr. Van Helsing has returned. He has got the …  <span style="text-decoration: underline;">8</span>435 <span style="text-decoration: underline;">43</span>464</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> item19  <span style="color: #949494;">"</span>End of the Project Gutenberg EBook of Dracula, by Bram …  <span style="text-decoration: underline;">2</span>665 <span style="text-decoration: underline;">18</span>541</span></span></code></pre></div>
 </div>
-<div id="guess-chapters" class="section level3">
-<h3 class="hasAnchor">
-<a href="#guess-chapters" class="anchor"></a>Guess chapters</h3>
-<p>This e-book unfortunately does not have great formatting. For the sake of example, pretend that chapters are known to be sections beginning with <code>item</code> and followed by <em>two</em> digits, using the pattern <code>^item\\d\\d</code>. This does two things. It adds a new metadata column to the primary data frame called <code>nchap</code> giving the estimated number of chapters in the book. In the nested data frame containing the parsed e-book text, the <code>section</code> column is conditionally mutated to reflect a new, consistent chapter naming convention for the identified chapters and a logical <code>is_chapter</code> column is added.</p>
+<div class="section level3">
+<h3 id="guess-chapters">Guess chapters<a class="anchor" aria-label="anchor" href="#guess-chapters"></a>
+</h3>
+<p>This e-book unfortunately does not have great formatting. For the
+sake of example, pretend that chapters are known to be sections
+beginning with <code>item</code> and followed by <em>two</em> digits,
+using the pattern <code>^item\\d\\d</code>. This does two things. It
+adds a new metadata column to the primary data frame called
+<code>nchap</code> giving the estimated number of chapters in the book.
+In the nested data frame containing the parsed e-book text, the
+<code>section</code> column is conditionally mutated to reflect a new,
+consistent chapter naming convention for the identified chapters and a
+logical <code>is_chapter</code> column is added.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, drop_sections <span class="op">=</span> <span class="st">"cov"</span>, chapter_pattern <span class="op">=</span> <span class="st">"^item\\d\\d"</span><span class="op">)</span>
-<span class="va">x</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    10 &lt;tib~</span>
-
-<span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 14 x 5</span>
-<span class="co">#&gt;    section text                                           is_chapter nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                          &lt;lgl&gt;      &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 item6   "The Project Gutenberg EBook of Dracula, by B~ FALSE      11446 60972</span>
-<span class="co">#&gt;  2 item7   "But I am not in heart to describe beauty, fo~ FALSE      13879 71798</span>
-<span class="co">#&gt;  3 item8   "\" 'Lucy, you are an honest-hearted girl, I ~ FALSE      12474 65522</span>
-<span class="co">#&gt;  4 item9   "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day,~ FALSE      12177 62724</span>
-<span class="co">#&gt;  5 ch01    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur~ TRUE       12806 66678</span>
-<span class="co">#&gt;  6 ch02    "Once again we went through that ghastly oper~ TRUE       12103 62949</span>
-<span class="co">#&gt;  7 ch03    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 Septemb~ TRUE       12214 62234</span>
-<span class="co">#&gt;  8 ch04    "CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT ~ TRUE       13990 72903</span>
-<span class="co">#&gt;  9 ch05    "\"Thus when we find the habitation of this m~ TRUE       13356 69779</span>
-<span class="co">#&gt; 10 ch06    "\"I see,\" I said. \"You want big things tha~ TRUE       12866 66921</span>
-<span class="co">#&gt; 11 ch07    "CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-~ TRUE       11928 61550</span>
-<span class="co">#&gt; 12 ch08    "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, E~ TRUE       13119 68564</span>
-<span class="co">#&gt; 13 ch09    " \nLater.-Dr. Van Helsing has returned. He h~ TRUE        8435 43464</span>
-<span class="co">#&gt; 14 ch10    "End of the Project Gutenberg EBook of Dracul~ TRUE        2665 18541</span></code></pre></div>
-<p>This renaming of sections is helpful if the e-book content is split into meaningful sections, but the sections are not named in a similarly meaningful way. It is not helpful in cases where the sections are poorly or arbitrarily defined as in the above example where they begin with <code>item*</code> regardless of content. See the examples below on restructuring parsed content for an approach to dealing with this more problematic case.</p>
-<p>Another problematic formatting that you may encounter is the random order of book sections as defined in the metadata, even if the sections themselves are well-defined. For example, there may be clear breaks between chapters, but the chapters may occur out of order such as <code>ch05, ch11, ch02, ...</code> and so on. Merely identifying which sections are chapters does not help in this case. They are still be labeled incorrectly since they are already out of order. Properly reordering sections is also addressed below.</p>
-<p>Also note that not all books have chapters or something like them. Make sure an optional argument like <code>chapter_pattern</code> makes sense to use with a given e-book in the first place.</p>
-<p>Ultimately, everything depends on the quality of the EPUB file. Some publishers are better than others. Formatting standards may also change over time.</p>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub.html">epub</a></span><span class="op">(</span><span class="va">file</span>, drop_sections <span class="op">=</span> <span class="st">"cov"</span>, chapter_pattern <span class="op">=</span> <span class="st">"^item\\d\\d"</span><span class="op">)</span></span>
+<span><span class="va">x</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
+<span><span class="co">#&gt;   rights   identifier creator title language subject date  source nchap data    </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public … http://ww… Bram S… Drac… en       Horror… 1995… http:…    10 <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span></span>
+<span><span class="va">x</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 14 × 5</span></span></span>
+<span><span class="co">#&gt;    section text                                           is_chapter nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                          <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> item6   <span style="color: #949494;">"</span>The Project Gutenberg EBook of Dracula, by B… FALSE      <span style="text-decoration: underline;">11</span>446 <span style="text-decoration: underline;">60</span>972</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> item7   <span style="color: #949494;">"</span>But I am not in heart to describe beauty, fo… FALSE      <span style="text-decoration: underline;">13</span>879 <span style="text-decoration: underline;">71</span>798</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> item8   <span style="color: #949494;">"</span>\" 'Lucy, you are an honest-hearted girl, I … FALSE      <span style="text-decoration: underline;">12</span>474 <span style="text-decoration: underline;">65</span>522</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> item9   <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day,… FALSE      <span style="text-decoration: underline;">12</span>177 <span style="text-decoration: underline;">62</span>724</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch01    <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur… TRUE       <span style="text-decoration: underline;">12</span>806 <span style="text-decoration: underline;">66</span>678</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch02    <span style="color: #949494;">"</span>Once again we went through that ghastly oper… TRUE       <span style="text-decoration: underline;">12</span>103 <span style="text-decoration: underline;">62</span>949</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch03    <span style="color: #949494;">"</span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 Septemb… TRUE       <span style="text-decoration: underline;">12</span>214 <span style="text-decoration: underline;">62</span>234</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch04    <span style="color: #949494;">"</span>CHAPTER XVIDR. SEWARD'S DIARY-continued\nIT … TRUE       <span style="text-decoration: underline;">13</span>990 <span style="text-decoration: underline;">72</span>903</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch05    <span style="color: #949494;">"</span>\"Thus when we find the habitation of this m… TRUE       <span style="text-decoration: underline;">13</span>356 <span style="text-decoration: underline;">69</span>779</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch06    <span style="color: #949494;">"</span>\"I see,\" I said. \"You want big things tha… TRUE       <span style="text-decoration: underline;">12</span>866 <span style="text-decoration: underline;">66</span>921</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> ch07    <span style="color: #949494;">"</span>CHAPTER XXIIIDR. SEWARD'S DIARY\n3 October.-… TRUE       <span style="text-decoration: underline;">11</span>928 <span style="text-decoration: underline;">61</span>550</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">12</span> ch08    <span style="color: #949494;">"</span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, E… TRUE       <span style="text-decoration: underline;">13</span>119 <span style="text-decoration: underline;">68</span>564</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">13</span> ch09    <span style="color: #949494;">"</span> \nLater.-Dr. Van Helsing has returned. He h… TRUE        <span style="text-decoration: underline;">8</span>435 <span style="text-decoration: underline;">43</span>464</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">14</span> ch10    <span style="color: #949494;">"</span>End of the Project Gutenberg EBook of Dracul… TRUE        <span style="text-decoration: underline;">2</span>665 <span style="text-decoration: underline;">18</span>541</span></span></code></pre></div>
+<p>This renaming of sections is helpful if the e-book content is split
+into meaningful sections, but the sections are not named in a similarly
+meaningful way. It is not helpful in cases where the sections are poorly
+or arbitrarily defined as in the above example where they begin with
+<code>item*</code> regardless of content. See the examples below on
+restructuring parsed content for an approach to dealing with this more
+problematic case.</p>
+<p>Another problematic formatting that you may encounter is the random
+order of book sections as defined in the metadata, even if the sections
+themselves are well-defined. For example, there may be clear breaks
+between chapters, but the chapters may occur out of order such as
+<code>ch05, ch11, ch02, ...</code> and so on. Merely identifying which
+sections are chapters does not help in this case. They are still be
+labeled incorrectly since they are already out of order. Properly
+reordering sections is also addressed below.</p>
+<p>Also note that not all books have chapters or something like them.
+Make sure an optional argument like <code>chapter_pattern</code> makes
+sense to use with a given e-book in the first place.</p>
+<p>Ultimately, everything depends on the quality of the EPUB file. Some
+publishers are better than others. Formatting standards may also change
+over time.</p>
 </div>
 </div>
-<div id="restructure-parsed-content" class="section level2">
-<h2 class="hasAnchor">
-<a href="#restructure-parsed-content" class="anchor"></a>Restructure parsed content</h2>
-<p>When reading EPUB files it is ideal to be able to identify meaningful sections to retain via a regular expression pattern, as well as to drop extraneous sections in a similar manner. Using pattern matching as shown above is a convenient way to filter rows of the nested text content data frame.</p>
-<p>For e-books with poor metadata formatting this is not always possible, or may be possible only after some other pre-processing. <code>epubr</code> provides other functions to assist in restructuring the text table. The Dracula EPUB file included in <code>epubr</code> is a good example to continue with here.</p>
-<div id="split-and-recombine-into-new-sections" class="section level3">
-<h3 class="hasAnchor">
-<a href="#split-and-recombine-into-new-sections" class="anchor"></a>Split and recombine into new sections</h3>
-<p>This book is internally broken into sections at arbitrary break points, hence why several sections begin in the middle of chapters, as seen above. Other chapters begin in the middle of sections. Use <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> along with a regular expression that can match the true section breaks. This function collapses the full text and then rebuilds the text table using new sections with proper break points. In the process it also recalculates the numbers of words and characters and relabels the sections with chapter notation.</p>
-<p>Fortunately, a reliable pattern exists, which consists of <code>CHAPTER</code> in capital letters followed by a space and some Roman numerals. Recombine the text into a new object.</p>
+<div class="section level2">
+<h2 id="restructure-parsed-content">Restructure parsed content<a class="anchor" aria-label="anchor" href="#restructure-parsed-content"></a>
+</h2>
+<p>When reading EPUB files it is ideal to be able to identify meaningful
+sections to retain via a regular expression pattern, as well as to drop
+extraneous sections in a similar manner. Using pattern matching as shown
+above is a convenient way to filter rows of the nested text content data
+frame.</p>
+<p>For e-books with poor metadata formatting this is not always
+possible, or may be possible only after some other pre-processing.
+<code>epubr</code> provides other functions to assist in restructuring
+the text table. The Dracula EPUB file included in <code>epubr</code> is
+a good example to continue with here.</p>
+<div class="section level3">
+<h3 id="split-and-recombine-into-new-sections">Split and recombine into new sections<a class="anchor" aria-label="anchor" href="#split-and-recombine-into-new-sections"></a>
+</h3>
+<p>This book is internally broken into sections at arbitrary break
+points, hence why several sections begin in the middle of chapters, as
+seen above. Other chapters begin in the middle of sections. Use
+<code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> along with a regular expression that can
+match the true section breaks. This function collapses the full text and
+then rebuilds the text table using new sections with proper break
+points. In the process it also recalculates the numbers of words and
+characters and relabels the sections with chapter notation.</p>
+<p>Fortunately, a reliable pattern exists, which consists of
+<code>CHAPTER</code> in capital letters followed by a space and some
+Roman numerals. Recombine the text into a new object.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pat</span> <span class="op">&lt;-</span> <span class="st">"CHAPTER [IVX]+"</span>
-<span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span>
-<span class="va">x2</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    54 &lt;tib~</span>
-
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 55 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 prior   "The Project Gutenberg EBook of Dracula, by Bram StokerT~   159  1110</span>
-<span class="co">#&gt;  2 ch01    "CHAPTER I\nPage\nJonathan Harker's Journal\n1\n"             7    43</span>
-<span class="co">#&gt;  3 ch02    "CHAPTER II\nJonathan Harker's Journal\n14\n"                 6    40</span>
-<span class="co">#&gt;  4 ch03    "CHAPTER III\nJonathan Harker's Journal\n26\n"                6    41</span>
-<span class="co">#&gt;  5 ch04    "CHAPTER IV\nJonathan Harker's Journal\n38\n"                 6    40</span>
-<span class="co">#&gt;  6 ch05    "CHAPTER V\nLetters-Lucy and Mina\n51\n"                      6    35</span>
-<span class="co">#&gt;  7 ch06    "CHAPTER VI\nMina Murray's Journal\n59\n"                     6    36</span>
-<span class="co">#&gt;  8 ch07    "CHAPTER VII\nCutting from \"The Dailygraph,\" 8 August\~     9    55</span>
-<span class="co">#&gt;  9 ch08    "CHAPTER VIII\nMina Murray's Journal\n84\n"                   6    38</span>
-<span class="co">#&gt; 10 ch09    "CHAPTER IX\nMina Murray's Journal\n98\n"                     6    36</span>
-<span class="co">#&gt; # ... with 45 more rows</span></code></pre></div>
-<p>But this is not quite as expected. There should be 27 chapters, not 54. What was not initially apparent was that the same pattern matching each chapter name also appears in the first section where every chapter is listed in the table of contents. The new section breaks were successful in keeping chapter text in single, unique sections, but there are now twice as many as needed. Unintentionally, the first 27 “chapters” represent the table of contents being split on each chapter ID. These should be removed.</p>
-<p>An easy way to do this is with <code><a href="../reference/epub_sift.html">epub_sift()</a></code>, which sifts, or filters out, small word- or character-count sections from the nested data frame. It’s a simple sieve and you can control the size of the holes with <code>n</code>. You can choose <code>type = "word"</code> (default) or <code>type = "character"</code>. This is somewhat of a blunt instrument, but is useful in a circumstance like this one where it is clear it will work as desired.</p>
+<code class="sourceCode R"><span><span class="va">pat</span> <span class="op">&lt;-</span> <span class="st">"CHAPTER [IVX]+"</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span></span>
+<span><span class="va">x2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
+<span><span class="co">#&gt;   rights   identifier creator title language subject date  source nchap data    </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public … http://ww… Bram S… Drac… en       Horror… 1995… http:…    54 <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 55 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> prior   <span style="color: #949494;">"</span>The Project Gutenberg EBook of Dracula, by Bram StokerT…   159  <span style="text-decoration: underline;">1</span>110</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ch01    <span style="color: #949494;">"</span>CHAPTER I\nPage\nJonathan Harker's Journal\n1\n<span style="color: #949494;">"</span>             7    43</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ch02    <span style="color: #949494;">"</span>CHAPTER II\nJonathan Harker's Journal\n14\n<span style="color: #949494;">"</span>                 6    40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ch03    <span style="color: #949494;">"</span>CHAPTER III\nJonathan Harker's Journal\n26\n<span style="color: #949494;">"</span>                6    41</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch04    <span style="color: #949494;">"</span>CHAPTER IV\nJonathan Harker's Journal\n38\n<span style="color: #949494;">"</span>                 6    40</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch05    <span style="color: #949494;">"</span>CHAPTER V\nLetters-Lucy and Mina\n51\n<span style="color: #949494;">"</span>                      6    35</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch06    <span style="color: #949494;">"</span>CHAPTER VI\nMina Murray's Journal\n59\n<span style="color: #949494;">"</span>                     6    36</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch07    <span style="color: #949494;">"</span>CHAPTER VII\nCutting from \"The Dailygraph,\" 8 August\…     9    55</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch08    <span style="color: #949494;">"</span>CHAPTER VIII\nMina Murray's Journal\n84\n<span style="color: #949494;">"</span>                   6    38</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch09    <span style="color: #949494;">"</span>CHAPTER IX\nMina Murray's Journal\n98\n<span style="color: #949494;">"</span>                     6    36</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 45 more rows</span></span></span></code></pre></div>
+<p>But this is not quite as expected. There should be 27 chapters, not
+54. What was not initially apparent was that the same pattern matching
+each chapter name also appears in the first section where every chapter
+is listed in the table of contents. The new section breaks were
+successful in keeping chapter text in single, unique sections, but there
+are now twice as many as needed. Unintentionally, the first 27
+“chapters” represent the table of contents being split on each chapter
+ID. These should be removed.</p>
+<p>An easy way to do this is with <code><a href="../reference/epub_sift.html">epub_sift()</a></code>, which sifts,
+or filters out, small word- or character-count sections from the nested
+data frame. It’s a simple sieve and you can control the size of the
+holes with <code>n</code>. You can choose <code>type = "word"</code>
+(default) or <code>type = "character"</code>. This is somewhat of a
+blunt instrument, but is useful in a circumstance like this one where it
+is clear it will work as desired.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/epub_sift.html">epub_sift</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span>
-<span class="va">x2</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    54 &lt;tib~</span>
-
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 27 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch28    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span>
-<span class="co">#&gt;  2 ch29    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span>
-<span class="co">#&gt;  3 ch30    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span>
-<span class="co">#&gt;  4 ch31    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span>
-<span class="co">#&gt;  5 ch32    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18004</span>
-<span class="co">#&gt;  6 ch33    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span>
-<span class="co">#&gt;  7 ch34    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span>
-<span class="co">#&gt;  8 ch35    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span>
-<span class="co">#&gt;  9 ch36    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span>
-<span class="co">#&gt; 10 ch37    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span>
-<span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
-<p>This removes the unwanted rows, but one problem remains. Note that sifting the table sections in this case results in a need to re-apply <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> because the sections we removed had nevertheless offset the chapter indexing. Another call to <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> can be chained, but it may be more convenient to use the <code>sift</code> argument to <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>, which is applied recursively.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/epub_sift.html">epub_sift</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
+<span><span class="va">x2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
+<span><span class="co">#&gt;   rights   identifier creator title language subject date  source nchap data    </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public … http://ww… Bram S… Drac… en       Horror… 1995… http:…    54 <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ch28    <span style="color: #949494;">"</span>CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.…  <span style="text-decoration: underline;">5</span>694 <span style="text-decoration: underline;">30</span>602</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ch29    <span style="color: #949494;">"</span>CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I…  <span style="text-decoration: underline;">5</span>476 <span style="text-decoration: underline;">28</span>462</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ch30    <span style="color: #949494;">"</span>CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I …  <span style="text-decoration: underline;">5</span>703 <span style="text-decoration: underline;">29</span>778</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ch31    <span style="color: #949494;">"</span>CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE …  <span style="text-decoration: underline;">5</span>828 <span style="text-decoration: underline;">30</span>195</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch32    <span style="color: #949494;">"</span>CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We…  <span style="text-decoration: underline;">3</span>546 <span style="text-decoration: underline;">18</span>004</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch33    <span style="color: #949494;">"</span>CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy …  <span style="text-decoration: underline;">5</span>654 <span style="text-decoration: underline;">29</span>145</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch34    <span style="color: #949494;">"</span>CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(…  <span style="text-decoration: underline;">5</span>567 <span style="text-decoration: underline;">29</span>912</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch35    <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock…  <span style="text-decoration: underline;">6</span>267 <span style="text-decoration: underline;">32</span>596</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch36    <span style="color: #949494;">"</span>CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu…  <span style="text-decoration: underline;">5</span>910 <span style="text-decoration: underline;">30</span>129</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch37    <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\…  <span style="text-decoration: underline;">5</span>932 <span style="text-decoration: underline;">30</span>730</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span></code></pre></div>
+<p>This removes the unwanted rows, but one problem remains. Note that
+sifting the table sections in this case results in a need to re-apply
+<code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> because the sections we removed had
+nevertheless offset the chapter indexing. Another call to
+<code><a href="../reference/epub_recombine.html">epub_recombine()</a></code> can be chained, but it may be more
+convenient to use the <code>sift</code> argument to
+<code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>, which is applied recursively.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#epub_recombine(x, pat) %&gt;% epub_sift(n = 200) %&gt;% epub_recombine(pat)</span>
-<span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span>, sift <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span>
-<span class="va">x2</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   rights  identifier  creator  title language subject  date  source  nchap data </span>
-<span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;   &lt;int&gt; &lt;lis&gt;</span>
-<span class="co">#&gt; 1 Public~ http://www~ Bram St~ Drac~ en       Horror ~ 1995~ http:/~    27 &lt;tib~</span>
-
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 27 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span>
-<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span>
-<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span>
-<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span>
-<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18005</span>
-<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span>
-<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span>
-<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span>
-<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span>
-<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span>
-<span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">#epub_recombine(x, pat) %&gt;% epub_sift(n = 200) %&gt;% epub_recombine(pat)</span></span>
+<span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_recombine.html">epub_recombine</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">pat</span>, sift <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">x2</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
+<span><span class="co">#&gt;   rights   identifier creator title language subject date  source nchap data    </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Public … http://ww… Bram S… Drac… en       Horror… 1995… http:…    27 <span style="color: #949494;">&lt;tibble&gt;</span></span></span>
+<span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ch01    <span style="color: #949494;">"</span>CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.…  <span style="text-decoration: underline;">5</span>694 <span style="text-decoration: underline;">30</span>602</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ch02    <span style="color: #949494;">"</span>CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I…  <span style="text-decoration: underline;">5</span>476 <span style="text-decoration: underline;">28</span>462</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ch03    <span style="color: #949494;">"</span>CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I …  <span style="text-decoration: underline;">5</span>703 <span style="text-decoration: underline;">29</span>778</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ch04    <span style="color: #949494;">"</span>CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE …  <span style="text-decoration: underline;">5</span>828 <span style="text-decoration: underline;">30</span>195</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch05    <span style="color: #949494;">"</span>CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We…  <span style="text-decoration: underline;">3</span>546 <span style="text-decoration: underline;">18</span>005</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch06    <span style="color: #949494;">"</span>CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy …  <span style="text-decoration: underline;">5</span>654 <span style="text-decoration: underline;">29</span>145</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch07    <span style="color: #949494;">"</span>CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(…  <span style="text-decoration: underline;">5</span>567 <span style="text-decoration: underline;">29</span>912</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch08    <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock…  <span style="text-decoration: underline;">6</span>267 <span style="text-decoration: underline;">32</span>596</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch09    <span style="color: #949494;">"</span>CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu…  <span style="text-decoration: underline;">5</span>910 <span style="text-decoration: underline;">30</span>129</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch10    <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\…  <span style="text-decoration: underline;">5</span>932 <span style="text-decoration: underline;">30</span>730</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span></code></pre></div>
 </div>
-<div id="reorder-sections-based-on-pattern-in-text" class="section level3">
-<h3 class="hasAnchor">
-<a href="#reorder-sections-based-on-pattern-in-text" class="anchor"></a>Reorder sections based on pattern in text</h3>
-<p>Some poorly formatted e-books have their internal sections occur in an arbitrary order. This can be frustrating to work with when doing text analysis on each section and where order matters. Just like recombining into new sections based on a pattern, sections that are out of order can be reordered based on a pattern. This requires a bit more work. In this case the user must provide a function that will map something in the matched pattern to an integer representing the desired row index.</p>
-<p>Continue with the Dracula example, but with one difference. Even though the sections were originally broken at arbitrary points, they were in chronological order. To demonstrate the utility of <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>, first randomize the rows so that chronological order can be recovered.</p>
+<div class="section level3">
+<h3 id="reorder-sections-based-on-pattern-in-text">Reorder sections based on pattern in text<a class="anchor" aria-label="anchor" href="#reorder-sections-based-on-pattern-in-text"></a>
+</h3>
+<p>Some poorly formatted e-books have their internal sections occur in
+an arbitrary order. This can be frustrating to work with when doing text
+analysis on each section and where order matters. Just like recombining
+into new sections based on a pattern, sections that are out of order can
+be reordered based on a pattern. This requires a bit more work. In this
+case the user must provide a function that will map something in the
+matched pattern to an integer representing the desired row index.</p>
+<p>Continue with the Dracula example, but with one difference. Even
+though the sections were originally broken at arbitrary points, they
+were in chronological order. To demonstrate the utility of
+<code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>, first randomize the rows so that
+chronological order can be recovered.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html">sample_frac</a></span><span class="op">(</span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># randomize rows for example</span>
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 27 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch25    "CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon~  6214 32544</span>
-<span class="co">#&gt;  2 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span>
-<span class="co">#&gt;  3 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span>
-<span class="co">#&gt;  4 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span>
-<span class="co">#&gt;  5 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span>
-<span class="co">#&gt;  6 ch11    "CHAPTER XI\nLucy Westenra's Diary.\n12 September.-How g~  5126 26926</span>
-<span class="co">#&gt;  7 ch14    "CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha~  6411 32530</span>
-<span class="co">#&gt;  8 ch18    "CHAPTER XVIIIDR. SEWARD'S DIARY\n30 September.-I got ho~  6911 35881</span>
-<span class="co">#&gt;  9 ch19    "CHAPTER XIXJONATHAN HARKER'S JOURNAL\n1 October, 5 a. m~  5670 29431</span>
-<span class="co">#&gt; 10 ch24    "CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN BY VA~  6272 32065</span>
-<span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
-<p>It is clear above that sections are now out of order. It is common enough to load poorly formatted EPUB files and yield this type of result. If all you care about is the text in its entirely, this does not matter, but if your analysis involves trends over the course of a book, this is problematic.</p>
-<p>For this book, you need a function that will convert an annoying Roman numeral to an integer. You already have the pattern for finding the relevant information in each text section. You only need to tweak it for proper substitution. Here is an example:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_frac</a></span><span class="op">(</span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="co"># randomize rows for example</span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ch25    <span style="color: #949494;">"</span>CHAPTER XXVDR. SEWARD'S DIARY\n11 October, Evening.-Jon…  <span style="text-decoration: underline;">6</span>214 <span style="text-decoration: underline;">32</span>544</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ch04    <span style="color: #949494;">"</span>CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE …  <span style="text-decoration: underline;">5</span>828 <span style="text-decoration: underline;">30</span>195</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ch07    <span style="color: #949494;">"</span>CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(…  <span style="text-decoration: underline;">5</span>567 <span style="text-decoration: underline;">29</span>912</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ch01    <span style="color: #949494;">"</span>CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.…  <span style="text-decoration: underline;">5</span>694 <span style="text-decoration: underline;">30</span>602</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch02    <span style="color: #949494;">"</span>CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I…  <span style="text-decoration: underline;">5</span>476 <span style="text-decoration: underline;">28</span>462</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch11    <span style="color: #949494;">"</span>CHAPTER XI\nLucy Westenra's Diary.\n12 September.-How g…  <span style="text-decoration: underline;">5</span>126 <span style="text-decoration: underline;">26</span>926</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch14    <span style="color: #949494;">"</span>CHAPTER XIVMINA HARKER'S JOURNAL\n23 September.-Jonatha…  <span style="text-decoration: underline;">6</span>411 <span style="text-decoration: underline;">32</span>530</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch18    <span style="color: #949494;">"</span>CHAPTER XVIIIDR. SEWARD'S DIARY\n30 September.-I got ho…  <span style="text-decoration: underline;">6</span>911 <span style="text-decoration: underline;">35</span>881</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch19    <span style="color: #949494;">"</span>CHAPTER XIXJONATHAN HARKER'S JOURNAL\n1 October, 5 a. m…  <span style="text-decoration: underline;">5</span>670 <span style="text-decoration: underline;">29</span>431</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch24    <span style="color: #949494;">"</span>CHAPTER XXIVDR. SEWARD'S PHONOGRAPH DIARY, SPOKEN BY VA…  <span style="text-decoration: underline;">6</span>272 <span style="text-decoration: underline;">32</span>065</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span></code></pre></div>
+<p>It is clear above that sections are now out of order. It is common
+enough to load poorly formatted EPUB files and yield this type of
+result. If all you care about is the text in its entirely, this does not
+matter, but if your analysis involves trends over the course of a book,
+this is problematic.</p>
+<p>For this book, you need a function that will convert an annoying
+Roman numeral to an integer. You already have the pattern for finding
+the relevant information in each text section. You only need to tweak it
+for proper substitution. Here is an example:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">pattern</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/roman.html">as.roman</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="st">"\\1"</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This function is passed to <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>. It takes and returns scalars. It must take two arguments: the first is a text string. The second is the regular expression. It must return a single number representing the index of that row. For example, if the pattern matches <code>CHAPTER IV</code>, the function should return a <code>4</code>.</p>
-<p><code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> takes care of the rest. It applies your function to every row in the the nested data frame and then reorders the rows based on the full set of indices. Note that it also repeats this for every row (book) in the primary data frame, i.e., for every nested table. This means that the same function will be applied to every book. Therefore, you should only use this in bulk on a collection of e-books if you know the pattern does not change and the function will work correctly in each case.</p>
-<p>The pattern has changed slightly. Parentheses are used to retain the important part of the matched pattern, the Roman numeral. The function <code>f</code> here substitutes the entire string (because now it begins with <code><a href="https://rdrr.io/r/base/Arithmetic.html">^</a></code> and ends with <code>.*</code>) with only the part stored in parentheses (In <code>f</code>, this is the <code>\\1</code> substitution). <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> applies this to all rows in the nested data frame:</p>
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">pattern</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/roman.html" class="external-link">as.roman</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">gsub</a></span><span class="op">(</span><span class="va">pattern</span>, <span class="st">"\\1"</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>This function is passed to <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code>. It takes and
+returns scalars. It must take two arguments: the first is a text string.
+The second is the regular expression. It must return a single number
+representing the index of that row. For example, if the pattern matches
+<code>CHAPTER IV</code>, the function should return a
+<code>4</code>.</p>
+<p><code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> takes care of the rest. It applies your
+function to every row in the the nested data frame and then reorders the
+rows based on the full set of indices. Note that it also repeats this
+for every row (book) in the primary data frame, i.e., for every nested
+table. This means that the same function will be applied to every book.
+Therefore, you should only use this in bulk on a collection of e-books
+if you know the pattern does not change and the function will work
+correctly in each case.</p>
+<p>The pattern has changed slightly. Parentheses are used to retain the
+important part of the matched pattern, the Roman numeral. The function
+<code>f</code> here substitutes the entire string (because now it begins
+with <code>^</code> and ends with <code>.*</code>) with only the part
+stored in parentheses (In <code>f</code>, this is the <code>\\1</code>
+substitution). <code><a href="../reference/epub_reorder.html">epub_reorder()</a></code> applies this to all rows in
+the nested data frame:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_reorder.html">epub_reorder</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">f</span>, <span class="st">"^CHAPTER ([IVX]+).*"</span><span class="op">)</span>
-<span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 27 x 4</span>
-<span class="co">#&gt;    section text                                                      nword nchar</span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;                                                     &lt;int&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 ch01    "CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.~  5694 30602</span>
-<span class="co">#&gt;  2 ch02    "CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I~  5476 28462</span>
-<span class="co">#&gt;  3 ch03    "CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I ~  5703 29778</span>
-<span class="co">#&gt;  4 ch04    "CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE ~  5828 30195</span>
-<span class="co">#&gt;  5 ch05    "CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We~  3546 18005</span>
-<span class="co">#&gt;  6 ch06    "CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy ~  5654 29145</span>
-<span class="co">#&gt;  7 ch07    "CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(~  5567 29912</span>
-<span class="co">#&gt;  8 ch08    "CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock~  6267 32596</span>
-<span class="co">#&gt;  9 ch09    "CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu~  5910 30129</span>
-<span class="co">#&gt; 10 ch10    "CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\~  5932 30730</span>
-<span class="co">#&gt; # ... with 17 more rows</span></code></pre></div>
-<p>It is important that this is done on a nested data frame that has already been cleaned to the point of not containing extraneous rows that cannot be matched by the desired pattern. If they cannot be matched, then it is unknown where those rows should be placed relative to the others.</p>
-<p>If sections are both out of order and use arbitrary break points, it would be necessary to reorder them before you split and recombine. If you split and recombine first, this would yield new sections that contain text from different parts of the e-book. However, the two are not likely to occur together; in fact it may be impossible for an EPUB file to be structured this way. In developing <code>epubr</code>, no such examples have been encountered. In any event, reordering out of order sections essentially requires a human-identifiable pattern near the beginning of each section text string, so it does not make sense to perform this operation unless the sections have meaningful break points.</p>
+<code class="sourceCode R"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/epub_reorder.html">epub_reorder</a></span><span class="op">(</span><span class="va">x2</span>, <span class="va">f</span>, <span class="st">"^CHAPTER ([IVX]+).*"</span><span class="op">)</span></span>
+<span><span class="va">x2</span><span class="op">$</span><span class="va">data</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 27 × 4</span></span></span>
+<span><span class="co">#&gt;    section text                                                      nword nchar</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> ch01    <span style="color: #949494;">"</span>CHAPTER IJONATHAN HARKER'S JOURNAL\n(Kept in shorthand.…  <span style="text-decoration: underline;">5</span>694 <span style="text-decoration: underline;">30</span>602</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> ch02    <span style="color: #949494;">"</span>CHAPTER IIJONATHAN HARKER'S JOURNAL-continued\n5 May.-I…  <span style="text-decoration: underline;">5</span>476 <span style="text-decoration: underline;">28</span>462</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> ch03    <span style="color: #949494;">"</span>CHAPTER IIIJONATHAN HARKER'S JOURNAL-continued\nWHEN I …  <span style="text-decoration: underline;">5</span>703 <span style="text-decoration: underline;">29</span>778</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> ch04    <span style="color: #949494;">"</span>CHAPTER IVJONATHAN HARKER'S JOURNAL-continued\nI AWOKE …  <span style="text-decoration: underline;">5</span>828 <span style="text-decoration: underline;">30</span>195</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> ch05    <span style="color: #949494;">"</span>CHAPTER V\nLetter from Miss Mina Murray to Miss Lucy We…  <span style="text-decoration: underline;">3</span>546 <span style="text-decoration: underline;">18</span>005</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> ch06    <span style="color: #949494;">"</span>CHAPTER VIMINA MURRAY'S JOURNAL\n24 July. Whitby.-Lucy …  <span style="text-decoration: underline;">5</span>654 <span style="text-decoration: underline;">29</span>145</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> ch07    <span style="color: #949494;">"</span>CHAPTER VIICUTTING FROM \"THE DAILYGRAPH,\" 8 AUGUST\n(…  <span style="text-decoration: underline;">5</span>567 <span style="text-decoration: underline;">29</span>912</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ch08    <span style="color: #949494;">"</span>CHAPTER VIIIMINA MURRAY'S JOURNAL\nSame day, 11 o'clock…  <span style="text-decoration: underline;">6</span>267 <span style="text-decoration: underline;">32</span>596</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ch09    <span style="color: #949494;">"</span>CHAPTER IX\nLetter, Mina Harker to Lucy Westenra.\n\"Bu…  <span style="text-decoration: underline;">5</span>910 <span style="text-decoration: underline;">30</span>129</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> ch10    <span style="color: #949494;">"</span>CHAPTER X\nLetter, Dr. Seward to Hon. Arthur Holmwood.\…  <span style="text-decoration: underline;">5</span>932 <span style="text-decoration: underline;">30</span>730</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more rows</span></span></span></code></pre></div>
+<p>It is important that this is done on a nested data frame that has
+already been cleaned to the point of not containing extraneous rows that
+cannot be matched by the desired pattern. If they cannot be matched,
+then it is unknown where those rows should be placed relative to the
+others.</p>
+<p>If sections are both out of order and use arbitrary break points, it
+would be necessary to reorder them before you split and recombine. If
+you split and recombine first, this would yield new sections that
+contain text from different parts of the e-book. However, the two are
+not likely to occur together; in fact it may be impossible for an EPUB
+file to be structured this way. In developing <code>epubr</code>, no
+such examples have been encountered. In any event, reordering out of
+order sections essentially requires a human-identifiable pattern near
+the beginning of each section text string, so it does not make sense to
+perform this operation unless the sections have meaningful break
+points.</p>
 </div>
 </div>
-<div id="unzip-epub-file" class="section level2">
-<h2 class="hasAnchor">
-<a href="#unzip-epub-file" class="anchor"></a>Unzip EPUB file</h2>
-<p>Separate from using <code><a href="../reference/epub.html">epub_meta()</a></code> and <code><a href="../reference/epub.html">epub()</a></code>, you can call <code><a href="../reference/epub.html">epub_unzip()</a></code> directly if all you want to do is extract the files from the <code>.epub</code> file archive. By default the archive files are extracted to <code><a href="https://rdrr.io/r/base/tempfile.html">tempdir()</a></code> so you may want to change this with the <code>exdir</code> argument.</p>
+<div class="section level2">
+<h2 id="unzip-epub-file">Unzip EPUB file<a class="anchor" aria-label="anchor" href="#unzip-epub-file"></a>
+</h2>
+<p>Separate from using <code><a href="../reference/epub.html">epub_meta()</a></code> and <code><a href="../reference/epub.html">epub()</a></code>,
+you can call <code><a href="../reference/epub.html">epub_unzip()</a></code> directly if all you want to do is
+extract the files from the <code>.epub</code> file archive. By default
+the archive files are extracted to <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> so you may
+want to change this with the <code>exdir</code> argument.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bookdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"dracula"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/epub.html">epub_unzip</a></span><span class="op">(</span><span class="va">file</span>, exdir <span class="op">=</span> <span class="va">bookdir</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="va">bookdir</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt;  [1] "META-INF/container.xml"                                                  </span>
-<span class="co">#&gt;  [2] "mimetype"                                                                </span>
-<span class="co">#&gt;  [3] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-0.htm.html"   </span>
-<span class="co">#&gt;  [4] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-1.htm.html"   </span>
-<span class="co">#&gt;  [5] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-10.htm.html"  </span>
-<span class="co">#&gt;  [6] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-11.htm.html"  </span>
-<span class="co">#&gt;  [7] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-12.htm.html"  </span>
-<span class="co">#&gt;  [8] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-13.htm.html"  </span>
-<span class="co">#&gt;  [9] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-2.htm.html"   </span>
-<span class="co">#&gt; [10] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-3.htm.html"   </span>
-<span class="co">#&gt; [11] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-4.htm.html"   </span>
-<span class="co">#&gt; [12] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-5.htm.html"   </span>
-<span class="co">#&gt; [13] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-6.htm.html"   </span>
-<span class="co">#&gt; [14] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-7.htm.html"   </span>
-<span class="co">#&gt; [15] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-8.htm.html"   </span>
-<span class="co">#&gt; [16] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-9.htm.html"   </span>
-<span class="co">#&gt; [17] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@colophon.png"</span>
-<span class="co">#&gt; [18] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@cover.jpg"   </span>
-<span class="co">#&gt; [19] "OEBPS/0.css"                                                             </span>
-<span class="co">#&gt; [20] "OEBPS/1.css"                                                             </span>
-<span class="co">#&gt; [21] "OEBPS/content.opf"                                                       </span>
-<span class="co">#&gt; [22] "OEBPS/pgepub.css"                                                        </span>
-<span class="co">#&gt; [23] "OEBPS/toc.ncx"                                                           </span>
-<span class="co">#&gt; [24] "OEBPS/wrap0000.html"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">bookdir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"dracula"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/epub.html">epub_unzip</a></span><span class="op">(</span><span class="va">file</span>, exdir <span class="op">=</span> <span class="va">bookdir</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">bookdir</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "META-INF/container.xml"                                                  </span></span>
+<span><span class="co">#&gt;  [2] "mimetype"                                                                </span></span>
+<span><span class="co">#&gt;  [3] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-0.htm.html"   </span></span>
+<span><span class="co">#&gt;  [4] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-1.htm.html"   </span></span>
+<span><span class="co">#&gt;  [5] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-10.htm.html"  </span></span>
+<span><span class="co">#&gt;  [6] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-11.htm.html"  </span></span>
+<span><span class="co">#&gt;  [7] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-12.htm.html"  </span></span>
+<span><span class="co">#&gt;  [8] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-13.htm.html"  </span></span>
+<span><span class="co">#&gt;  [9] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-2.htm.html"   </span></span>
+<span><span class="co">#&gt; [10] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-3.htm.html"   </span></span>
+<span><span class="co">#&gt; [11] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-4.htm.html"   </span></span>
+<span><span class="co">#&gt; [12] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-5.htm.html"   </span></span>
+<span><span class="co">#&gt; [13] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-6.htm.html"   </span></span>
+<span><span class="co">#&gt; [14] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-7.htm.html"   </span></span>
+<span><span class="co">#&gt; [15] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-8.htm.html"   </span></span>
+<span><span class="co">#&gt; [16] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@345-h-9.htm.html"   </span></span>
+<span><span class="co">#&gt; [17] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@colophon.png"</span></span>
+<span><span class="co">#&gt; [18] "OEBPS/@public@vhost@g@gutenberg@html@files@345@345-h@images@cover.jpg"   </span></span>
+<span><span class="co">#&gt; [19] "OEBPS/0.css"                                                             </span></span>
+<span><span class="co">#&gt; [20] "OEBPS/1.css"                                                             </span></span>
+<span><span class="co">#&gt; [21] "OEBPS/content.opf"                                                       </span></span>
+<span><span class="co">#&gt; [22] "OEBPS/pgepub.css"                                                        </span></span>
+<span><span class="co">#&gt; [23] "OEBPS/toc.ncx"                                                           </span></span>
+<span><span class="co">#&gt; [24] "OEBPS/wrap0000.html"</span></span></code></pre></div>
 </div>
-<div id="other-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#other-functions" class="anchor"></a>Other functions</h2>
-<div id="word-count" class="section level3">
-<h3 class="hasAnchor">
-<a href="#word-count" class="anchor"></a>Word count</h3>
-<p>The helper function <code><a href="../reference/count_words.html">count_words()</a></code> provides word counts for strings, but allows you to control the regular expression patterns used for both splitting the string and conditionally counting the resulting character elements. This is the same function used internally by <code><a href="../reference/epub.html">epub()</a></code> and <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>. It is exported so that it can be used directly.</p>
-<p>By default, <code><a href="../reference/count_words.html">count_words()</a></code> splits on spaces and new line characters. It counts as a word any element containing at least one alphanumeric character or the ampersand. It ignores everything else as noise, such as extra spaces, empty strings and isolated bits of punctuation.</p>
+<div class="section level2">
+<h2 id="other-functions">Other functions<a class="anchor" aria-label="anchor" href="#other-functions"></a>
+</h2>
+<div class="section level3">
+<h3 id="word-count">Word count<a class="anchor" aria-label="anchor" href="#word-count"></a>
+</h3>
+<p>The helper function <code><a href="../reference/count_words.html">count_words()</a></code> provides word counts
+for strings, but allows you to control the regular expression patterns
+used for both splitting the string and conditionally counting the
+resulting character elements. This is the same function used internally
+by <code><a href="../reference/epub.html">epub()</a></code> and <code><a href="../reference/epub_recombine.html">epub_recombine()</a></code>. It is exported
+so that it can be used directly.</p>
+<p>By default, <code><a href="../reference/count_words.html">count_words()</a></code> splits on spaces and new line
+characters. It counts as a word any element containing at least one
+alphanumeric character or the ampersand. It ignores everything else as
+noise, such as extra spaces, empty strings and isolated bits of
+punctuation.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">" This   sentence will be counted to have:\n\n10 (ten) words."</span>
-<span class="fu"><a href="../reference/count_words.html">count_words</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] 10</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="st">" This   sentence will be counted to have:\n\n10 (ten) words."</span></span>
+<span><span class="fu"><a href="../reference/count_words.html">count_words</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 </div>
-<div id="inspection" class="section level3">
-<h3 class="hasAnchor">
-<a href="#inspection" class="anchor"></a>Inspection</h3>
-<p>Helper functions for inspecting the text in the R console include <code><a href="../reference/epub_head.html">epub_head()</a></code> and <code><a href="../reference/epub_cat.html">epub_cat()</a></code>.</p>
-<p><code><a href="../reference/epub_head.html">epub_head()</a></code> provides an overview of the text by section for each book in the primary data frame. The nested data frames are unnested and row bound to one another and returned as a single data frame. The text is shortened to only the first few characters (defaults to <code>n = 50</code>).</p>
-<p><code><a href="../reference/epub_cat.html">epub_cat()</a></code> can be used to <code>cat</code> the text of an e-book to the console for quick inspection in a more readable form. It can take several arguments that help slice out a section of the text and customize how it is printed.</p>
-<p>Both functions can take an EPUB filename or a data frame of an already loaded EPUB file as their first argument.</p>
+<div class="section level3">
+<h3 id="inspection">Inspection<a class="anchor" aria-label="anchor" href="#inspection"></a>
+</h3>
+<p>Helper functions for inspecting the text in the R console include
+<code><a href="../reference/epub_head.html">epub_head()</a></code> and <code><a href="../reference/epub_cat.html">epub_cat()</a></code>.</p>
+<p><code><a href="../reference/epub_head.html">epub_head()</a></code> provides an overview of the text by section
+for each book in the primary data frame. The nested data frames are
+unnested and row bound to one another and returned as a single data
+frame. The text is shortened to only the first few characters (defaults
+to <code>n = 50</code>).</p>
+<p><code><a href="../reference/epub_cat.html">epub_cat()</a></code> can be used to <code>cat</code> the text of
+an e-book to the console for quick inspection in a more readable form.
+It can take several arguments that help slice out a section of the text
+and customize how it is printed.</p>
+<p>Both functions can take an EPUB filename or a data frame of an
+already loaded EPUB file as their first argument.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://github.com/leonawicz/">Matthew Leonawicz</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://github.com/leonawicz/" class="external-link">Matthew Leonawicz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
+
+
 
 
   </body>
